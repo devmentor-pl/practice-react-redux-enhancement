@@ -22,7 +22,7 @@ const StackOverflowBrowserComponent = () => {
 				<label>
 					Search:
 					<input
-						name="title"
+						name="search"
 						value={values.search ? values.search : ''}
 						onChange={(e) => handleChange(e.target)}
 					/>
