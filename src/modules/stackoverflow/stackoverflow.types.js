@@ -1,7 +1,7 @@
-const SET_USER = 'setFieldValue';
-const SET_ALL_REPOS = 'setResponse';
+const SET_FIELD_VALUE = 'setFieldValue';
+const SET_RESPONSE = 'setResponse';
 
 export default {
-	SET_USER,
-	SET_ALL_REPOS,
+	SET_FIELD_VALUE,
+	SET_RESPONSE,
 };
