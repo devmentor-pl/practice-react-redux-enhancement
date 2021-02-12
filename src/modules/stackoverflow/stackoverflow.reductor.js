@@ -1,7 +1,11 @@
 import types from './stackoverflow.types';
 
 const initState = {
-	values: {},
+	values: {
+		search: '',
+		sortByDate: 'desc',
+		sortByReputation: 'desc',
+	},
 	response: [],
 };
 
