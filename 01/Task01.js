@@ -1,10 +1,10 @@
 import React from 'react';
-import Timer from './../src/components/Timer';
+import TimerCounter from './../src/components/TimerCounter';
 
 const Task01 = () => (
     <section>
         <h2>Task 01</h2>
-        <Timer/>
+        <TimerCounter/>
     </section>
 );
 
