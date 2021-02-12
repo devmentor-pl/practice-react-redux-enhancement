@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setFieldValue, setFilteredRepos, getRepos } from './github.actions';
 
 const ReposBrowserComponent = () => {
-	const state = useSelector((state) => state);
+	const state = useSelector((state) => state.github);
 	const { values, repos, filteredRepos } = state;
 	const dispatch = useDispatch();
 

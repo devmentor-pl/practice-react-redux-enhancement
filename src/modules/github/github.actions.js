@@ -24,7 +24,7 @@ export const setFilteredRepos = (filteredRepos) => {
 
 export const getRepos = () => (dispatch, getState) => {
 	const state = getState();
-	ghAPI.getRepos(state.values.user).then((resp) => {
+	ghAPI.getRepos(state.github.values.user).then((resp) => {
 		const reposNames = resp.map((repo) => repo.name);
 		dispatch(setAllRepos(reposNames));
 	});

@@ -20,7 +20,7 @@ export const getResponse = () => (dispatch, getState) => {
 	const state = getState();
 	const {
 		values: { search, sortByDate },
-	} = state;
+	} = state.stackoverflow;
 	API.getResponse(search, sortByDate).then((resp) => {
 		dispatch(setResponse(resp.items));
 	});
