@@ -17,10 +17,11 @@ export const setResponse = (resp) => {
 };
 
 export const getResponse = () => (dispatch, getState) => {
-	console.log('akcja uruchomiona');
 	const state = getState();
-	API.getResponse(state.values.search).then((resp) => {
-		console.log(resp);
-		dispatch(setResponse(resp));
+	const {
+		values: { search, sortByDate },
+	} = state;
+	API.getResponse(search, sortByDate).then((resp) => {
+		dispatch(setResponse(resp.items));
 	});
 };
