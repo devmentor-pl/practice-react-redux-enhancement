@@ -13,6 +13,14 @@ class Timer extends React.Component {
         return 0;
     }
 
+    addZero(i) {
+        if (i < 10) {
+          i = "0:" + i;
+        
+        }
+        return i;
+      }
+
     getSeconds() {
         return this.state.time;
     }
@@ -20,7 +28,8 @@ class Timer extends React.Component {
     render() {
         return (
             <section>
-                Dziękujemy, że jesteś z nami już {this.getHours()}h {this.getMinutes()}m {this.getSeconds()}s.
+                Dziękujemy, że jesteś z nami już {this.addZero(this.getMinutes())}h {this.addZero(this.getMinutes())}m {this.addZero(this.getSeconds())}s.
+              
             </section>
         )
     }
