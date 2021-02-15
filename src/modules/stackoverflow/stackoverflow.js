@@ -5,15 +5,12 @@ import { setFieldValue, getResponse, setResponse } from './stackoverflow.actions
 const StackOverflowBrowserComponent = () => {
 	const { values, response } = useSelector((state) => state.stackoverflow);
 	const dispatch = useDispatch();
-	const isInitialMount = useRef(true);
 
 	useEffect(() => {
-		if (isInitialMount.current) {
-		   isInitialMount.current = false;
-		} else {
+		if (values.search) {
 			dispatch(getResponse());
 		}
-	  }, [values.sortByDate]);
+	}, [values.sortByDate]);
 
 	useEffect(() => {
 		if (response.length !== 0) {
