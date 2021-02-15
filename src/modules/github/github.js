@@ -32,7 +32,7 @@ const ReposBrowserComponent = () => {
 		return <ul>{listItems}</ul>;
 	};
 
-	const HandleSubmit = (e) => {
+	const handleSubmit = (e) => {
 		e.preventDefault(e);
 		dispatch(getRepos());
 	};
@@ -46,7 +46,7 @@ const ReposBrowserComponent = () => {
 	return (
 		<section>
 			<h2>Task 03</h2>
-			<form onSubmit={(e) => HandleSubmit(e)}>
+			<form onSubmit={(e) => handleSubmit(e)}>
 				<label>
 					User:
 					<input
