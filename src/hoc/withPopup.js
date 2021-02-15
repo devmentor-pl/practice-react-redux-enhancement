@@ -12,7 +12,7 @@ const withPopup = (color, opacity) => (WrappedComponent) => {
 					textAlign: 'center',
 				}}
 			>
-				<WrappedComponent />
+				{renderWrappedComponent()}
 				<p>{extraText}</p>
 				<button onClick={() => onClick()}>ZAMKNIJ X</button>
 			</section>
@@ -20,8 +20,7 @@ const withPopup = (color, opacity) => (WrappedComponent) => {
     }
 
     const renderWrappedComponent = () => {
-        return <WrappedComponent>
-        </WrappedComponent>
+        return <WrappedComponent />;
     }
     
     return class extends React.Component {
