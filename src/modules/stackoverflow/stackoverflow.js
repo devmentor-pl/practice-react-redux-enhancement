@@ -3,8 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setFieldValue, getResponse, setResponse } from './stackoverflow.actions';
 
 const StackOverflowBrowserComponent = () => {
-	const state = useSelector((state) => state.stackoverflow);
-	const { values, response } = state;
+	const { values, response } = useSelector((state) => state.stackoverflow);
 	const dispatch = useDispatch();
 	const isInitialMount = useRef(true);
 
