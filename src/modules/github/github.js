@@ -10,55 +10,68 @@ class Github extends React.Component {
 
     constructor(props) {
         super(props)
-        this.input = React.createRef();
+    
 
         this.state = {
             username: '',
-            userrepo: '',
+            repos: '',
         }
     }
 
 
-   async handleSubmit(e) {
-        e.preventDefault();
-        let user = await this.api.getUser(this.input.current.value);
-        this.setState({ 
-            username: user.login,
-            url: user.url,
-        })
 
-        let repo = await this.api.getRepos(this.input.current.value);
+    async handleSubmit(e) {
+        e.preventDefault()
+        const {value} = this.refs.username
+        let user = await this.api.getUser(value);
+        let repos = await this.api.getRepos(value);
+
         this.setState({
-            name: repo.name,
-            description: repo.description,
-          
+            user: {
+              avatar_url: user.avatar_url,
+              username: user.login,
+              followers: user.followers,
+              following: user.following,
+              url: user.url,
+            },
+            repos,
+          })
+        }
+    
 
-     })
-    }
+
+  renderRepos(repos) {
+    return repos.map(item => {
+      return <div key={item.id} className="repoResults">
+        <p>
+          {item.name}
+        </p>
+      </div>
+    })
+  }
+
+  renderUser(user) {
+    return (
+      <div className="resultBadge">
+        <img src={user.avatar_url} />
+        <p className="userInfo">
+          Username: <br />
+          {user.username}
+        </p>
+        <p className="followerInfo">
+          {user.followers} Followers
+                </p>
+        <p className="followingInfo">
+          Following {user.following} users
+                </p>
+      </div>
+    )
+  }
 
 
 
   render() {
-      let user;
-      if(this.state.username) {
-        user = 
-        <div className="resultBadge">
-          <p className="userInfo">
-           Username: <br/>
-           {this.state.username} 
-          </p> 
-        </div>
-    }
-
-    let repo;
-      if(this.state.userrepo) {
-         repo =
-           <div className="repoResults">
-              <p>
-                {this.state.userrepo}
-             </p>
-           </div>
-       }
+      const {user, repos} = this.state;
 
             return (
               
@@ -67,12 +80,14 @@ class Github extends React.Component {
                     <h1>Github User Search </h1>
         
                 <form onSubmit={e => this.handleSubmit(e)}>
-                    <input   ref={this.input} type='text' placeholder='username' />
+                    <input   ref='username' type='text' placeholder='username' />
                 </form>
 
                 <div className="Search-intro">
-                    {user}
-                    {repo}
+                {user && this.renderUser(user)}
+                </div>
+                <div>
+                {repos && this.renderRepos(repos)}
                 </div>
 
                 </div>
