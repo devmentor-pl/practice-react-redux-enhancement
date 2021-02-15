@@ -3,7 +3,7 @@ import types from './../github/github.types';
 
 const initState = {
         user: '',
-        repos: '',
+        repos: [],
 }
 
 const reducer = (state = initState, action) => {
@@ -18,11 +18,10 @@ const reducer = (state = initState, action) => {
         }
 
         case types.GET_REPOS:
-    
         const {repos} = this.state;
-            return {
-                ...state,
-                repos,
+         return {
+             ...state,
+              repos,
             }
         }
     }

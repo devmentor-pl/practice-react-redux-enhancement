@@ -4,5 +4,5 @@ const GET_REPOS = 'getRepos';
 
 export default {
 GET_REPOS,
-GET_USER
+GET_USER,
 };

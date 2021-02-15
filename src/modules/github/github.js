@@ -1,22 +1,25 @@
 
 import React  from 'react';
-import { GitHubAPI } from "./github.api";
-import { useDispatch } from 'react-redux';
-import { getRepos, getUser } from './github.actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { getRepos, getUser, loadData } from './github.actions';
 
 const Github = ()  =>  {
-    const api = new GitHubAPI();
+
     const dispatch = useDispatch();
+    const { user, repos } = useSelector(state => state);
+
+    useEffect(() => {
+      dispatch(loadData());
+      }, []);
+
 
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const {value} = this.refs.username
-  
-        let user =  dispatch(getUser(value))
-        let repos =  dispatch(getRepos(value))
-     
-
+        const {value} = this.refs.user
+        // let user = await this.api.getUser(value);
+        // let repos = await this.api.getRepos(value);
+        dispatch(loadData(value))
       }
     
 
@@ -36,7 +39,7 @@ const Github = ()  =>  {
     return (
         <p>
           Username: 
-          {user.username}
+          {user.user}
         </p>
 
     )
@@ -47,7 +50,7 @@ const Github = ()  =>  {
                     <h1>Github User Search </h1>
   
                 <form onSubmit={e => this.handleSubmit(e)}>
-                    <input   ref='username' type='text' placeholder='username' />
+                    <input   ref='user' type='text' placeholder='username' />
                 </form>
 
 
