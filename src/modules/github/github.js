@@ -1,101 +1,168 @@
+
 import React  from 'react';
 import { GitHubAPI } from "./github.api";
-import regeneratorRuntime from "regenerator-runtime";
-import "regenerator-runtime/runtime.js";
+import { useDispatch } from 'react-redux';
+import { getRepos, getUser } from './github.actions';
+
+const Github = ()  =>  {
+    const api = new GitHubAPI();
+    const dispatch = useDispatch();
 
 
-class Github extends React.Component {
-    api = new GitHubAPI();
-
-
-    constructor(props) {
-        super(props)
-    
-
-        this.state = {
-            username: '',
-            repos: '',
-        }
-    }
-
-
-
-    async handleSubmit(e) {
+    const handleSubmit = (e) => {
         e.preventDefault()
         const {value} = this.refs.username
-        let user = await this.api.getUser(value);
-        let repos = await this.api.getRepos(value);
+  
+        let user =  dispatch(getUser(value))
+        let repos =  dispatch(getRepos(value))
+     
 
-        this.setState({
-            user: {
-              avatar_url: user.avatar_url,
-              username: user.login,
-              followers: user.followers,
-              following: user.following,
-              url: user.url,
-            },
-            repos,
-          })
-        }
+      }
     
 
 
-  renderRepos(repos) {
-    return repos.map(item => {
-      return <div key={item.id} className="repoResults">
-        <p>
-          {item.name}
-        </p>
-      </div>
-    })
+  const renderRepos = (repos)  =>{
+      return repos.map(item => {
+        return <div key={item.id}>
+          <p>
+            {item.name}
+          </p>
+        </div>
+      })
   }
 
-  renderUser(user) {
+
+  const renderUser = (user) => {
     return (
-      <div className="resultBadge">
-        <img src={user.avatar_url} />
-        <p className="userInfo">
-          Username: <br />
+        <p>
+          Username: 
           {user.username}
         </p>
-        <p className="followerInfo">
-          {user.followers} Followers
-                </p>
-        <p className="followingInfo">
-          Following {user.following} users
-                </p>
-      </div>
+
     )
   }
 
-
-
-  render() {
-      const {user, repos} = this.state;
-
             return (
-              
-
-                <div className="GitHubSearch">
+                <div>
                     <h1>Github User Search </h1>
-        
+  
                 <form onSubmit={e => this.handleSubmit(e)}>
                     <input   ref='username' type='text' placeholder='username' />
                 </form>
 
-                <div className="Search-intro">
-                {user && this.renderUser(user)}
-                </div>
+
                 <div>
-                {repos && this.renderRepos(repos)}
-                </div>
+                    {user && renderUser(user)}
+               </div>
+
+                <div>
+                    {repos && renderRepos(repos)}
+                 </div>
 
                 </div>
         );
-  }
+  
 
 
 
 }
 
 export default Github;
+
+// import React  from 'react';
+// import { GitHubAPI } from "./github.api";
+// import "regenerator-runtime/runtime.js";
+
+
+// class Github extends React.Component {
+//     api = new GitHubAPI();
+
+//     constructor(props) {
+//         super(props)
+  
+
+//         this.state = {
+//             username: '',
+//             repos: '',
+//         }
+//     }
+
+//     async handleSubmit(e) {
+//         e.preventDefault()
+//         const {value} = this.refs.username
+//         let user = await this.api.getUser(value);
+//         let repos = await this.api.getRepos(value);
+
+//         this.setState({
+//             user: {
+//               avatar_url: user.avatar_url,
+//               username: user.login,
+//               followers: user.followers,
+//               following: user.following,
+//               url: user.url,
+//             },
+//             repos,
+//           })
+//         }
+    
+
+
+//   renderRepos(repos) {
+//       return repos.map(item => {
+//         return <div key={item.id}>
+//           <p>
+//             {item.name}
+//           </p>
+//         </div>
+//       })
+//   }
+
+//   renderUser(user) {
+//     return (
+//       <div>
+//         <img src={user.avatar_url} />
+//         <p>
+//           Username: <br />
+//           {user.username}
+//         </p>
+//         <p>
+//           {user.followers} Followers
+//          </p>
+//         <p>
+//           Following {user.following} users
+//          </p>
+//       </div>
+//     )
+//   }
+
+
+
+//   render() {
+//       const {user, repos} = this.state;
+
+//             return (
+            
+//                 <div>
+//                     <h1>Github User Search </h1>
+      
+//                 <form onSubmit={e => this.handleSubmit(e)}>
+//                     <input   ref='username' type='text' placeholder='username' />
+//                 </form>
+
+//                 <div>
+//                    {user && this.renderUser(user)}
+//                 </div>
+
+//                 <div>
+//                    {repos && this.renderRepos(repos)}
+//                 </div>
+
+//                 </div>
+//         );
+//   }
+
+
+
+// }
+
+// export default Github;
