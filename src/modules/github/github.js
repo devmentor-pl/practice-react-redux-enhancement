@@ -1,20 +1,40 @@
 
-import React, {useState}  from 'react';
+import React, {useState, useEffect}  from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import "regenerator-runtime/runtime.js";
-import {loadDataAction} from './github.actions'
-
+import {loadDataAction, getUserAction, getReposAction} from './github.actions'
 
 
 const Github = () => {
     const dispatch = useDispatch();
-    const user = useSelector(state => state.user);
-    const [userValue, setUser] = useState(user);
+    const user = useSelector(state => state.userValue);
+    const repos = useSelector(state => state.repos);
 
+    // const [userValue, setUser] = useState(user);
+    //zostawiam te komentarze, do omówienia
+  
 
     const handleSubmit = event => {
         event.preventDefault();
-        dispatch(loadDataAction(userValue));
+        dispatch(loadDataAction(user));
+        // form.reset();  jak sie czysci input jak mam dispatch ?
+    }
+
+    const renderRepos = () => {
+        if(repos !== 0) {
+            return renderAllRepos(repos)
+        } else if (repos.length === 0){
+                return <span>this user has no repositories!</span>
+                // to chyba nie działa?
+         }
+    }
+
+
+    const renderAllRepos = repos => {
+        const reposList = repos.map((repo, id) => {
+            return <li key={id}>{repo}</li>
+        })
+        return <ul>{reposList}</ul>
     }
 
     return (
@@ -22,9 +42,15 @@ const Github = () => {
         <>
             <h1>Github User Search </h1>
              <form onSubmit={ handleSubmit }>
-             <input   onChange={ ({target}) => setUser(target.value) }
-                      value={ userValue } />
+             <input   onChange={ (({target}) => dispatch(getUserAction(target.value))) }
+                      value={ user } />
+             {/* <input   onChange={ ({target}) => setUser(target.value) }
+                      value={ userValue } /> */}
+                      
              <input type="submit" value="save" />
+             <h3>Repos:</h3>
+       
+			{renderRepos()}
              </form>
         
         </>
@@ -34,104 +60,4 @@ const Github = () => {
 
 
 export default Github;
-
-
-
-// import React  from 'react';
-// import { GitHubAPI } from "./github.api";
-// import "regenerator-runtime/runtime.js";
-
-
-// class Github extends React.Component {
-//     api = new GitHubAPI();
-
-//     constructor(props) {
-//         super(props)
-  
-
-//         this.state = {
-//             username: '',
-//             repos: '',
-//         }
-//     }
-
-//     async handleSubmit(e) {
-//         e.preventDefault()
-//         const {value} = this.refs.username
-//         let user = await this.api.getUser(value);
-//         let repos = await this.api.getRepos(value);
-
-//         this.setState({
-//             user: {
-//               avatar_url: user.avatar_url,
-//               username: user.login,
-//               followers: user.followers,
-//               following: user.following,
-//               url: user.url,
-//             },
-//             repos,
-//           })
-//         }
-    
-
-
-//   renderRepos(repos) {
-//       return repos.map(item => {
-//         return <div key={item.id}>
-//           <p>
-//             {item.name}
-//           </p>
-//         </div>
-//       })
-//   }
-
-//   renderUser(user) {
-//     return (
-//       <div>
-//         <img src={user.avatar_url} />
-//         <p>
-//           Username: <br />
-//           {user.username}
-//         </p>
-//         <p>
-//           {user.followers} Followers
-//          </p>
-//         <p>
-//           Following {user.following} users
-//          </p>
-//       </div>
-//     )
-//   }
-
-
-
-//   render() {
-//       const {user, repos} = this.state;
-
-//             return (
-            
-//                 <div>
-//                     <h1>Github User Search </h1>
-      
-//                 <form onSubmit={e => this.handleSubmit(e)}>
-//                     <input   ref='username' type='text' placeholder='username' />
-//                 </form>
-
-//                 <div>
-//                    {user && this.renderUser(user)}
-//                 </div>
-
-//                 <div>
-//                    {repos && this.renderRepos(repos)}
-//                 </div>
-
-//                 </div>
-//         );
-//   }
-
-
-
-// }
-
-// export default Github;
 
