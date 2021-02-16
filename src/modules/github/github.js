@@ -1,76 +1,41 @@
 
-import React  from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getRepos, getUser, loadData } from './github.actions';
+import React, {useState}  from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import "regenerator-runtime/runtime.js";
+import {loadDataAction} from './github.actions'
 
-const Github = ()  =>  {
 
+
+const Github = () => {
     const dispatch = useDispatch();
-    const { user, repos } = useSelector(state => state);
-
-    useEffect(() => {
-      dispatch(loadData());
-      }, []);
+    const user = useSelector(state => state.user);
+    const [userValue, setUser] = useState(user);
 
 
+    const handleSubmit = event => {
+        event.preventDefault();
+        dispatch(loadDataAction(userValue));
+    }
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        const {value} = this.refs.user
-        // let user = await this.api.getUser(value);
-        // let repos = await this.api.getRepos(value);
-        dispatch(loadData(value))
-      }
-    
-
-
-  const renderRepos = (repos)  =>{
-      return repos.map(item => {
-        return <div key={item.id}>
-          <p>
-            {item.name}
-          </p>
-        </div>
-      })
-  }
-
-
-  const renderUser = (user) => {
     return (
-        <p>
-          Username: 
-          {user.user}
-        </p>
 
+        <>
+            <h1>Github User Search </h1>
+             <form onSubmit={ handleSubmit }>
+             <input   onChange={ ({target}) => setUser(target.value) }
+                      value={ userValue } />
+             <input type="submit" value="save" />
+             </form>
+        
+        </>
     )
-  }
-
-            return (
-                <div>
-                    <h1>Github User Search </h1>
-  
-                <form onSubmit={e => this.handleSubmit(e)}>
-                    <input   ref='user' type='text' placeholder='username' />
-                </form>
-
-
-                <div>
-                    {user && renderUser(user)}
-               </div>
-
-                <div>
-                    {repos && renderRepos(repos)}
-                 </div>
-
-                </div>
-        );
-  
-
-
-
 }
 
+
+
 export default Github;
+
+
 
 // import React  from 'react';
 // import { GitHubAPI } from "./github.api";
@@ -169,3 +134,4 @@ export default Github;
 // }
 
 // export default Github;
+

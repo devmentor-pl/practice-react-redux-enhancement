@@ -2,7 +2,7 @@
 import types from './../github/github.types';
 
 const initState = {
-        user: '',
+        userValue: [],
         repos: [],
 }
 
@@ -10,19 +10,23 @@ const reducer = (state = initState, action) => {
     switch(action.type) {
 
         case types.GET_USER:
-        const {user} = this.state;
+        const {userValue} = action.payload;
         return {
            ...state,
-           user,
+           userValue,
         
         }
 
         case types.GET_REPOS:
-        const {repos} = this.state;
+        const { repos } = action.payload;
+
          return {
-             ...state,
+              ...state,
               repos,
-            }
+          };
+
+        default:
+            return state;
         }
     }
 

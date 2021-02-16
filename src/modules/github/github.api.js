@@ -3,14 +3,14 @@ export class GitHubAPI {
    url = "https://api.github.com";
 
 
-      getRepos(userName) {
-        return fetch(`${this.url}/users/${userName}/repos`)
+      getRepos(userValue) {
+        return fetch(`${this.url}/users/${userValue}/repos`)
           .then(this.handleErrors)
           .then(resp => resp.json());
       }
   
-      getUser(username) {
-        return fetch(`${this.url}/users/${username}`)
+      getUser(userValue) {
+        return fetch(`${this.url}/users/${userValue}`)
         .then(this.handleErrors)
         .then(resp => resp.json());
     }
