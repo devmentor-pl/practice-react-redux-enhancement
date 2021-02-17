@@ -11,21 +11,6 @@ export const loadDataAction = (userValue) => (dispatch, getState) => {
 	});
   
   }
-// export const loadDataAction = (userValue) => (dispatch, getState) => {
-//     return fetch(api.url)
-    
-//     .then( resp => {
-//       if(resp.ok) { return resp.json(); }
-//       throw new Error('Err!');
-//     })
-//     //  .then( userValue => api.getUser(userValue))
-//     //  .then( userValue => dispatch(getUserAction(userValue))
-   
-//     .then((reps => dispatch(getUserAction(reps)))
-//     .then((reps => dispatch(getReposAction(reps)))
-//     )
-//     );
-//   }
 
 export const getUserAction = userValue => {
   return {

@@ -8,7 +8,7 @@ const initState = {
 const reducer = (state = initState, action) => {
     switch(action.type) {
 
-        case types.GET_USER:
+        case types.GET_TITLE:
         const {value} = action.payload;
         return {
            ...state,
@@ -21,7 +21,7 @@ const reducer = (state = initState, action) => {
 
          return {
               ...state,
-             response,
+             response: response,
           };
 
         default:

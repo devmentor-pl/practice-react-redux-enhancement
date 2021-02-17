@@ -4,19 +4,19 @@ import {stackOverflowAPI} from './stackOverflow.api'
 
 const apiStack = new stackOverflowAPI();
 
-export const loadDataAction = (user) => (dispatch, getState) => {
+export const loadDataAction = title => (dispatch, getState) => {
 
-  apiStack.getData(user).then((resp) => {
-		dispatch(getResponseAction(resp));
-    console.log(resp.items)
+  apiStack.getData(title).then((resp) => {
+		dispatch(getResponseAction(resp.items));
+    // console.log(resp.items)
 	});
   
   }
 
 
-  export const getUserAction = value => {
+  export const getTitleAction = value => {
     return {
-      type: types.GET_USER,
+      type: types.GET_TITLE,
       payload: {
       value,
       },
@@ -28,7 +28,7 @@ export const getResponseAction = response => {
   return {
     type: types.GET_RESPONSE,
     payload: {
-     response,
+      response,
     },
   };
 };
