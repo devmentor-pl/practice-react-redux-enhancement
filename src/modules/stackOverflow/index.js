@@ -1,4 +1,4 @@
 import StackOverflow from "./stackOverflow";
-import reducer from "./stackOverflow.reductor";
+import reducerStackOverFlow from "./stackOverflow.reductor";
 
-export { StackOverflow, reducer };
+export { StackOverflow, reducerStackOverFlow };

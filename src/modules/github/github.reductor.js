@@ -5,7 +5,7 @@ const initState = {
         repos: [],
 }
 
-const reducer = (state = initState, action) => {
+const reducerGithub = (state = initState, action) => {
     switch(action.type) {
 
         case types.GET_USER:
@@ -30,4 +30,4 @@ const reducer = (state = initState, action) => {
     }
 
 
-export default reducer;
+export default reducerGithub;

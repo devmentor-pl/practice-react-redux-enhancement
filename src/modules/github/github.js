@@ -6,9 +6,11 @@ import {loadDataAction, getUserAction, getReposAction} from './github.actions'
 
 
 const Github = () => {
+    const {user, repos} = useSelector(state => state.github)
     const dispatch = useDispatch();
-    const user = useSelector(state => state.userValue);
-    const repos = useSelector(state => state.repos);
+ 
+    // const user = useSelector(state => state.userValue);
+    // const repos = useSelector(state => state.repos);
 
     // const [userValue, setUser] = useState(user);
     //zostawiam te komentarze, do omówienia
@@ -60,4 +62,3 @@ const Github = () => {
 
 
 export default Github;
-

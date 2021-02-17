@@ -1,4 +1,4 @@
 import GitHub from "./github";
-import reducer from "./github.reductor";
+import reducerGithub from "./github.reductor";
 
-export { GitHub, reducer };
+export { GitHub, reducerGithub };

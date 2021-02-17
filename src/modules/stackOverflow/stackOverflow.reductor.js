@@ -1,18 +1,18 @@
 import types from '../stackOverflow/stackOverflow.types';
 
 const initState = {
-        value: [],
+        title: [],
         response: [],
 }
 
-const reducer = (state = initState, action) => {
+const reducerStackOverFlow = (state = initState, action) => {
     switch(action.type) {
 
         case types.GET_TITLE:
-        const {value} = action.payload;
+        const {title} = action.payload;
         return {
            ...state,
-           value,
+           title,
         
         }
 
@@ -30,4 +30,4 @@ const reducer = (state = initState, action) => {
     }
 
 
-export default reducer;
+export default reducerStackOverFlow;
