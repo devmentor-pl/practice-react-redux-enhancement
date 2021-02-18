@@ -16,8 +16,9 @@ const reducerStackOverFlow = (state = initState, action) => {
         
         }
 
-        case types.GET_RESPONSE:
+        case types.SET_RESPONSE:
         const { response } = action.payload;
+        // console.log(response)
 
          return {
               ...state,

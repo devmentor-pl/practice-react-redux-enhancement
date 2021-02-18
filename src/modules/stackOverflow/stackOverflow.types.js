@@ -1,8 +1,8 @@
 const GET_TITLE = 'getTitle';
-const GET_RESPONSE = 'getResponse';
+const SET_RESPONSE = 'setResponse';
 
 
 export default {
-GET_RESPONSE,
+SET_RESPONSE,
 GET_TITLE,
 };

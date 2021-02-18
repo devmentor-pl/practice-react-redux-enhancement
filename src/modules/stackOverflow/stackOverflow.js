@@ -21,13 +21,15 @@ const StackOverflow = () => {
 
 
   const renderResponse = response => {
-    const allResponse = response.map((response) => showResponse(response));
+    const allResponse = response.sort((a, b) => parseFloat(a.creation_date + '.' + b.owner.reputation) - parseFloat(b.creation_date + '.' + b.owner.reputation)).map((response) => showResponse(response));
+   
     return <>{allResponse}</>
   }
 
   const showResponse = (response) => {
     
    const {title, link} = response;
+   
     return(
         <ul>
             <li><a href={link}>{title}</a></li> 
