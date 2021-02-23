@@ -9,9 +9,18 @@ const withPopup = (bgColor, opacity) => {
             };
 
             render() {
-                const style = this.state;
+                const styledPopup = {
+                    backgroundColor: 'green',
+                    position: 'absolute',
+                    left: '50%',
+                    top: '50%',
+                };
+
                 return (
-                    <WrappedComponent style={{ style }}>ss</WrappedComponent>
+                    <div style={styledPopup}>
+                        <button style={{ float: 'right' }}>x</button>
+                        <WrappedComponent {...this.props} />
+                    </div>
                 );
             }
         };
