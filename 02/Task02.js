@@ -2,17 +2,21 @@ import React, { useState } from 'react';
 import Welcome from './../src/components/Welcome';
 import withPopup from './../src/hoc/withPopup';
 
-const ComponentWithPopup = withPopup('hotpink', 0.8)(Welcome);
+const ComponentWithPopup = withPopup('darkgreen', 0.7)(Welcome);
 
 const Task02 = () => {
-    const [isPopUpActive, setIsPopUpActive] = useState(false);
+    const [isPopUpActive, setIsPopUpActive] = useState(true);
     return (
         <section>
             <h2>Task 02</h2>
-            <ComponentWithPopup
-                setIsPopUpActive={setIsPopUpActive}
-                isPopUpActive={isPopUpActive}
-            />
+            {isPopUpActive ? (
+                <ComponentWithPopup
+                    setIsPopUpActive={setIsPopUpActive}
+                    isPopUpActive={isPopUpActive}
+                />
+            ) : (
+                <Welcome />
+            )}
         </section>
     );
 };

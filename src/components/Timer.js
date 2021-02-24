@@ -5,7 +5,7 @@ class Timer extends React.Component {
         const { getSeconds, getMinutes, getHours } = this.props;
         return (
             <section>
-                Dziękujemy, że jesteś z nami juz
+                Thanks that you are with us for already
                 <p>{getHours()} hours</p>
                 <p>{getMinutes()} minutes</p>
                 <p>{getSeconds()} seconds</p>
