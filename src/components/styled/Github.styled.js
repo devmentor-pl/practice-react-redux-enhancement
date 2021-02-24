@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 const StyledGithub = styled.div`
     display: flex;
-    width: 600px;
-    height: 60px;
+    width: 650px;
+    height: 40px;
     padding: 2em;
     justify-content: space-around;
     align-items: center;

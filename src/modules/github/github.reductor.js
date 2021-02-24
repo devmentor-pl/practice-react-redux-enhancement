@@ -1,7 +1,10 @@
 const reducer = (state = initialState, { type, payload }) => {
     switch (type) {
-        case 'CASE':
-            return;
+        case 'SET_USERNAME':
+            return {
+                ...state,
+                username: payload,
+            };
         case 'CASE':
             return;
         default:
