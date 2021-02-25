@@ -1,17 +1,34 @@
-import { SET_USERNAME, SET_QUERY } from './github.types';
+import types from './github.types';
+import GithubAPI from './github.api';
+import store from '../../store';
+const api = new GithubAPI();
 
 const setUserName = (username) => {
-    console.log('🚀 ~ setUserName ~ username', username);
     return {
-        type: SET_USERNAME,
+        type: types.SET_USERNAME,
         payload: username,
     };
 };
+
 const setRepoQuery = (repositoryName) => {
     return {
-        type: SET_QUERY,
+        type: types.SET_QUERY,
         payload: repositoryName,
     };
 };
+const setRepos = (reposList) => {
+    return {
+        type: types.SET_QUERY,
+        payload: reposList,
+    };
+};
 
-export { setUserName, setRepoQuery };
+const getRepos = () => {
+    const state = store.getState();
+    api.getRepos(state.username).then((repositories) => {
+        const reposList = repositories.forEach((repo) => repo.name);
+        setRepos(reposList);
+    });
+};
+
+export { setUserName, setRepoQuery, getRepos };

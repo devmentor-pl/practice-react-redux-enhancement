@@ -1,2 +1,5 @@
-export const SET_USERNAME = 'SET_USERNAME';
-export const SET_QUERY = 'SET_QUERY';
+const SET_USERNAME = 'SET_USERNAME';
+const SET_QUERY = 'SET_QUERY';
+const GET_REPOS = 'GET_REPOS';
+
+export default { SET_USERNAME, SET_QUERY, GET_REPOS };

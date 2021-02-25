@@ -1,10 +1,13 @@
 class GitHubAPI {
     url = 'https://api.github.com/';
 
-    getRepos(userName) {
-        return fetch(`${this.url}/repos/${userName}`)
+    getRepos(username) {
+        return fetch(`${this.url}users/${username}/repos`)
             .then(this.handleErrors)
-            .then((resp) => resp.json());
+            .then((resp) => {
+                return resp.json();
+            })
+            .then((data) => data);
     }
 
     handleErrors(resp) {

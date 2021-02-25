@@ -5,8 +5,16 @@ const reducer = (state = initialState, { type, payload }) => {
                 ...state,
                 username: payload,
             };
-        case 'CASE':
-            return;
+        case 'SET_QUERY':
+            return {
+                ...state,
+                repoQuery: payload,
+            };
+        case 'GET_REPOS':
+            return {
+                ...state,
+                hits: payload,
+            };
         default:
             return state;
     }

@@ -3,7 +3,7 @@ import reducer from './modules/github/github.reductor';
 
 const initialState = {
     username: '',
-    reposFilter: '',
+    repoQuery: '',
     hits: [],
     filteredHits: [],
 };
