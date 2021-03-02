@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import StyledInput from './styled/Input.styled';
-import { setRepoQuery } from '../modules/github/github.actions';
+import {
+    setFilterQuery,
+    setFilteredRepos,
+} from '../modules/github/github.actions';
 
-const Searchbar = (props) => {
+const Searchbar = () => {
     const dispatch = useDispatch();
+    const [filter, setFilter] = useState('');
     const repoQuery = useSelector((store) => store.repoQuery);
+
+    useEffect(() => {
+        dispatch(setFilterQuery(filter));
+    }, [filter]);
+
     return (
         <StyledInput
             placeholder='FILTER...'
-            onChange={(e) => dispatch(setRepoQuery(e.target.value))}
-            value={repoQuery}
-            // onKeyUp={(e) => dispatch(getRepos())}
+            onChange={(e) => setFilter(e.target.value)}
+            value={filter}
+            onBlur={(e) => dispatch(setFilteredRepos())}
         />
     );
 };

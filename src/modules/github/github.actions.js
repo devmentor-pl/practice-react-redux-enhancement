@@ -10,25 +10,40 @@ const setUserName = (username) => {
     };
 };
 
-const setRepoQuery = (repositoryName) => {
+const setFilterQuery = (query) => {
     return {
-        type: types.SET_QUERY,
-        payload: repositoryName,
+        type: types.SET_FILTER_QUERY,
+        payload: query,
     };
 };
+
+const setFilteredRepos = () => (dispatch, getState) => {
+    const { repoQuery, hits } = getState();
+    const filteredRepos = Object.values(hits).filter((name) =>
+        name.includes(repoQuery)
+    );
+    console.log('🚀 ~ setFilteredRepos ~ filteredRepos', filteredRepos);
+
+    return {
+        type: types.SET_FILTERED_REPOS,
+        payload: filteredRepos,
+    };
+};
+
 const setRepos = (reposList) => {
     return {
-        type: types.SET_QUERY,
+        type: types.SET_REPOS,
         payload: reposList,
     };
 };
 
-const getRepos = () => {
-    const state = store.getState();
-    api.getRepos(state.username).then((repositories) => {
-        const reposList = repositories.forEach((repo) => repo.name);
-        setRepos(reposList);
+const getRepos = () => (dispatch, getState) => {
+    const { username } = getState();
+
+    api.getRepos(username).then((repositories) => {
+        const reposList = repositories.map((repo) => repo.name);
+        dispatch(setRepos(reposList));
     });
 };
 
-export { setUserName, setRepoQuery, getRepos };
+export { setUserName, setFilteredRepos, setFilterQuery, getRepos };

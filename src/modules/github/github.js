@@ -1,5 +1,4 @@
 import React from 'react';
-import GitHubAPI from './github.api';
 import Input from '../../components/Input';
 import SearchBar from '../../components/Searchbar';
 import StyledGithub from '../../components/styled/Github.styled';
@@ -25,8 +24,8 @@ const Github = () => {
                     src='../../../assets/img/GH-mark-logo.png'
                     style={{ height: '60px' }}
                 />
-                <Input setUserName={setUserName} />
-                <SearchBar setRepoQuery={setRepoQuery} />
+                <Input />
+                <SearchBar />
                 <button onClick={displayResults}>clickme</button>
             </StyledGithub>
         </Provider>
