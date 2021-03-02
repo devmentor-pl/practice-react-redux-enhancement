@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import useDispatch from 'react-redux';
 import StyledInput from '../../components/styled/Input.styled';
+
+import { setSearchQuery } from './so.actions';
 
 const StackOverflow = () => {
     const [soQuery, setSoQuery] = useState('');
+    const [filterQuery, setFilterQuery] = useState('');
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        // update state in redux
+        dispatch(setSearchQuery(soQuery));
+    }, [soQuery, filterQuery]);
 
     return (
         <div
@@ -15,9 +25,13 @@ const StackOverflow = () => {
             <StyledInput
                 placeholder='stackoverflow'
                 value={soQuery}
-                onChange={(e) => log('ejze')}
+                onChange={(e) => setSoQuery(e.target.value)}
             />
-            <StyledInput />
+            <StyledInput
+                placeholder='filter'
+                value={filterQuery}
+                onChange={(e) => setFilterQuery(e.target.value)}
+            />
         </div>
     );
 };

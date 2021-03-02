@@ -23,7 +23,6 @@ const reducer = (state, { type, payload }) => {
                 hits: payload,
             };
         case 'SET_FILTERED_REPOS':
-            console.log('SET_FILTERED_REPOS', payload);
             return {
                 ...state,
                 filteredHits: payload,

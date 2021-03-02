@@ -1,6 +1,5 @@
 import types from './github.types';
 import GithubAPI from './github.api';
-import store from '../../store';
 const api = new GithubAPI();
 
 const setUserName = (username) => {
