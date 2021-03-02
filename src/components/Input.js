@@ -12,9 +12,6 @@ const Input = () => {
         if (query.length > 2) {
             dispatch(setUserName(query));
         }
-        // return () => {
-        //     cleanup;
-        // };
     }, [query]);
 
     return (
