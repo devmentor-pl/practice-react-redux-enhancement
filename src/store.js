@@ -1,7 +1,8 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import reducer from './modules/github/github.reductor';
+// import reducer from './modules/github/github.reductor';
+import reducer from './modules/stackoverflow/so.reductor';
 
 const initialState = {
     username: '',

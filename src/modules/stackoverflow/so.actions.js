@@ -1,10 +1,16 @@
 import types from './so.types';
 
-const setSearchQuery = (query) => {
+const setSearchQuery = (searchQuery) => {
     return {
         type: types.SET_SEARCH_QUERY,
-        payload: query,
+        payload: searchQuery,
+    };
+};
+const setFilterQuery = (filterQuery) => {
+    return {
+        type: types.SET_FILTER_QUERY,
+        payload: filterQuery,
     };
 };
 
-export default { setSearchQuery };
+export { setSearchQuery, setFilterQuery };

@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import useDispatch from 'react-redux';
+import { useDispatch } from 'react-redux';
 import StyledInput from '../../components/styled/Input.styled';
 
-import { setSearchQuery } from './so.actions';
+import { setSearchQuery, setFilterQuery } from './so.actions';
 
 const StackOverflow = () => {
-    const [soQuery, setSoQuery] = useState('');
-    const [filterQuery, setFilterQuery] = useState('');
     const dispatch = useDispatch();
+    const [query, setQuery] = useState('');
+    const [filter, setFilter] = useState('');
 
     useEffect(() => {
         // update state in redux
-        dispatch(setSearchQuery(soQuery));
-    }, [soQuery, filterQuery]);
+        dispatch(setSearchQuery(query));
+        dispatch(setFilterQuery(filter));
+    }, [query, filter]);
 
     return (
         <div
@@ -24,13 +25,15 @@ const StackOverflow = () => {
         >
             <StyledInput
                 placeholder='stackoverflow'
-                value={soQuery}
-                onChange={(e) => setSoQuery(e.target.value)}
+                name='soQuery'
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
             />
             <StyledInput
                 placeholder='filter'
-                value={filterQuery}
-                onChange={(e) => setFilterQuery(e.target.value)}
+                name='soFilter'
+                value={filter}
+                onChange={(e) => setFilter(e.target.value)}
             />
         </div>
     );
