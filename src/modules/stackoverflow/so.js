@@ -1,34 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import StyledInput from '../../components/styled/Input.styled';
 import StyledStackOverFlow from '../../components/styled/StackOverflow.styled';
-import { useSelector } from 'react-redux';
-
-import { setSearchQuery, setFilterQuery } from './so.actions';
+import { setFieldValue, getResponse } from './so.actions';
 
 const StackOverflow = () => {
     const dispatch = useDispatch();
-    const filteredResults = useSelector((store) => store.filteredResults);
-    const [query, setQuery] = useState('');
-    const [filter, setFilter] = useState('');
+    const { userQuery } = useSelector((store) => store.request);
+    // const [query, setQuery] = useState('');
+    // const [filter, setFilter] = useState('');
 
-    useEffect(() => {
-        dispatch(setSearchQuery(query));
-    }, [query]);
+    // useEffect(() => {
+    //     dispatch(setSearchQuery(query));
+    // }, [query]);
 
-    useEffect(() => {
-        dispatch(setFilterQuery(filter));
-    }, [filter]);
+    // useEffect(() => {
+    //     dispatch(setFilterQuery(filter));
+    // }, [filter]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        dispatch(getResponse());
     };
 
-    const renderResults = () => {
-        filteredResults.map((record, index) => {
-            return <li key={record}>{record}</li>;
-        });
+    const handleInputChange = ({ name, value }) => {
+        dispatch(setFieldValue(name, value));
     };
+
+    const renderResults = () =>
+        filteredResults.map((record, index) => <li key={record}>{record}</li>);
 
     return (
         <>
@@ -39,22 +39,15 @@ const StackOverflow = () => {
                 />
                 <form onSubmit={(e) => handleSubmit(e)}>
                     <StyledInput
-                        placeholder='stackoverflow'
-                        name='user'
-                        value={query}
-                        onChange={(e) => setQuery(e.target.value)}
+                        placeholder='Browse Stackoverflow'
+                        name='userQuery'
+                        value={userQuery}
+                        onChange={(e) => handleInputChange(e.target)}
                     />
-                    <StyledInput
-                        placeholder='filter'
-                        name='soFilter'
-                        value={filter}
-                        onChange={(e) => setFilter(e.target.value)}
-                    />
+                    <button type='submit'>Search</button>
                 </form>
             </StyledStackOverFlow>
-            <div>
-                <ul>{renderResults()}</ul>
-            </div>
+            <div>{/* <ul>{renderResults()}</ul> */}</div>
         </>
     );
 };

@@ -6,10 +6,17 @@ const StyledStackOverflow = styled.div`
     height: 35px;
     padding: 1.5em;
     align-items: center;
-    justify-content: space-around;
     background-color: #dcdcdc;
     border: 1px solid black;
     border-radius: 2px;
+    & input {
+        padding-left: 20px;
+        width: 400px;
+        margin-left: 20px;
+        &::placeholder {
+            opacity: 0.5;
+        }
+    }
 `;
 
 export default StyledStackOverflow;
