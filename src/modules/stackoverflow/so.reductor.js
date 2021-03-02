@@ -1,6 +1,13 @@
 import types from './so.types';
 
-const reducer = (state, { type, payload }) => {
+const initialState = {
+    searchQuery: '',
+    filterQuery: '',
+    results: [],
+    filteredResults: [],
+};
+
+const reducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case types.SET_SEARCH_QUERY:
             return {

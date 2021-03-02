@@ -10,13 +10,6 @@ import GithubAPI from './github.api';
 
 const Github = () => {
     const api = new GithubAPI();
-
-    const displayResults = () => {
-        console.log('lol displaying');
-
-        return <ul></ul>;
-    };
-
     return (
         <Provider store={store}>
             <StyledGithub>
@@ -26,7 +19,6 @@ const Github = () => {
                 />
                 <Input />
                 <SearchBar />
-                <button onClick={displayResults}>clickme</button>
             </StyledGithub>
         </Provider>
     );

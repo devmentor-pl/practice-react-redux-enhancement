@@ -1,11 +1,11 @@
-// const initialState = {
-//     username: '',
-//     repoQuery: '',
-//     hits: [],
-//     filteredHits: [],
-// };
+const initialState = {
+    username: '',
+    repoQuery: '',
+    hits: [],
+    filteredHits: [],
+};
 
-const reducer = (state, { type, payload }) => {
+const reducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case 'SET_USERNAME':
             return {
