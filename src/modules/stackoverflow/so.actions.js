@@ -10,11 +10,20 @@ const setFieldValue = (name, value) => {
     };
 };
 
+const setResponse = (response) => {
+    return {
+        type: types.SET_RESPONSE,
+        payload: response,
+    };
+};
+
 const getResponse = () => (dispatch, getState) => {
     const state = getState();
     const { userQuery } = state.request;
 
-    api.getResponse(userQuery);
+    api.getResponse(userQuery).then((resp) =>
+        dispatch(setResponse(resp.items))
+    );
 };
 
 export { setFieldValue, getResponse };

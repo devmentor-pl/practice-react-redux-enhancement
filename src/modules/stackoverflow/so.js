@@ -31,24 +31,36 @@ const StackOverflow = () => {
         filteredResults.map((record, index) => <li key={record}>{record}</li>);
 
     return (
-        <>
-            <StyledStackOverFlow>
+        <StyledStackOverFlow>
+            <div>
                 <img
                     src='../../../assets/img/stackO.png'
                     style={{ height: '60px' }}
                 />
-                <form onSubmit={(e) => handleSubmit(e)}>
+                <form
+                    onSubmit={(e) => handleSubmit(e)}
+                    style={{ display: 'flex' }}
+                >
                     <StyledInput
                         placeholder='Browse Stackoverflow'
                         name='userQuery'
                         value={userQuery}
                         onChange={(e) => handleInputChange(e.target)}
                     />
+
                     <button type='submit'>Search</button>
                 </form>
-            </StyledStackOverFlow>
-            <div>{/* <ul>{renderResults()}</ul> */}</div>
-        </>
+            </div>
+            <div>
+                <div>
+                    <label htmlFor='isAnswered'>
+                        <input id='isAnswered' type='checkbox' checked />
+                    </label>
+                </div>
+                <div></div>
+                <div></div>
+            </div>
+        </StyledStackOverFlow>
     );
 };
 

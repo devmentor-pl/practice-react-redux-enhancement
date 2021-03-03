@@ -1,3 +1,4 @@
 const SET_FIELD_VALUE = 'SET_FIELD_VALUE';
+const SET_RESPONSE = 'SET_RESPONSE';
 
-export default { SET_FIELD_VALUE };
+export default { SET_FIELD_VALUE, SET_RESPONSE };

@@ -3,7 +3,7 @@ import types from './so.types';
 const initialState = {
     request: {
         userQuery: '',
-        ssomething: 'dada',
+        ssomething: '',
     },
     response: [],
 };
@@ -18,6 +18,11 @@ const reducer = (state = initialState, { type, payload }) => {
                     ...state.request,
                     [name]: value,
                 },
+            };
+        case types.SET_RESPONSE:
+            return {
+                ...state,
+                response: payload,
             };
         default:
             return state;
