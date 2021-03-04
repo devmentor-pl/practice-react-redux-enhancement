@@ -1,22 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import StyledInput from '../../components/styled/Input.styled';
-import StyledStackOverFlow from '../../components/styled/StackOverflow.styled';
-import { setFieldValue, getResponse } from './so.actions';
+import { setFieldValue, getResponse, toggleCheckbox } from './so.actions';
 
 const StackOverflow = () => {
     const dispatch = useDispatch();
-    const { userQuery } = useSelector((store) => store.request);
+    const { userQuery, sortMethod } = useSelector((store) => store.request);
+
+    const [isAnswered, setIsAnswered] = useState(false);
     // const [query, setQuery] = useState('');
     // const [filter, setFilter] = useState('');
 
-    // useEffect(() => {
-    //     dispatch(setSearchQuery(query));
-    // }, [query]);
-
-    // useEffect(() => {
-    //     dispatch(setFilterQuery(filter));
-    // }, [filter]);
+    useEffect(() => {
+        dispatch(setFieldValue('isAnswered', isAnswered));
+    }, [isAnswered]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -31,7 +27,7 @@ const StackOverflow = () => {
         filteredResults.map((record, index) => <li key={record}>{record}</li>);
 
     return (
-        <StyledStackOverFlow>
+        <section>
             <div>
                 <img
                     src='../../../assets/img/stackO.png'
@@ -41,7 +37,7 @@ const StackOverflow = () => {
                     onSubmit={(e) => handleSubmit(e)}
                     style={{ display: 'flex' }}
                 >
-                    <StyledInput
+                    <input
                         placeholder='Browse Stackoverflow'
                         name='userQuery'
                         value={userQuery}
@@ -53,14 +49,37 @@ const StackOverflow = () => {
             </div>
             <div>
                 <div>
-                    <label htmlFor='isAnswered'>
-                        <input id='isAnswered' type='checkbox' checked />
+                    <label>
+                        <input
+                            name='isAnswered'
+                            type='checkbox'
+                            value={isAnswered}
+                            onClick={() => setIsAnswered(!isAnswered)}
+                        />
+                        Filter out unanswered
                     </label>
                 </div>
-                <div></div>
+                <div>
+                    <input
+                        name='sortMethod'
+                        type='radio'
+                        id='asc'
+                        value='asc'
+                        onChange={(e) => handleInputChange(e.target)}
+                    />
+                    <label htmlFor='asc'>Ascending</label>
+                    <input
+                        name='sortMethod'
+                        type='radio'
+                        id='desc'
+                        value='desc'
+                        onChange={(e) => handleInputChange(e.target)}
+                    />
+                    <label htmlFor='desc'>Descending</label>
+                </div>
                 <div></div>
             </div>
-        </StyledStackOverFlow>
+        </section>
     );
 };
 

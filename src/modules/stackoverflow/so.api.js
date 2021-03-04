@@ -8,7 +8,7 @@ class StackoverflowAPI {
         const sortMethod = 'relevance';
         const isAnswered = true;
 
-        const body = `/2.2/search/advanced?order=${orderSort}&=${isAnswered}&sort=${sortMethod}&body=${query}&site=stackoverflow`;
+        const body = `/2.2/search/advanced?order=${orderSort}&isAnswered=${isAnswered}&sort=${sortMethod}&body=${query}&site=stackoverflow`;
 
         return fetch(`${this.url}${body}`)
             .then(this.handleErrors)

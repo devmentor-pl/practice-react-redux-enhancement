@@ -3,7 +3,8 @@ import types from './so.types';
 const initialState = {
     request: {
         userQuery: '',
-        ssomething: '',
+        sortMethod: 'desc',
+        isAnswered: false,
     },
     response: [],
 };
@@ -11,12 +12,20 @@ const initialState = {
 const reducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case types.SET_FIELD_VALUE:
-            const { name, value } = payload;
             return {
                 ...state,
                 request: {
                     ...state.request,
-                    [name]: value,
+                    [payload.name]: payload.value,
+                },
+            };
+        case types.TOGGLE_CHECKBOX:
+            console.log('payload', payload);
+            return {
+                ...state,
+                request: {
+                    payload,
+                    // [payload.name]: !payload.checked,
                 },
             };
         case types.SET_RESPONSE:
