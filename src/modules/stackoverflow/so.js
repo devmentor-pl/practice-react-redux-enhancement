@@ -19,20 +19,19 @@ const StackOverflow = () => {
     };
 
     const renderQuestions = () => {
-        const answered = response.filter((item) => item.is_answered);
-
-        const renderItem = ({ title, question_id }) => {
+        return response.map((item) => {
+            const { is_answered, title, score, question_id, link } = item;
             return (
-                <a>
-                    <li key={question_id}>{title}</li>
-                </a>
+                <>
+                    <a href={link}>
+                        <li key={question_id}>
+                            <p>Title: {title}</p>
+                        </li>
+                    </a>
+                    <p>Score: {score}</p>
+                </>
             );
-        };
-
-        if (isAnswered) {
-            return renderItem(answered);
-        }
-        return renderItem(response);
+        });
     };
 
     return (
@@ -86,7 +85,7 @@ const StackOverflow = () => {
                         <option value='creation'>Creation</option>
                     </select>
                 </div>
-                {/* <ul>{response.length > 0 ? renderQuestions() : null}</ul> */}
+                <ul>{response.length > 0 ? renderQuestions() : null}</ul>
             </div>
         </section>
     );
