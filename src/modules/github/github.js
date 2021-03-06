@@ -1,19 +1,18 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFieldValue, getRepos } from './github.actions';
+import { setFieldValue, getRepos, setFilteredRepos } from './github.actions';
 
 const Github = () => {
     const dispatch = useDispatch();
     const { username, repoQuery } = useSelector((store) => store);
 
     const handleInputChange = ({ name, value }) => {
-        console.log('name and value ', name, value);
         dispatch(setFieldValue(name, value));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(getRepos());
+        dispatch(setFilteredRepos());
     };
 
     return (
@@ -27,15 +26,16 @@ const Github = () => {
                     name='username'
                     placeholder='USERNAME'
                     onChange={(e) => handleInputChange(e.target)}
-                    value={username ? username : ''}
+                    value={username}
+                    onBlur={(e) => dispatch(getRepos())}
                 />
                 <input
                     name='repoQuery'
                     placeholder='FILTER...'
                     onChange={(e) => handleInputChange(e.target)}
-                    value={repoQuery ? repoQuery : ''}
+                    value={repoQuery}
                 />
-                <button type='submit'>Submit</button>
+                <button type='submit'>Filter</button>
             </form>
             <ul>list with results</ul>
         </>
