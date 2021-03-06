@@ -3,12 +3,9 @@
 class StackoverflowAPI {
     url = 'https://api.stackexchange.com';
 
-    getResponse = (query) => {
-        const orderSort = 'desc';
-        const sortMethod = 'relevance';
-        const isAnswered = true;
-
-        const body = `/2.2/search/advanced?order=${orderSort}&isAnswered=${isAnswered}&sort=${sortMethod}&body=${query}&site=stackoverflow`;
+    getResponse = ({ userQuery, order, sortMethod }) => {
+        // const { userQuery, isAnswered, sortMethod } = requestBody;
+        const body = `/2.2/search/advanced?page=1&pagesize=10&order=${order}&sort=${sortMethod}&body=${userQuery}&site=stackoverflow`;
 
         return fetch(`${this.url}${body}`)
             .then(this.handleErrors)

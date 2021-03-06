@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFieldValue, getResponse, toggleCheckbox } from './so.actions';
+import { setFieldValue, getResponse, toggle } from './so.actions';
 
 const StackOverflow = () => {
     const dispatch = useDispatch();
-    const { userQuery, sortMethod } = useSelector((store) => store.request);
-
-    const [isAnswered, setIsAnswered] = useState(false);
-    // const [query, setQuery] = useState('');
-    // const [filter, setFilter] = useState('');
+    const { userQuery, sortMethod, isAnswered } = useSelector(
+        (store) => store.request
+    );
+    const response = useSelector((store) => store.response);
+    const [checkbox, setCheckbox] = useState();
 
     useEffect(() => {
-        dispatch(setFieldValue('isAnswered', isAnswered));
-    }, [isAnswered]);
+        console.log(isAnswered);
+    }, []);
+    // useEffect(() => {
+    //     dispatch(setFieldValue('isAnswered', checkbox));
+    // }, [checkbox]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -23,8 +26,22 @@ const StackOverflow = () => {
         dispatch(setFieldValue(name, value));
     };
 
-    const renderResults = () =>
-        filteredResults.map((record, index) => <li key={record}>{record}</li>);
+    const renderQuestions = () => {
+        const answered = response.filter((item) => item.is_answered);
+
+        const renderItem = ({ title, question_id }) => {
+            return (
+                <a>
+                    <li key={question_id}>{title}</li>
+                </a>
+            );
+        };
+
+        if (isAnswered) {
+            return renderItem(answered);
+        }
+        return renderItem(response);
+    };
 
     return (
         <section>
@@ -44,21 +61,20 @@ const StackOverflow = () => {
                         onChange={(e) => handleInputChange(e.target)}
                     />
 
-                    <button type='submit'>Search</button>
-                </form>
-            </div>
-            <div>
-                <div>
                     <label>
                         <input
                             name='isAnswered'
                             type='checkbox'
-                            value={isAnswered}
-                            onClick={() => setIsAnswered(!isAnswered)}
+                            checked={isAnswered}
+                            onChange={(e) => dispatch(toggle(e.target))}
                         />
-                        Filter out unanswered
+                        Hide unanswered
                     </label>
-                </div>
+
+                    <button type='submit'>Search</button>
+                </form>
+            </div>
+            <div>
                 <div>
                     <input
                         name='sortMethod'
@@ -77,7 +93,7 @@ const StackOverflow = () => {
                     />
                     <label htmlFor='desc'>Descending</label>
                 </div>
-                <div></div>
+                {/* <ul>{response.length > 0 ? renderQuestions() : null}</ul> */}
             </div>
         </section>
     );

@@ -17,13 +17,18 @@ const setResponse = (response) => {
     };
 };
 
+const toggle = ({ name }) => {
+    return {
+        type: types.TOGGLE,
+        payload: name,
+    };
+};
+
 const getResponse = () => (dispatch, getState) => {
     const state = getState();
-    const { userQuery } = state.request;
-
-    api.getResponse(userQuery).then((resp) =>
+    api.getResponse(state.request).then((resp) =>
         dispatch(setResponse(resp.items))
     );
 };
 
-export { setFieldValue, getResponse };
+export { setFieldValue, getResponse, toggle };

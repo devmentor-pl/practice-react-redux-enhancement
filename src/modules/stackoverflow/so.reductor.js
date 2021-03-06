@@ -3,7 +3,8 @@ import types from './so.types';
 const initialState = {
     request: {
         userQuery: '',
-        sortMethod: 'desc',
+        order: 'desc',
+        sortMethod: 'relevance',
         isAnswered: false,
     },
     response: [],
@@ -19,13 +20,13 @@ const reducer = (state = initialState, { type, payload }) => {
                     [payload.name]: payload.value,
                 },
             };
-        case types.TOGGLE_CHECKBOX:
-            console.log('payload', payload);
+        case types.TOGGLE:
+            console.log('toggle', payload);
             return {
                 ...state,
                 request: {
-                    payload,
-                    // [payload.name]: !payload.checked,
+                    ...state.request,
+                    [payload]: !state.request[payload],
                 },
             };
         case types.SET_RESPONSE:
@@ -35,6 +36,7 @@ const reducer = (state = initialState, { type, payload }) => {
             };
         default:
             return state;
+        // throw new Error(`Unhandled type error2 ${type}`);
     }
 };
 
