@@ -35,7 +35,6 @@ const reducer = (state = initialState, { type, payload }) => {
             };
         default:
             return state;
-        // throw new Error(`Unhandled type error2 ${type}`);
     }
 };
 

@@ -9,8 +9,8 @@ import Task05 from './../../05/Task05';
 const App = () => {
     return (
         <>
-            {/* <Task01 /> */}
-            {/* <Task02 />  */}
+            <Task01 />
+            <Task02 />
             <Task03 />
             <Task04 />
             <Task05 />

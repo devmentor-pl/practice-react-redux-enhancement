@@ -3,7 +3,7 @@ import Timer from '../components/Timer';
 
 export class TimerContainer extends React.Component {
     state = {
-        time: 3830,
+        time: 0,
     };
 
     componentDidMount() {
