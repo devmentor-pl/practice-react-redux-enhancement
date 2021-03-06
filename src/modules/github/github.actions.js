@@ -13,7 +13,6 @@ const setFilteredRepos = () => (dispatch, getState) => {
     const filteredRepos = Object.values(hits).filter((name) =>
         name.includes(repoQuery)
     );
-    console.log('🚀 ~ setFilteredRepos ~ filteredRepos', filteredRepos);
     dispatch({
         type: types.SET_FILTERED_REPOS,
         payload: filteredRepos,

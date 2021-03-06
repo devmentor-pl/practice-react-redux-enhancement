@@ -4,7 +4,9 @@ import { setFieldValue, getRepos, setFilteredRepos } from './github.actions';
 
 const Github = () => {
     const dispatch = useDispatch();
-    const { username, repoQuery } = useSelector((store) => store);
+    const { username, repoQuery, hits, filteredHits } = useSelector(
+        (store) => store
+    );
 
     const handleInputChange = ({ name, value }) => {
         dispatch(setFieldValue(name, value));
@@ -13,6 +15,22 @@ const Github = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(setFilteredRepos());
+    };
+
+    const renderReposList = () => {
+        const createListItem = (repo, index) => {
+            return <li key={index}>{repo}</li>;
+        };
+        if (filteredHits.length > 0) {
+            return filteredHits.map((repo, index) => {
+                return createListItem(repo, index);
+            });
+        } else if (hits > 0) {
+            return hits.map((repo) => {
+                return createListItem(repo);
+            });
+        }
+        return null;
     };
 
     return (
@@ -37,7 +55,7 @@ const Github = () => {
                 />
                 <button type='submit'>Filter</button>
             </form>
-            <ul>list with results</ul>
+            <ul>{renderReposList()}</ul>
         </>
     );
 };
