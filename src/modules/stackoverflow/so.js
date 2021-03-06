@@ -8,14 +8,6 @@ const StackOverflow = () => {
         (store) => store.request
     );
     const response = useSelector((store) => store.response);
-    const [checkbox, setCheckbox] = useState();
-
-    useEffect(() => {
-        console.log(isAnswered);
-    }, []);
-    // useEffect(() => {
-    //     dispatch(setFieldValue('isAnswered', checkbox));
-    // }, [checkbox]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -76,22 +68,23 @@ const StackOverflow = () => {
             </div>
             <div>
                 <div>
-                    <input
-                        name='sortMethod'
-                        type='radio'
-                        id='asc'
-                        value='asc'
+                    <select
+                        name='order'
                         onChange={(e) => handleInputChange(e.target)}
-                    />
-                    <label htmlFor='asc'>Ascending</label>
-                    <input
+                    >
+                        Order:
+                        <option value='desc'>Descending</option>
+                        <option value='asc'>Ascending</option>
+                    </select>
+                    <select
                         name='sortMethod'
-                        type='radio'
-                        id='desc'
-                        value='desc'
                         onChange={(e) => handleInputChange(e.target)}
-                    />
-                    <label htmlFor='desc'>Descending</label>
+                    >
+                        Order:
+                        <option value='relevance'>Relevance</option>
+                        <option value='votes'>Votes</option>
+                        <option value='creation'>Creation</option>
+                    </select>
                 </div>
                 {/* <ul>{response.length > 0 ? renderQuestions() : null}</ul> */}
             </div>

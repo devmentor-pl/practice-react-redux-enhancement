@@ -21,7 +21,6 @@ const reducer = (state = initialState, { type, payload }) => {
                 },
             };
         case types.TOGGLE:
-            console.log('toggle', payload);
             return {
                 ...state,
                 request: {
