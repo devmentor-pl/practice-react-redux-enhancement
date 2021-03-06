@@ -4,10 +4,13 @@ import { setFieldValue, getResponse, toggle } from './so.actions';
 
 const StackOverflow = () => {
     const dispatch = useDispatch();
-    const { userQuery, sortMethod, isAnswered } = useSelector(
-        (store) => store.request
-    );
-    const response = useSelector((store) => store.response);
+    const { request } = useSelector((store) => store.stackoverflow);
+    console.log('🚀 ~ StackOverflow ~ request', request);
+
+    const { userQuery, sortMethod, isAnswered } = request;
+    console.log('🚀 ~ StackOverflow ~ isAnswered', isAnswered);
+
+    const { response } = useSelector((store) => store.stackoverflow);
 
     const handleSubmit = (e) => {
         e.preventDefault();

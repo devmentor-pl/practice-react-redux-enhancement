@@ -9,7 +9,10 @@ const setFieldValue = (name, value) => {
 };
 
 const setFilteredRepos = () => (dispatch, getState) => {
-    const { repoQuery, hits } = getState();
+    const {
+        github: { username, repoQuery, hits },
+    } = getState();
+
     const filteredRepos = Object.values(hits).filter((name) =>
         name.includes(repoQuery)
     );
@@ -27,10 +30,12 @@ const setRepos = (reposList) => {
 };
 
 const getRepos = () => (dispatch, getState) => {
-    const { username } = getState();
+    const {
+        stackoverflow: { request },
+    } = getState();
     const api = new GithubAPI();
 
-    api.getRepos(username).then((repositories) => {
+    api.getRepos(request.username).then((repositories) => {
         const reposList = repositories.map((repo) => repo.name);
         dispatch(setRepos(reposList));
     });

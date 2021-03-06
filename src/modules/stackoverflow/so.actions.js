@@ -26,7 +26,7 @@ const toggle = ({ name }) => {
 
 const getResponse = () => (dispatch, getState) => {
     const state = getState();
-    api.getResponse(state.request).then((resp) =>
+    api.getResponse(state.stackoverflow.request).then((resp) =>
         dispatch(setResponse(resp.items))
     );
 };

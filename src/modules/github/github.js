@@ -5,7 +5,7 @@ import { setFieldValue, getRepos, setFilteredRepos } from './github.actions';
 const Github = () => {
     const dispatch = useDispatch();
     const { username, repoQuery, hits, filteredHits } = useSelector(
-        (store) => store
+        (store) => store.github
     );
 
     const handleInputChange = ({ name, value }) => {
@@ -21,13 +21,13 @@ const Github = () => {
         const createListItem = (repo, index) => {
             return <li key={index}>{repo}</li>;
         };
-        if (filteredHits.length > 0) {
+        if (filteredHits && filteredHits.length > 0) {
             return filteredHits.map((repo, index) => {
                 return createListItem(repo, index);
             });
-        } else if (hits > 0) {
-            return hits.map((repo) => {
-                return createListItem(repo);
+        } else if (hits.length > 0) {
+            return hits.map((repo, index) => {
+                return createListItem(repo, index);
             });
         }
         return null;
