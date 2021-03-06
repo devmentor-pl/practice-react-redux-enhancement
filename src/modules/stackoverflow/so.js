@@ -20,16 +20,12 @@ const StackOverflow = () => {
 
     const renderQuestions = () => {
         return response.map((item) => {
-            const { is_answered, title, score, question_id, link } = item;
+            const { title, score, question_id, link } = item;
             return (
-                <>
-                    <a href={link}>
-                        <li key={question_id}>
-                            <p>Title: {title}</p>
-                        </li>
-                    </a>
+                <li key={question_id}>
+                    <a href={link}>{title} </a>
                     <p>Score: {score}</p>
-                </>
+                </li>
             );
         });
     };
@@ -52,6 +48,34 @@ const StackOverflow = () => {
                         onChange={(e) => handleInputChange(e.target)}
                     />
 
+                    <button type='submit'>Search</button>
+                </form>
+            </div>
+
+            <div>
+                <div>
+                    <label>
+                        Order:
+                        <select
+                            name='order'
+                            onChange={(e) => handleInputChange(e.target)}
+                        >
+                            <option value='desc'>Descending</option>
+                            <option value='asc'>Ascending</option>
+                        </select>
+                    </label>
+                    <label>
+                        Sort:
+                        <select
+                            name='sortMethod'
+                            onChange={(e) => handleInputChange(e.target)}
+                        >
+                            Order:
+                            <option value='relevance'>Relevance</option>
+                            <option value='votes'>Votes</option>
+                            <option value='creation'>Creation</option>
+                        </select>
+                    </label>
                     <label>
                         <input
                             name='isAnswered'
@@ -61,29 +85,6 @@ const StackOverflow = () => {
                         />
                         Hide unanswered
                     </label>
-
-                    <button type='submit'>Search</button>
-                </form>
-            </div>
-            <div>
-                <div>
-                    <select
-                        name='order'
-                        onChange={(e) => handleInputChange(e.target)}
-                    >
-                        Order:
-                        <option value='desc'>Descending</option>
-                        <option value='asc'>Ascending</option>
-                    </select>
-                    <select
-                        name='sortMethod'
-                        onChange={(e) => handleInputChange(e.target)}
-                    >
-                        Order:
-                        <option value='relevance'>Relevance</option>
-                        <option value='votes'>Votes</option>
-                        <option value='creation'>Creation</option>
-                    </select>
                 </div>
                 <ul>{response.length > 0 ? renderQuestions() : null}</ul>
             </div>

@@ -2,17 +2,10 @@ import types from './github.types';
 import GithubAPI from './github.api';
 const api = new GithubAPI();
 
-const setUserName = (username) => {
+const setFieldValue = (name, value) => {
     return {
-        type: types.SET_USERNAME,
-        payload: username,
-    };
-};
-
-const setFilterQuery = (query) => {
-    return {
-        type: types.SET_FILTER_QUERY,
-        payload: query,
+        type: types.SET_FIELD_VALUE,
+        payload: { name, value },
     };
 };
 
@@ -21,7 +14,6 @@ const setFilteredRepos = () => (dispatch, getState) => {
     const filteredRepos = Object.values(hits).filter((name) =>
         name.includes(repoQuery)
     );
-    console.log('🚀 ~ setFilteredRepos ~ filteredRepos', filteredRepos);
 
     return {
         type: types.SET_FILTERED_REPOS,
@@ -45,4 +37,4 @@ const getRepos = () => (dispatch, getState) => {
     });
 };
 
-export { setUserName, setFilteredRepos, setFilterQuery, getRepos };
+export { setFieldValue, setFilteredRepos, getRepos };

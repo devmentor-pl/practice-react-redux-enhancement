@@ -1,26 +1,44 @@
 import React from 'react';
-import Input from '../../components/Input';
-import SearchBar from '../../components/Searchbar';
-import StyledGithub from '../../components/styled/Github.styled';
-import { Provider } from 'react-redux';
-import store from '../../store';
-import { setUserName, setRepoQuery, getRepos } from './github.actions';
-import GithubAPI from './github.api';
-// import  from './github.actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { setFieldValue, getRepos } from './github.actions';
 
 const Github = () => {
-    const api = new GithubAPI();
+    const dispatch = useDispatch();
+    const { username, repoQuery } = useSelector((store) => store);
+
+    const handleInputChange = ({ name, value }) => {
+        console.log('name and value ', name, value);
+        dispatch(setFieldValue(name, value));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(getRepos());
+    };
+
     return (
-        <Provider store={store}>
-            <StyledGithub>
+        <>
+            <form onSubmit={(e) => handleSubmit(e)}>
                 <img
                     src='../../../assets/img/GH-mark-logo.png'
                     style={{ height: '60px' }}
                 />
-                <Input />
-                <SearchBar />
-            </StyledGithub>
-        </Provider>
+                <input
+                    name='username'
+                    placeholder='USERNAME'
+                    onChange={(e) => handleInputChange(e.target)}
+                    value={username ? username : ''}
+                />
+                <input
+                    name='repoQuery'
+                    placeholder='FILTER...'
+                    onChange={(e) => handleInputChange(e.target)}
+                    value={repoQuery ? repoQuery : ''}
+                />
+                <button type='submit'>Submit</button>
+            </form>
+            <ul>list with results</ul>
+        </>
     );
 };
 

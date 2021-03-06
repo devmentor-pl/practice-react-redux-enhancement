@@ -1,31 +1,22 @@
 const initialState = {
-    username: '',
-    repoQuery: '',
+    username: 'u',
+    repoQuery: 'r',
     hits: [],
     filteredHits: [],
 };
 
 const reducer = (state = initialState, { type, payload }) => {
     switch (type) {
-        case 'SET_USERNAME':
+        case 'SET_FIELD_VALUE':
+            const { name, value } = payload;
             return {
                 ...state,
-                username: payload,
-            };
-        case 'SET_FILTER_QUERY':
-            return {
-                ...state,
-                repoQuery: payload,
+                [name]: value,
             };
         case 'SET_REPOS':
             return {
                 ...state,
                 hits: payload,
-            };
-        case 'SET_FILTERED_REPOS':
-            return {
-                ...state,
-                filteredHits: payload,
             };
         default:
             return state;
