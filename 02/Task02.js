@@ -9,14 +9,10 @@ const Task02 = () => {
     return (
         <section>
             <h2>Task 02</h2>
-            {isPopUpActive ? (
-                <ComponentWithPopup
-                    setIsPopUpActive={setIsPopUpActive}
-                    isPopUpActive={isPopUpActive}
-                />
-            ) : (
-                <Welcome />
-            )}
+            <ComponentWithPopup 
+                setIsPopUpActive={setIsPopUpActive}
+                isPopUpActive={isPopUpActive}
+            />
         </section>
     );
 };

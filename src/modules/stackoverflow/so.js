@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Select from '../../components/Select'
 import { useDispatch, useSelector } from 'react-redux';
 import { setFieldValue, getResponse, toggle } from './so.actions';
 
@@ -28,52 +29,48 @@ const StackOverflow = () => {
         });
     };
 
+    const renderForm = () => (
+        <div>
+            <img
+                src='../../../assets/img/stackO.png'
+                style={{ height: '60px' }}
+            />
+            <form
+                onSubmit={(e) => handleSubmit(e)}
+                style={{ display: 'flex' }}
+            >
+                <input
+                    placeholder='Browse Stackoverflow'
+                    name='userQuery'
+                    value={userQuery}
+                    onChange={(e) => handleInputChange(e.target)}
+                />
+                <button type='submit'>Search</button>
+            </form>
+        </div>
+    )
+
     return (
         <section>
-            <div>
-                <img
-                    src='../../../assets/img/stackO.png'
-                    style={{ height: '60px' }}
-                />
-                <form
-                    onSubmit={(e) => handleSubmit(e)}
-                    style={{ display: 'flex' }}
-                >
-                    <input
-                        placeholder='Browse Stackoverflow'
-                        name='userQuery'
-                        value={userQuery}
-                        onChange={(e) => handleInputChange(e.target)}
-                    />
-
-                    <button type='submit'>Search</button>
-                </form>
-            </div>
-
-            <div>
+            {renderForm()}
                 <div>
-                    <label>
-                        Order:
-                        <select
-                            name='order'
-                            onChange={(e) => handleInputChange(e.target)}
-                        >
-                            <option value='desc'>Descending</option>
-                            <option value='asc'>Ascending</option>
-                        </select>
-                    </label>
-                    <label>
-                        Sort:
-                        <select
-                            name='sortMethod'
-                            onChange={(e) => handleInputChange(e.target)}
-                        >
-                            Order:
-                            <option value='relevance'>Relevance</option>
-                            <option value='votes'>Votes</option>
-                            <option value='creation'>Creation</option>
-                        </select>
-                    </label>
+                    <Select
+                        label="Order:"
+                        name='order'
+                        handleInputChange={handleInputChange}
+                    >
+                        <option value='desc'>Descending</option>
+                        <option value='asc'>Ascending</option>
+                    </Select>
+                    <Select
+                        label="Sort:"
+                        name='sortMethod'
+                        handleInputChange={handleInputChange}
+                    >
+                        <option value='relevance'>Relevance</option>
+                        <option value='votes'>Votes</option>
+                        <option value='creation'>Creation</option>
+                    </Select>
                     <label>
                         <input
                             name='isAnswered'
@@ -85,7 +82,6 @@ const StackOverflow = () => {
                     </label>
                 </div>
                 <ul>{response.length > 0 ? renderQuestions() : null}</ul>
-            </div>
         </section>
     );
 };

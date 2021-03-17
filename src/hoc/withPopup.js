@@ -4,6 +4,7 @@ const withPopup = (bgColor, opacity) => {
     return function (WrappedComponent) {
         return class Appearance extends React.Component {
             render() {
+                const { isPopUpActive, setIsPopUpActive } = this.props;
                 const styledPopup = {
                     backgroundColor: bgColor,
                     opacity: opacity,
@@ -24,19 +25,20 @@ const withPopup = (bgColor, opacity) => {
                     outline: 'none',
                     marginBottom: '10px',
                 };
-
-                const { isPopUpActive, setIsPopUpActive } = this.props;
-                return (
-                    <div style={styledPopup}>
-                        <button
-                            onClick={() => setIsPopUpActive((flag) => !flag)}
-                            style={styledButton}
-                        >
-                            Close
-                        </button>
-                        <WrappedComponent />
-                    </div>
-                );
+                const componentWithPopup = (
+                        <div style={styledPopup}>
+                            <button
+                                onClick={() => setIsPopUpActive((flag) => !flag)}
+                                style={styledButton}
+                            >
+                                Close
+                            </button>
+                            <WrappedComponent />
+                        </div>
+                    );
+                    
+                return isPopUpActive ? componentWithPopup : <WrappedComponent />
+                
             }
         };
     };

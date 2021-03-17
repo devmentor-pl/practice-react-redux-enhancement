@@ -6,9 +6,9 @@ class Timer extends React.Component {
         return (
             <section>
                 Thanks that you are with us for already
-                <p>{getHours()} hours</p>
-                <p>{getMinutes()} minutes</p>
-                <p>{getSeconds()} seconds</p>
+                <p>{getHours} hours</p>
+                <p>{getMinutes} minutes</p>
+                <p>{getSeconds} seconds</p>
             </section>
         );
     }

@@ -27,9 +27,9 @@ export class TimerContainer extends React.Component {
     render() {
         return (
             <Timer
-                getSeconds={this.getSeconds}
-                getMinutes={this.getMinutes}
-                getHours={this.getHours}
+                getSeconds={this.getSeconds()}
+                getMinutes={this.getMinutes()}
+                getHours={this.getHours()}
             ></Timer>
         );
     }
