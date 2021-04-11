@@ -1,15 +1,18 @@
-import React from 'react';
-import Welcome from './../src/components/Welcome';
-import withPopup from './../src/hoc/withPopup';
+import React, {useState} from 'react'
+import Welcome from './../src/components/Welcome'
+import withPopup from './../src/hoc/withPopup'
 
-const ComponentWithPopup = withPopup(Welcome);
+const ComponentWithPopup = withPopup('red', 0.5)(Welcome);
 
-const Task02 = () => (
-    <section>
-        <h2>Task 02</h2>
-        <ComponentWithPopup />
-    </section>
-)
+const Task02 = () => {
+    const [isOpen, open] = useState( true )
 
-export default Task02;
+	return (
+        <section> 
+            <h2>Task 02</h2>
+            <ComponentWithPopup onClick={ open } visible={ isOpen }/>
+        </section>
+    )
+}
 
+export default Task02

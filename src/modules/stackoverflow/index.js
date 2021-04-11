@@ -1,21 +1,20 @@
-
 import React from 'react'
 import { createStore } from 'redux'
-import gitHubReducer from './github.reductor'
+import stackoverflowReducer from './stackoverflow.reductor'
 import { Provider } from 'react-redux'
-import GitHubComponent from './github'
+import StackoverflowComponent from './stackoverflow'
 
-const store = createStore(gitHubReducer,
+const store = createStore(stackoverflowReducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())  
 
 
-const GitHub = () => {
+const Stackoverflow = () => {
 
     return (
         <Provider store={ store } >
-            <GitHubComponent/>
+            <StackoverflowComponent/>
         </Provider>
     )
 }
 
-export default GitHub
+export default Stackoverflow
