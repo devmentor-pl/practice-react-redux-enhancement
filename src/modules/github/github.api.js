@@ -1,8 +1,8 @@
 class GitHubAPI {
-    url = 'https://api.github.com/';
+    url = 'https://api.github.com/users';
 
     getRepos(userName) {
-        return fetch(`${this.url}/repos/${userName}`)
+        return fetch(`${this.url}/${userName}/repos`)
             .then(this.handleErrors)
             .then(resp => resp.json())
     }
@@ -15,3 +15,5 @@ class GitHubAPI {
         return resp;
     }
 }
+
+export default GitHubAPI
