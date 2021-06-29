@@ -1,17 +1,25 @@
-class GitHubAPI {
-    url = 'https://api.github.com/';
+export class GitHubAPI {
 
-    getRepos(userName) {
-        return fetch(`${this.url}/repos/${userName}`)
-            .then(this.handleErrors)
-            .then(resp => resp.json())
+  url = "https://api.github.com";
+
+
+     getRepos(userValue) {
+       return fetch(`${this.url}/users/${userValue}/repos`)
+         .then(this.handleErrors)
+         .then(resp => resp.json());
+     }
+ 
+     getUser(userValue) {
+       return fetch(`${this.url}/users/${userValue}`)
+       .then(this.handleErrors)
+       .then(resp => resp.json());
+   }
+   
+     handleErrors(resp) {
+       if (!resp.ok) {
+         throw Error(resp.statusText);
+       }
+   
+       return resp;
+     }
     }
-
-    handleErrors(resp) {
-        if(!resp.ok) {
-            throw Error(resp.statusText);
-        }
-
-        return resp;
-    }
-}
