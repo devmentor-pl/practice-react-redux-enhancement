@@ -1,40 +1,16 @@
 import React from 'react';
 
 class Timer extends React.Component {
-    state = {
-        time: 0,
-    }
-
-    getHours() {
-        return 0;
-    }
-
-    getMinutes() {
-        return 0;
-    }
-
-    getSeconds() {
-        return this.state.time;
-    }
-
     render() {
+        const { getSeconds, getMinutes, getHours } = this.props;
         return (
             <section>
-                Dziękujemy, że jesteś z nami już {this.getHours()}h {this.getMinutes()}m {this.getSeconds()}s.
+                Thanks that you are with us for already
+                <p>{getHours} hours</p>
+                <p>{getMinutes} minutes</p>
+                <p>{getSeconds} seconds</p>
             </section>
-        )
-    }
-
-    componentDidMount() {
-        this.id = setInterval(() => {
-            this.setState(state => {
-                return {time: state.time + 1}
-            });
-        }, 1000);
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.id);
+        );
     }
 }
 
