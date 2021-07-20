@@ -27,6 +27,13 @@ module.exports = function(env = {}) {
         module: {
             rules: [
                 {
+                    test: /\.css$/,
+                    use: [
+                        'style-loader',
+                        'css-loader'
+                    ]
+                },
+                {
                     test: /\.js$/,
                     // określam jakie pliki 
                     // będą brane pod uwagę

@@ -15,3 +15,5 @@ class GitHubAPI {
         return resp;
     }
 }
+
+export default GitHubAPI;
