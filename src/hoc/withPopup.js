@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {transform} from "@babel/core/lib/transform";
 
 const withPopup = () => {
     return (WrappedComponent) => {
