@@ -53,7 +53,7 @@ const Github = () => {
       </form>
       <h3>Repos:</h3>
       <ul>
-        {printRepositories()}
+        {requestInProgress ? <p>Loading</p> : printRepositories()}
       </ul>
     </section>
   );
