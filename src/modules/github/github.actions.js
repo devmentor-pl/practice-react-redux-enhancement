@@ -1,36 +1,38 @@
 import gitHubAPI from './github.api';
+import types from './github.types';
+
 const gitAPI = new gitHubAPI;
 
 export const getUserNameField = (userName) => {
     return{
-        type: 'userNameField',
+        type: types.GETUSERNAMEFIELD,
         payload: userName
     }
 }
 
 export const getSearchQuery = (searchQuery) => {
     return{
-        type: 'searchQuery',
+        type: types.GETSEARCHQUERY,
         payload: searchQuery
     }
 }
 
 export const fetchingRepo = () => {
     return {
-        type: 'fetchingRepo'
+        type: types.FETCHING_DATA
     }
 }
 
 export const setUserRepo = (repo) => {
     return {
-        type: 'getUserRepo',
+        type: types.SETUSERREPO,
         payload: repo,
     }
 }
 
 export const filteredRepo = (repo) => {
     return {
-        type: 'filteredRepo',
+        type: types.FILTEREDREPO,
         payload: repo,
     }
 }
@@ -38,9 +40,9 @@ export const filteredRepo = (repo) => {
 
 export const getRepo = () => (dispatch, getState) => {
     const state = getState();
+    dispatch(fetchingRepo());
     gitAPI.getRepos(state.userName)
         .then((repo) => {
-            dispatch(fetchingRepo());
             dispatch(setUserRepo(repo));
         })
 }
