@@ -9,7 +9,7 @@ import {
 
 const StackOverflow = () => {
   const { searchQuery, question, requestInProgress, order, sort } = useSelector(
-    (state) => state
+    (state) => state.stackoverflow
   );
   const dispatch = useDispatch();
   const isInitilMount = useRef(true);

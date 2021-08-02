@@ -39,7 +39,10 @@ export const updateSort = (sort) => {
 
 export const getSearchedResults = () => (dispatch, getState) => {
     const state = getState();
+    const {
+        stackoverflow
+    } = getState();
     dispatch(fetchingData());
-    stackAPI.getQueryQuestion(state.searchQuery, state.order, state.sort)
+    stackAPI.getQueryQuestion(stackoverflow.searchQuery, stackoverflow.order, stackoverflow.sort)
         .then((res) => dispatch(setQuerysData(res)))
 }

@@ -39,9 +39,11 @@ export const filteredRepo = (repo) => {
 
 
 export const getRepo = () => (dispatch, getState) => {
-    const state = getState();
+    const {gitHub: {
+        userName
+    }} = getState()
     dispatch(fetchingRepo());
-    gitAPI.getRepos(state.userName)
+    gitAPI.getRepos(userName)
         .then((repo) => {
             dispatch(setUserRepo(repo));
         })
