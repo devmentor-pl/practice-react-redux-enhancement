@@ -5,17 +5,17 @@ import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
+import reducers from './stackoverflow.reductor';
+import StackOverflow from './stackoverflow';
 
-import reducers from './github.reductor';
-import Github from './github';
 
 const store = createStore(reducers, composeWithDevTools( applyMiddleware(thunk) ) )
-const GithubAPI = () => {
+const StackAPI = () => {
     return(
         <Provider store={store}>
-            <Github />
+            <StackOverflow />
         </Provider>
     )
 }
 
-export default GithubAPI;
+export default StackAPI;
