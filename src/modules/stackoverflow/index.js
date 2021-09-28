@@ -4,16 +4,16 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
 import reducer from '../../reducers';
-import GitHub from './github';
+import StackOverflow from './stackoverflow';
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 
-const ReposBrowser = () => {
+const StackOverflowBrowser = () => {
 	return (
 		<Provider store={store}>
-			<GitHub />
+			<StackOverflow />
 		</Provider>
 	);
 };
 
-export default ReposBrowser;
+export default StackOverflowBrowser;
