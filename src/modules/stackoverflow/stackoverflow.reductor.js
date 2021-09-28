@@ -1,9 +1,12 @@
-import types from './github.types';
+import types from './stackoverflow.types';
 
 const initState = {
-	values: {},
-	repos: [],
-	filteredRepos: [],
+	values: {
+		search: '',
+		sortByDate: 'desc',
+		sortByReputation: 'desc',
+	},
+	response: [],
 };
 
 const reducer = (state = initState, action) => {
@@ -16,15 +19,10 @@ const reducer = (state = initState, action) => {
 					[action.payload.name]: action.payload.value,
 				},
 			};
-		case types.SET_ALL_REPOS:
+		case types.SET_RESPONSE:
 			return {
 				...state,
-				repos: action.payload,
-			};
-		case types.SET_FILTERED_REPOS:
-			return {
-				...state,
-				filteredRepos: action.payload,
+				response: action.payload,
 			};
 		default:
 			return state;
