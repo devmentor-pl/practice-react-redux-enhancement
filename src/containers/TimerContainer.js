@@ -18,7 +18,6 @@ class TimerContainer extends Component {
 		return this.state.time % 60;
 	}
 
-
 	render() {
 		return (
 			<>
