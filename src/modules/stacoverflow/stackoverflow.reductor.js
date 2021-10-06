@@ -1,9 +1,8 @@
-import types from './github.types';
+import types from './stackoverflow.types';
 
 const initState = {
 	values: {},
-	repos: [],
-	filteredRepos: [],
+	response: [],
 };
 
 const reducer = (state = initState, action) => {
@@ -16,16 +15,12 @@ const reducer = (state = initState, action) => {
 					[action.payload.name]: action.payload.value,
 				},
 			};
-		case types.GET_ALL_REPOS:
+		case types.SET_RESPONSE:
 			return {
 				...state,
-				repos: action.payload,
+			    response: action.payload,
 			};
-		case types.GET_FILTERED_REPOS:
-			return {
-				...state,
-				filteredRepos: action.payload,
-			};
+	
 		default:
 			return state;
 	}
