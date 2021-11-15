@@ -1,8 +1,4 @@
 import React from "react";
-/*import Welcome from "./../src/components/Welcome";
-import withPopup from "./../src/hoc/withPopup";
-
-const ComponentWithPopup = withPopup("Open pop up")(Welcome);*/
 import WelcomeContainer from "../src/containers/WelcomeContainer";
 
 const Task02 = () => (
