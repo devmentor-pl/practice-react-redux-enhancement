@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useInputState from "../../hooks/useInputState";
 import useSelectState from "../../hooks/useSelectState";
 import { searchPosts } from "./stack.api";
+import { clearPostsAction } from "./stack.actions";
 import { useSelector, useDispatch } from "react-redux";
 
 const Stackoverflow = () => {
@@ -9,7 +10,7 @@ const Stackoverflow = () => {
     const [creationOrder, setCreationOrder] = useSelectState({});
     const [votesOrder, setVotesOrder] = useSelectState({});
 
-    const posts = useSelector((state) => state.posts);
+    const { posts } = useSelector((state) => state.stackoverflow);
 
     const dispatch = useDispatch();
 
@@ -22,6 +23,7 @@ const Stackoverflow = () => {
 
     const clear = () => {
         resetKeyWord();
+        dispatch(clearPostsAction());
     };
 
     return (

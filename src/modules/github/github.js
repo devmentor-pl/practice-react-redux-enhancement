@@ -10,7 +10,7 @@ const GitHub = () => {
 
     const [activeUsername, setActiveUsername] = useState("");
 
-    const repos = useSelector((state) => state.repos);
+    const { repos } = useSelector((state) => state.github);
 
     const dispatch = useDispatch();
 
