@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import useInputState from "./hooks/useInputState";
+import useInputState from "../../hooks/useInputState";
 import { loadRepos, searchRepos } from "./github.api";
 import { clearReposAction } from "./github.actions";
 import { useSelector, useDispatch } from "react-redux";
@@ -36,6 +36,7 @@ const GitHub = () => {
 
     return (
         <div>
+            <h3>GitHub API </h3>
             <form onSubmit={handleSubmit}>
                 <label>
                     Username:{" "}
