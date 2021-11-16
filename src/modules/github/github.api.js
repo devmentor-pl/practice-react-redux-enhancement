@@ -1,17 +1,56 @@
-class GitHubAPI {
-    url = 'https://api.github.com/';
+import { loadAllReposAction, searchReposAction } from "./github.actions";
 
-    getRepos(userName) {
-        return fetch(`${this.url}/repos/${userName}`)
-            .then(this.handleErrors)
-            .then(resp => resp.json())
-    }
+export const loadRepos = (userName) => {
+    const url = "https://api.github.com/users/";
+    return function thunk(dispatch, getState) {
+        return fetch(`${url}${userName}/repos?per_page=100`, {
+            method: "GET",
+            headers: {
+                Accept: "application/vnd.github.mercy-preview+json",
+            },
+        })
+            .then((resp) => {
+                if (resp.ok) {
+                    return resp.json();
+                }
 
-    handleErrors(resp) {
-        if(!resp.ok) {
-            throw Error(resp.statusText);
-        }
+                throw Error(resp.statusText);
+            })
+            .then((resp) => {
+                dispatch(loadAllReposAction(resp));
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    };
+};
 
-        return resp;
-    }
-}
+export const searchRepos = (userName, keyWord) => {
+    const url = "https://api.github.com";
+    return function thunk(dispatch, getState) {
+        return fetch(
+            `${url}/search/repositories?q=${keyWord} in:name,description+org:${userName}&per_page=100`,
+            {
+                method: "GET",
+                headers: {
+                    Accept: "application/vnd.github.mercy-preview+json",
+                },
+            }
+        )
+            .then((resp) => {
+                if (resp.ok) {
+                    return resp.json();
+                }
+
+                throw Error(resp.statusText);
+            })
+            .then((resp) => {
+                const arr = resp.items;
+                console.log(arr);
+                dispatch(searchReposAction(arr));
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    };
+};

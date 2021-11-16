@@ -5,7 +5,6 @@ const withPopup = function (openButtonText, backgroundColor, border) {
         return class extends React.Component {
             render() {
                 const { isOpen, toggleModal } = this.props;
-                console.log(isOpen);
                 if (isOpen) {
                     return (
                         <div
