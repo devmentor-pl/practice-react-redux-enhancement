@@ -78,7 +78,7 @@ const Stackoverflow = () => {
                     <ul>
                         {posts.map((post, index) => {
                             const href = post.link;
-                            const date = new Date(post.creation_date);
+                            const date = new Date(post.creation_date * 1000);
                             const convertedDate = date
                                 .toString()
                                 .slice(4, 15)
