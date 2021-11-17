@@ -3,6 +3,7 @@ import useInputState from "../../hooks/useInputState";
 import { loadRepos, searchRepos } from "./github.api";
 import { clearReposAction } from "./github.actions";
 import { useSelector, useDispatch } from "react-redux";
+import { load, search } from "./github.operations";
 
 const GitHub = () => {
     const [username, handleUsername, resetUsername] = useInputState("");
@@ -18,14 +19,14 @@ const GitHub = () => {
         e.preventDefault();
         console.log("handling submit");
         setActiveUsername(username);
-        dispatch(loadRepos(username));
+        dispatch(load(username));
         resetUsername();
     };
 
     const handleSearch = (e) => {
         e.preventDefault();
         console.log("handling search");
-        dispatch(searchRepos(activeUsername, keyWord));
+        dispatch(search(activeUsername, keyWord));
         resetKeyWord();
     };
 
