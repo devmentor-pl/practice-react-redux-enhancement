@@ -7,7 +7,7 @@ import Stack from '../components/Stack';
 const StackContainer = () => {
     const [ text, setText ] = useState('');
     const dispatch = useDispatch();
-    const data = useSelector(data => data.items);
+    const data = useSelector(data => data.stack.items);
     const formHandler = e => {
         e.preventDefault();
         dispatch(loadData(text));

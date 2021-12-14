@@ -8,9 +8,9 @@ const Task04 = () => {
     return (
         <section>
             <h2>Task 04</h2>
-            <Provider store={ store }>
+            {/* <Provider store={ store }> */}
                 <StackContainer />
-            </Provider>
+            {/* </Provider> */}
         </section>
     );
 }

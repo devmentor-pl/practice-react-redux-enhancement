@@ -34,7 +34,7 @@ const getData = value => (dispatch, getState) => {
 
 const filterList = data => {
     return {
-        type: 'filterList',
+        type: types.FILTER_LIST,
         payload: {
             value: data
         }

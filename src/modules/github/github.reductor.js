@@ -10,7 +10,7 @@ const reducer = (state = INITIAL_STATE, action) => {
         case types.GET_REPOS: 
             return { ...state, repos: action.payload.value, errors: [] };
         case types.FILTER_LIST:
-            const filteredList = state.repos.filter(el => el.name.includes(action.payload.value));
+            const filteredList = state.repos.filter(el => el.name.toLowerCase().includes(action.payload.value.toLowerCase()));
             return { ...state, filteredRepos: [...filteredList] };
         case types.HANDLE_ERRORS:
             const { value, type } = action.payload;

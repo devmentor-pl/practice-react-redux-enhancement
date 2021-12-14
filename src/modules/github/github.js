@@ -7,8 +7,8 @@ import useMap from './hooks/useMap';
 const Github = () => {
     const [text, setText] = useState('');
     const dispatch = useDispatch();
-    const data = useSelector(state => state.repos);
-    const filteredRepos = useSelector(state => state.filteredRepos);
+    const data = useSelector(state => state.github.repos);
+    const filteredRepos = useSelector(state => state.github.filteredRepos);
 
     const formHandler = e => {
         e.preventDefault();
