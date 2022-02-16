@@ -1,18 +1,18 @@
-class GitHubAPI {
-    url = 'https://api.github.com/';
+const url = 'https://api.github.com';
 
-    getRepos(userName) {
+export const getRepos=(userName) => {
         // https://docs.github.com/en/rest/reference/repos#list-repositories-for-a-user
-        return fetch(`${this.url}/users/${userName}/repos`)
-            .then(this.handleErrors)
-            .then(resp => resp.json())
-    }
+    return fetch(`${url}/users/${userName}/repos`)
+        .then(resp => handleErrors(resp))
+        .then(resp=> resp.json())
+}
 
-    handleErrors(resp) {
-        if(!resp.ok) {
-            throw Error(resp.statusText);
-        }
-
-        return resp;
-    }
+export const handleErrors = (resp) => {
+    if(!resp.ok) {
+        if (resp.status === 429) {
+            return Promise.reject('LIMIT EXCEEDED');
+            }
+        return Promise.reject(resp.status);
+    }   
+    return resp;
 }
