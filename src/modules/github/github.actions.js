@@ -19,5 +19,5 @@ export const setError = err =>{
 export const getReposAction = (user) => (dispatch, getState) => {
     getRepos(user)
         .then(resp=>dispatch(loadReposAction(resp)))
-        .catch(err=>dispatch(setError(err)))
+        // .catch(err=>dispatch(setError(err)))
 }
