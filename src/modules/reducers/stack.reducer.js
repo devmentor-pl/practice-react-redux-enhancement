@@ -1,4 +1,4 @@
-import types from './stack.types'
+import types from '../stackoverflow/stack.types'
 const initState = {
     stacks:[],
     err:[]

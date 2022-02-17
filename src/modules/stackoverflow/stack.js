@@ -5,13 +5,14 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const Stack = () => {
     const dispatch = useDispatch();
-    const solutions = useSelector(props=>props.stacks);
-    const error = useSelector(props=>props.err);
+    const solutions = useSelector(props=>props.stacks.stacks);
+    const error = useSelector(props=>props.stacks.err);
     const [title, setTitle] = useState('');
     const [active, setActive] = useState('creation');
     const handleSubmit = e => {
         e.preventDefault();
         dispatch(getStackAction(title,active));
+        setTitle('');
     }
 
     const handleChange = e => {

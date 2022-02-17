@@ -1,4 +1,4 @@
-import types from './github.types';
+import types from '../github/github.types';
 
 const initState ={
     repos:[],
