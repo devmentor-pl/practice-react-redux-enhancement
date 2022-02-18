@@ -18,11 +18,5 @@ export const getStack = (title, sort) => {
         .then(resp=> resp.json())
 }
 
-export const getStackByVotes = (title) => {
-
-
-}
-
-
 
 
