@@ -10,8 +10,8 @@ const Github = () => {
   };
   const [state, setState] = useState(initState);
   const { user, filter } = state;
-  const error = useSelector((props) => props.error);
-  const repos = useSelector((props) => props.repos);
+  const error = useSelector((props) => props.repos.error);
+  const repos = useSelector((props) => props.repos.repos);
 
   const handleSubmit = (e) => {
     e.preventDefault();
