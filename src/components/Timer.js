@@ -35,24 +35,25 @@ class Timer extends React.Component {
 
         this.id = setInterval(() => {
             this.setState(state => {
-                if(state.second < 2){
+                if(state.second < 59){
                     return {
                         ...state,
                         second: state.second + 1
                     }
                 }
-                if(state.second >= 2){
+                if(state.second >= 59 && state.minutes < 59){
                     return {
                         ...state,
                         second: state.second = 0,
                         minutes: state.minutes + 1,
                     }
                 }
-                if (state.minutes >= 3) {
+                if(state.minutes >= 59){
                     return {
                         ...state,
-                        minutes:state.minutes = 0,
-                        hours:state.hours + 1
+                        second: state.second = 0,
+                        minutes: state.minutes = 0,
+                        hours: state.hours + 1
                     }
                 }
             });
