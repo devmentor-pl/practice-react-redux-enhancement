@@ -44,14 +44,14 @@ class Timer extends React.Component {
                 if(state.second >= 2){
                     return {
                         ...state,
-                        second: state.second - 2,
+                        second: state.second = 0,
                         minutes: state.minutes + 1,
                     }
                 }
                 if (state.minutes >= 3) {
                     return {
                         ...state,
-                        minutes:state.minutes - 3,
+                        minutes:state.minutes = 0,
                         hours:state.hours + 1
                     }
                 }
