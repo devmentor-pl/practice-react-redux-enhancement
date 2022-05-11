@@ -1,20 +1,26 @@
 import React from 'react';
 
 class Timer extends React.Component {
+    // state = {
+    //     time: 0,
+    // }
+
     state = {
-        time: 0,
+        hours:0,
+        minutes:0,
+        second:0
     }
 
     getHours() {
-        return 0;
+        return this.state.hours;
     }
 
     getMinutes() {
-        return 0;
+        return this.state.minutes;
     }
 
     getSeconds() {
-        return this.state.time;
+        return this.state.second;
     }
 
     render() {
@@ -26,9 +32,29 @@ class Timer extends React.Component {
     }
 
     componentDidMount() {
+
         this.id = setInterval(() => {
             this.setState(state => {
-                return {time: state.time + 1}
+                if(state.second < 2){
+                    return {
+                        ...state,
+                        second: state.second + 1
+                    }
+                }
+                if(state.second >= 2){
+                    return {
+                        ...state,
+                        second: state.second - 2,
+                        minutes: state.minutes + 1,
+                    }
+                }
+                if (state.minutes >= 3) {
+                    return {
+                        ...state,
+                        minutes:state.minutes - 3,
+                        hours:state.hours + 1
+                    }
+                }
             });
         }, 1000);
     }
