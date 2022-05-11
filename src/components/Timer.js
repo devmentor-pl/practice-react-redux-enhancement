@@ -1,68 +1,13 @@
 import React from 'react';
 
-class Timer extends React.Component {
-    // state = {
-    //     time: 0,
-    // }
+const Timer2 = props => {
+    const {hours,minutes,seconds} = props.state;
 
-    state = {
-        hours:0,
-        minutes:0,
-        second:0
-    }
-
-    getHours() {
-        return this.state.hours;
-    }
-
-    getMinutes() {
-        return this.state.minutes;
-    }
-
-    getSeconds() {
-        return this.state.second;
-    }
-
-    render() {
-        return (
-            <section>
-                Dziękujemy, że jesteś z nami już {this.getHours()}h {this.getMinutes()}m {this.getSeconds()}s.
-            </section>
-        )
-    }
-
-    componentDidMount() {
-
-        this.id = setInterval(() => {
-            this.setState(state => {
-                if(state.second < 59){
-                    return {
-                        ...state,
-                        second: state.second + 1
-                    }
-                }
-                if(state.second >= 59 && state.minutes < 59){
-                    return {
-                        ...state,
-                        second: state.second = 0,
-                        minutes: state.minutes + 1,
-                    }
-                }
-                if(state.minutes >= 59){
-                    return {
-                        ...state,
-                        second: state.second = 0,
-                        minutes: state.minutes = 0,
-                        hours: state.hours + 1
-                    }
-                }
-            });
-        }, 1000);
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.id);
-    }
+    return (
+        <section>
+                Dziękujemy, że jesteś z nami już {hours}h {minutes}m {seconds}s.
+        </section>
+    )
 }
 
-export default Timer;
+export default Timer2;
