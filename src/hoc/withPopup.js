@@ -1,27 +1,35 @@
 import React from 'react';
 
-const boxStyles = {
-    border:'1px solid grey',
+const popupWrapper = {
+    width:`100%`,
+    height:`100vh`,
     position:`fixed`,
     top:`0`,
     left:`0`,
-    width:`100%`,
-    height:`100vh`,
     backgroundColor:`#fefbd8`,
 }
 
-const btnStyles = {
+const popupContainer = {
+    display:`flex`,
+    justifyContent:`center`,
+    alignItems: `center`,
+    backgroundColor:`white`,
+    width:`60%`,
+    height:`60vh`,
+    margin:`0 auto`,
+}
+
+const popupBtn = {
     position:`absolute`,
     right:`16px`,
     top: `16px`,
 }
 
-const popUpStyles = {
-    textAlign:'center',
-}
+// const popUpStyles = {
+//     textAlign:'center',
+// }
 
-// jak rozdzielić style aby w popup np teksty był na środku bez modifikowania komponentu Welcome? 
-// probuje ze zmiennymi i dodanie style={popUpStyles} lub {...popUpStyles} ALE nie działa bo musiałabym sie dobrac do h1, jest na to sposób?
+// jedyny sposób na stylowanie WrapperComponentów u nas Welcome aby nie ruszać oryginalnego komponentu to otaczanie go innymi tagami i stylowanie ich?
 
 const withPopup = (WrappedComponent) => {
     return class PopUp extends React.Component {
@@ -29,9 +37,11 @@ const withPopup = (WrappedComponent) => {
             const { isDisplay,handleClick} = this.props;
             if(isDisplay) {
                 return (
-                    <div style={boxStyles}>
-                        <button style={btnStyles} onClick={handleClick}>X</button>
-                        <WrappedComponent {...this.props}/>
+                    <div style={popupWrapper}>
+                        <button style={popupBtn} onClick={handleClick}>X</button>
+                        <div style={popupContainer}>
+                            <WrappedComponent {...this.props}/>
+                        </div>
                     </div>
                 )
             }
