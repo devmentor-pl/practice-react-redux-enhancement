@@ -7,23 +7,20 @@ const ComponentWithPopup = withPopup(Welcome);
 const Task02 = () => {
     const [isDisplay,setIsDisplay] = useState(false);
     const [intervalId, setIntervalId] = useState(0);
-    console.log(intervalId);
 
     useEffect(()=> {
-        const intervalId = setInterval(() => {
-            setIsDisplay(true)
+        const timerId = setInterval(() => {
+            setIsDisplay(true);
+            setIntervalId(timerId)
         }, 2000);
-        console.log(intervalId);
-        return ()=> clearInterval(intervalId);
+
+        return ()=> clearInterval(timerId);
     },[])
 
     const handleClick = () => {
-        console.log(intervalId);
         setIsDisplay(false);
-        setIntervalId(0);
-        console.log(intervalId);
+        clearInterval(intervalId);
     }
-
 
     return (
         <section>

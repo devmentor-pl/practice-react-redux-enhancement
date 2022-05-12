@@ -16,11 +16,17 @@ const btnStyles = {
     top: `16px`,
 }
 
+const popUpStyles = {
+    textAlign:'center',
+}
+
+// jak rozdzielić style aby w popup np teksty był na środku bez modifikowania komponentu Welcome? 
+// probuje ze zmiennymi i dodanie style={popUpStyles} lub {...popUpStyles} ALE nie działa bo musiałabym sie dobrac do h1, jest na to sposób?
 
 const withPopup = (WrappedComponent) => {
     return class PopUp extends React.Component {
         render() {
-            const { isDisplay,handleClick } = this.props;
+            const { isDisplay,handleClick} = this.props;
             if(isDisplay) {
                 return (
                     <div style={boxStyles}>
@@ -29,7 +35,7 @@ const withPopup = (WrappedComponent) => {
                     </div>
                 )
             }
-            return <div>Closed up</div>
+            return <WrappedComponent/>
         }
     }
 }

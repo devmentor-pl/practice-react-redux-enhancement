@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Welcome = () => <h1 style={{textAlign:'center'}}>Witamy na naszej stronie!</h1>;
+const Welcome = () => <h1>Witamy na naszej stronie!</h1>;
 
 export default Welcome;
 
