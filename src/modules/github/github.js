@@ -39,7 +39,7 @@ const GitHub = () => {
                     <button onClick={handleShowRepo}>WYŚWIETL</button>
                 </div>
                 <div>
-                    <input type='text' placeholder='react' onChange={e=> setInputFilterText(e.target.value)}/>
+                    <input type='text' placeholder='react' value={inputFilterText} onChange={e=> setInputFilterText(e.target.value)}/>
                     <button onClick={handleFilterRepo}>FILTRUJ</button>
                 </div>
             </form>
