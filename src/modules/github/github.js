@@ -7,6 +7,7 @@ const GitHub = () => {
     const [inputUserName, setInputUserName] = useState('');
     const [inputFilterText, setInputFilterText] = useState('');
     const dispatch = useDispatch();
+    console.log(reposList);
 
     const handleShowRepo = (e)=>{
         e.preventDefault();
