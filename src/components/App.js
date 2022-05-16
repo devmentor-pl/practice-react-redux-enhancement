@@ -7,6 +7,7 @@ import Task04 from './../../04/Task04';
 import Task05 from './../../05/Task05';
 
 import { Provider } from 'react-redux';
+//import store from '../modules/github';
 import store from '../modules/stackoverflow';
 
 

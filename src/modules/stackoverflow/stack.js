@@ -6,8 +6,8 @@ const Stack = () => {
     const topicsList = useSelector(store=>store.topics);
     const [inputTopic, setInputTopic] = useState('');
     const dispatch = useDispatch();
-    console.log(topicsList);
-    console.log(topicsList.items);
+    console.log('topicsList', topicsList);
+    console.log('topicsList.items', topicsList.items);
 
     const handleShowTopic = (e)=>{
         e.preventDefault();
@@ -16,8 +16,35 @@ const Stack = () => {
     }
 
     const renderTopicsList = () => {
-        return topicsList.map(item => <li>{item.title}</li> )
+        return Object.keys(topicsList).map(items => {
+            return Object.keys(items).map(item => {
+                return (
+                    <div>
+                    object Title: {item}
+                    </div>
+                )
+            })
+        })
     }
+
+    // const renderTopicsList = () => {
+    //     return Object.keys(topicsList.items).map(items => {
+    //         return items.map(item => {
+    //             return (
+    //                 <div>
+    //                 object Title: {item.title}
+    //                 </div>
+    //             )
+    //         })
+    //     })
+    // }
+
+
+    // const renderTopicsList = () => {
+    //     return topicsList.map(items => {
+    //         return items.map(level => <li>{level.item}</li> )
+    //     } )
+    // }
 
     // const renderTopicItem = items => {
     //     return items.map(item => {

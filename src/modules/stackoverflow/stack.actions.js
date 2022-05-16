@@ -3,11 +3,11 @@ import StackAPI from './stack.api';
 
 const askAPI = new StackAPI();
 
-export const setTopics = topicsList => {
+export const setTopics = topics => {
     return {
         type: types.SET_TOPICS,
         payload: {
-            topics:topicsList
+            topics:topics
         }
     }
 }
