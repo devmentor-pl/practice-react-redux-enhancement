@@ -1,13 +1,19 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import { useSelector,useDispatch } from 'react-redux';
-import { loadTopics } from "./stack.actions";
+import { loadTopics,sortDesc,sortAsc } from "./stack.actions";
+
+const tableStyles = {
+    width:'200px',
+    border:'1px solid grey',
+}
 
 const Stack = () => {
-    const topicsList = useSelector(store=>store.topics);
+    const topicsList = useSelector(store=>store.stack.topics);
     const [inputTopic, setInputTopic] = useState('');
+    const [sortType, setSortType] = useState('')
     const dispatch = useDispatch();
-    console.log('topicsList', topicsList);
-    console.log('topicsList.items', topicsList.items);
+    console.log(topicsList);
+    console.log(sortType);
 
     const handleShowTopic = (e)=>{
         e.preventDefault();
@@ -15,44 +21,28 @@ const Stack = () => {
         setInputTopic('');
     }
 
+    useEffect(() => {
+        if(sortType === 'desc'){
+            dispatch(sortDesc())
+        }
+        else if(sortType === 'asc') {
+            dispatch(sortAsc())
+        }
+    },[sortType])
+
     const renderTopicsList = () => {
-        return Object.keys(topicsList).map(items => {
-            return Object.keys(items).map(item => {
-                return (
-                    <div>
-                    object Title: {item}
-                    </div>
-                )
-            })
+        return topicsList.map(item => {
+            return (
+                <>
+                    <tr key={item.question_id}>
+                        <td>{item.owner.display_name}</td>
+                        <td>{item.owner.reputation}</td>
+                        <td>{item.creation_date}</td>
+                    </tr>
+                </>
+            )
         })
     }
-
-    // const renderTopicsList = () => {
-    //     return Object.keys(topicsList.items).map(items => {
-    //         return items.map(item => {
-    //             return (
-    //                 <div>
-    //                 object Title: {item.title}
-    //                 </div>
-    //             )
-    //         })
-    //     })
-    // }
-
-
-    // const renderTopicsList = () => {
-    //     return topicsList.map(items => {
-    //         return items.map(level => <li>{level.item}</li> )
-    //     } )
-    // }
-
-    // const renderTopicItem = items => {
-    //     return items.map(item => {
-    //         return (
-    //             <li>{item.title}</li>
-    //         )
-    //     })
-    // }
 
     return (
         <>
@@ -62,16 +52,29 @@ const Stack = () => {
                         <input type='text' placeholder='react redux' value={inputTopic} onChange={e => setInputTopic(e.target.value)}/>
                         <button onClick={handleShowTopic}>WYŚWIETL</button>
                     </div>
-                    {/* <div>
-                        <input type='text'/>
-                        <button onClick={handleFilterRepo}>FILTRUJ</button>
-                    </div> */}
+                    <div>
+                        <p>Sortuj reputację uzytkowników</p>
+                        <select onChange={e => setSortType(e.target.value)}>
+                            <option></option>
+                            <option value="desc">Malejąco</option>
+                            <option value="asc">Rosnąco</option>
+                        </select>
+                    </div>
                 </form>
-                <p>Ansewer List:</p>
+                <p>Answer List:</p>
                 <div>
-                    <ol>
-                        {renderTopicsList()}
-                    </ol>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style={tableStyles}>User Name</th>
+                                <th style={tableStyles}>User Reputation</th>
+                                <th style={tableStyles}>Creation Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {renderTopicsList()}
+                        </tbody>
+                    </table>
                 </div>
         </>
     )

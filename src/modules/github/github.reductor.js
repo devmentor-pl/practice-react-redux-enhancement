@@ -4,7 +4,7 @@ const initState = {
     repos: [],
 }
 
-const reducer = (state=initState,action) => {
+const githubReducer = (state=initState,action) => {
     switch(action.type){
         case types.SET_REPOS:
             return {
@@ -22,4 +22,4 @@ const reducer = (state=initState,action) => {
     }
 }
 
-export default reducer;
+export default githubReducer;

@@ -3,7 +3,7 @@ import { useSelector,useDispatch } from 'react-redux';
 import { loadRepos,filterRepos } from './github.actions';
 
 const GitHub = () => {
-    const reposList = useSelector(store=>store.repos);
+    const reposList = useSelector(store=>store.github.repos);
     const [inputUserName, setInputUserName] = useState('');
     const [inputFilterText, setInputFilterText] = useState('');
     const dispatch = useDispatch();
