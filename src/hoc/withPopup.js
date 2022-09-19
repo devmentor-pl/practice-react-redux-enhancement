@@ -1,7 +1,22 @@
 import React from 'react';
 
-const withPopup = () => {
-    return () => <section>withPopup()</section>;
+// const withPopup = (PopComponent) => {
+//     return props => {
+//         console.log(props)
+//         return (
+//             <PopComponent 
+//                 {...props}
+//             />
+//         )
+//     }
+// }
+
+const withPopup = (PopComponent) => {
+    return (props) => (
+            <PopComponent 
+                {...props}
+            />
+        )
 }
 
 

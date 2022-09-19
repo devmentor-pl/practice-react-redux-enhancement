@@ -40,7 +40,7 @@ class TimeContainer extends React.Component {
             this.setState(state => {
                 return {time: state.time + 1}
             });
-        }, 1);
+        }, 1000);
     }
 
     componentWillUnmount() {
