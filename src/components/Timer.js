@@ -1,57 +1,35 @@
 import React from 'react';
 
 class Timer extends React.Component {
-    state = {
-        hour: 0,
-        minute: 0,
-        time: 0,
-    }
-
-    getHours() {
-        if(this.state.hour > 23) {
-            this.setState({ hour: 0 });
-        }
-        return this.state.hour;
-    }
-
-    getMinutes() {
-        if(this.state.minute > 59) {
-            this.setState({ 
-                minute: 0,
-                hour: this.state.hour + 1
-            });
-        }
-        return this.state.minute;
-    }
-
-    getSeconds() {
-        if(this.state.time > 59) {
-            this.setState({ 
-                time: 0,
-                minute: this.state.minute + 1
-            });
-        }
-        return this.state.time;
-    }
-
+    
     render() {
+        console.log(this.props)
+        const {
+            getHours,
+            getMinutes,
+            getSeconds,
+        } = this.props
+
         return (
+
+            // solution 1
+            // -----------
+            // <section>
+            //     Dziękujemy, że jesteś z nami już 
+            //     {' '}{getHours()} h 
+            //     {' '}{getMinutes()} m 
+            //     {' '}{getSeconds()} s.
+            // </section>
+
+            // solution 2
+            // -----------
             <section>
-                Dziękujemy, że jesteś z nami już {this.getHours()}h {this.getMinutes()}m {this.getSeconds()}s.
+                Dziękujemy, że jesteś z nami już 
+                {' '}{getHours} h 
+                {' '}{getMinutes} m 
+                {' '}{getSeconds} s.
             </section>
         )
-    }
-
-    componentDidMount() {
-        this.id = setInterval(() => {
-            this.setState(state => {
-                return {time: state.time + 1}
-            });
-        }, 1000);
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.id);
     }
 }
 
