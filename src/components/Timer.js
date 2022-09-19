@@ -2,18 +2,35 @@ import React from 'react';
 
 class Timer extends React.Component {
     state = {
+        hour: 0,
+        minute: 0,
         time: 0,
     }
 
     getHours() {
-        return 0;
+        if(this.state.hour > 23) {
+            this.setState({ hour: 0 });
+        }
+        return this.state.hour;
     }
 
     getMinutes() {
-        return 0;
+        if(this.state.minute > 59) {
+            this.setState({ 
+                minute: 0,
+                hour: this.state.hour + 1
+            });
+        }
+        return this.state.minute;
     }
 
     getSeconds() {
+        if(this.state.time > 59) {
+            this.setState({ 
+                time: 0,
+                minute: this.state.minute + 1
+            });
+        }
         return this.state.time;
     }
 
