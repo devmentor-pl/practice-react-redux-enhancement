@@ -12,7 +12,7 @@ class GitHubAPI {
         if(!resp.ok) {
             throw Error(resp.statusText);
         }
-
         return resp;
     }
+    
 }
