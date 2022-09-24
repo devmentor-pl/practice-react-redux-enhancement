@@ -15,6 +15,11 @@ const reducer = (state = initState, action) => {
                 ...state,
                 test: [...state.test, action.payload.text]
             }
+        case types.ADD_REPOS:
+            return {
+                ...state,
+                repos: [...state.repos, action.payload.repo]
+            }
         default:
             return state
     }

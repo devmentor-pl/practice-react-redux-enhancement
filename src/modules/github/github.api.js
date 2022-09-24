@@ -1,5 +1,7 @@
+import {actions} from './index'
+
 class GitHubAPI {
-    url = 'https://api.github.com/';
+    url = 'https://api.github.com';
 
     getRepos(userName) {
         // https://docs.github.com/en/rest/reference/repos#list-repositories-for-a-user
@@ -14,5 +16,17 @@ class GitHubAPI {
         }
         return resp;
     }
+
+    getAllRepos() {
+        const repos = this.getRepos('andrzej-stasinski')
+        repos
+        .then(repos => {
+            console.log(repos)
+            return repos
+        })
+        .catch(err => console.log(err))
+    }
+
     
 }
+export default GitHubAPI

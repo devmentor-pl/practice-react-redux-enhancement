@@ -1,6 +1,7 @@
 import React from 'react'
 import {useDispatch} from 'react-redux'
 import {actions} from './index'
+import GitHubAPI from './github.api'
 
 const Github = () => {
     const [number, setNumber] = React.useState(0)
@@ -27,10 +28,19 @@ const Github = () => {
         dispatch(actions.add( name ))
     }
 
+    const onSubmit = e => {
+        e.preventDefault()
+        console.log('onSubmit')
+
+        const repos = new GitHubAPI()
+        console.log( repos.getAllRepos() )
+
+    }
+
     return (
         <div>
             <h2>Github</h2>
-            <form>
+            <form onSubmit={onSubmit}>
                 <div>
                     <label htmlFor="user">
                         <input type="text" onChange={getRepos} />
@@ -41,6 +51,7 @@ const Github = () => {
                         <input type="text" />
                     </label>
                 </div>
+                <button>Pobierz repozytoria</button>
             </form>
             <br />
             <button onClick={testRedux}>test Redux</button>
