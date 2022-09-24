@@ -3,7 +3,8 @@ import types from './github.types'
 // STATE
 const initState = {
     test: ['Ala ma kota'],
-    repos: []
+    repos: ['Ala', 'Ola', 'Iga', 'Aga', 'Ela', 'Ewa'],
+    phrase: 'e'
 }
 
 // REDUCER
@@ -19,6 +20,13 @@ const reducer = (state = initState, action) => {
             return {
                 ...state,
                 repos: [...state.repos, action.payload.repo]
+            }
+
+        case types.ADD_PHRASE:
+            return {
+                ...state,
+                phrase: action.payload.phrase
+
             }
         default:
             return state
