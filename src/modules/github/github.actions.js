@@ -1,6 +1,6 @@
 import types from './github.types'
 
-const add = test => ({type: types.ADD, payload: {test: test}})
+const add = text => ({type: types.ADD, payload: {text: text}})
 
 export default {
     add,
