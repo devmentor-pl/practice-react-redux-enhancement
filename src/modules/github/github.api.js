@@ -27,6 +27,15 @@ class GitHubAPI {
         .catch(err => console.log(err))
     }
 
+    getAllRepos = () => dispatch => {
+        const repos = this.getRepos('andrzej-stasinski')
+        repos
+            .then(repos => {
+                console.log(repos)
+                repos.map(({name}) => dispatch(actions.addRepos(name)))
+            })
+            .catch(err => console.log(err))
+    }
     
 }
 export default GitHubAPI

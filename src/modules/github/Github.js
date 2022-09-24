@@ -33,8 +33,8 @@ const Github = () => {
         console.log('onSubmit')
 
         const repos = new GitHubAPI()
-        console.log( repos.getAllRepos() )
-
+        // console.log( repos.getAllRepos() )
+        dispatch(repos.getAllRepos())
     }
 
     return (
