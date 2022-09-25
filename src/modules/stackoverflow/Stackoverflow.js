@@ -1,27 +1,23 @@
 import React, { useState } from "react";
-import StackoverflowAPI from "./stackoverflow.api";
+import StackAPI from "./stackoverflow.api";
+import actions from './stackoverflow.actions'
+import { useDispatch } from 'react-redux'
 
 const Stackoverflow = () => {
 
-  // React.useEffect(() => {
-  //   console.log('Effect')
-  //   const title = 'react'
-  //   const sort = 'votes'
-  //   const URL = "https://api.stackexchange.com/2.3/questions?order=desc&site=stackoverflow";
-    
-  //   return fetch(`${URL}&sort=${sort}&title=${title}`)
-  //     .then((resp) => resp.json())
-  //     .then(data => console.log(data.items))
-  // }, [])
+  const dispatch = useDispatch()
 
-  const getStacks = () => {
-    const api = new StackoverflowAPI()
+  const getDataStacks = () => dispatch => {
+    const api = new StackAPI()
     api.getStacks()
-    .then(data => console.log(data.items))
+    .then(data => {
+      console.log(data.items)
+      dispatch(actions.addStacks(data.items))
+    })
   }
 
   const getTest = () => {
-    getStacks()
+    dispatch(getDataStacks())
   }
 
 return (

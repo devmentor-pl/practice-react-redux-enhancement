@@ -1,6 +1,4 @@
-import {actions} from './index'
-
-class GitHubAPI {
+class StackAPI {
     URL = "https://api.stackexchange.com/2.3/questions?order=desc&site=stackoverflow";
 
     getStacks(sort = '', title = '') {
@@ -18,4 +16,4 @@ class GitHubAPI {
     }
    
 }
-export default GitHubAPI
+export default StackAPI
