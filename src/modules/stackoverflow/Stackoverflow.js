@@ -7,11 +7,12 @@ const styles = {
   form: { padding: '10px', border: '1px dotted gray' },
   wrapDiv: { color: 'gray', paddingBottom: '10px' },
   label: { width: '100px', display: 'inline-block' },
-  input: { padding: '5px'}
+  input: { padding: '5px' }
 }
 
 const Stackoverflow = () => {
   const [title, setTitle] = useState('')
+  const [sort, setSort] = useState('creation')
 
   // state from Redux
   const stacks = useSelector(state => state.stackReducer.stacks)
@@ -45,9 +46,18 @@ const Stackoverflow = () => {
     setTitle(e.target.value)
   }
 
+  const onSelect = e => {
+    const sort = e.target.value
+    console.log('Select', sort)
+    setSort(sort)
+  }
+
   const onSubmit = e => {
     e.preventDefault()
     console.log('onSubmit')
+    // const title = 'Ola'
+    // const sort = 'creation'
+    dispatch(getDataStacks(sort, title))
   }
 
   return (
@@ -57,14 +67,26 @@ const Stackoverflow = () => {
           <label htmlFor="title" style={styles.label}>
             title for seach
           </label>
-          <input type="text" id='title' style={styles.input} 
+          <input 
+            type="text" 
+            id='title' 
+            style={styles.input}
             onChange={inputTitle}
             placeholder='enter title'
           />
         </div>
         <div style={styles.wrapDiv}>
+          <label htmlFor="sort" style={styles.label}>
+           select sort
+          </label>
+          <select id="sort" onChange={onSelect}>
+            <option value="creation">Data</option>
+            <option value="votes">Wyniki</option>
+          </select>
+        </div>
+        <div style={styles.wrapDiv}>
           <label style={styles.label} />
-          <button>Pobierz stacks</button>
+          <button type='submit'>Pobierz stacks</button>
         </div>
       </form>
       <br />
