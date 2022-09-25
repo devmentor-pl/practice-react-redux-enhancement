@@ -12,7 +12,7 @@ const reducerStack = (state = initState, action) => {
         case types.ADD_STACKS:
             return {
                 ...state,
-                stacks: [...state.stacks, action.payload.stacks]
+                stacks: action.payload.stacks
             }
         default: 
             return state

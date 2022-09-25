@@ -6,7 +6,8 @@ import GitHubAPI from './github.api'
 const styles = {
     form: { padding: '10px', border: '1px dotted gray' },
     wrapDiv: { color: 'gray', paddingBottom: '10px' },
-    label: { width: '100px', display: 'inline-block' }
+    label: { width: '100px', display: 'inline-block' },
+    input: { padding: '5px'}
 }
 
 const Github = () => {
@@ -63,7 +64,10 @@ const Github = () => {
                     <label htmlFor="user" style={styles.label}>
                         user login
                     </label>
-                    <input type="text" onChange={inputRepo}
+                    <input type="text" 
+                        id='user' 
+                        style={styles.input}
+                        onChange={inputRepo}
                         placeholder='user login'
                     />
                 </div>
@@ -75,13 +79,17 @@ const Github = () => {
                     <label htmlFor="phrase" style={styles.label}>
                         phrase repo
                     </label>
-                    <input type="text" onChange={inputPhrase}
+                    <input type="text"
+                        id='phrase' 
+                        style={styles.input}
+                        onChange={inputPhrase}
+                        placeholder='phrase'
                     />
                 </div>
             </form>
             <br />
                 <div style={styles.wrapDiv}>
-                    <label htmlFor="phrase" style={styles.label} />
+                    <label style={styles.label} />
                     <button onClick={testRedux}>test Redux</button>
                 </div>
             <ol>
