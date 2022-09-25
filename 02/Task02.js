@@ -7,7 +7,7 @@ const ComponentWithPopup = withPopup(Welcome);
 const Task02 = () => (
     <section>
         <h2>Task 02 - popUp</h2>
-        {/* <ComponentWithPopup pop={true} textPop='Witaj w oknie PopUp' /> */}
+        <ComponentWithPopup pop={true} textPop='Witaj w oknie PopUp' />
     </section>
 )
 

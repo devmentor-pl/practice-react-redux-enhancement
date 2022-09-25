@@ -6,16 +6,15 @@ import Task03 from './../../03/Task03';
 import Task04 from './../../04/Task04';
 import Task05 from './../../05/Task05';
 
-
 const App = () => {
     return (
-        <>
+        <div style={{fontFamily: 'sans-serif'}}>
             <Task01 />
             <Task02 /> 
             <Task03 />
             <Task04 />
             <Task05 />
-        </>
+        </div>
     )
 }
 

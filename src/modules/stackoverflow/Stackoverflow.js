@@ -29,7 +29,7 @@ const Stackoverflow = () => {
     const api = new StackAPI()
     api.getStacks(sort, title)
       .then(data => {
-        console.log(data.items)
+        // console.log(data.items)
         dispatch(actions.addStacks(data.items))
       })
   }

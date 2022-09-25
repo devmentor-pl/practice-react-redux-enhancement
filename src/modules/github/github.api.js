@@ -23,7 +23,7 @@ class GitHubAPI {
         const repos = this.getRepos(user)
         repos
             .then(repos => {
-                console.log(repos)
+                // console.log(repos)
                 repos.map(({name}) => dispatch(actions.addRepos(name)))
             })
             .catch(err => console.log(err))
