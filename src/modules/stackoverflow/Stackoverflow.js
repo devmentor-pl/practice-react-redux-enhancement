@@ -16,7 +16,6 @@ const Stackoverflow = () => {
 
   // state from Redux
   const stacks = useSelector(state => state.stackReducer.stacks)
-  console.log(stacks)
   const listStacks = stacks.map(stack => {
     return (
       <li>{stack.title}</li>
@@ -36,8 +35,6 @@ const Stackoverflow = () => {
   }
 
   const getTest = () => {
-    const title = 'Ala'
-    const sort = 'votes'
     dispatch(getDataStacks(sort, title))
   }
 
@@ -48,15 +45,11 @@ const Stackoverflow = () => {
 
   const onSelect = e => {
     const sort = e.target.value
-    console.log('Select', sort)
     setSort(sort)
   }
 
   const onSubmit = e => {
     e.preventDefault()
-    console.log('onSubmit')
-    // const title = 'Ola'
-    // const sort = 'creation'
     dispatch(getDataStacks(sort, title))
   }
 

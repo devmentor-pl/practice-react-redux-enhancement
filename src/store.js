@@ -9,7 +9,7 @@ const store = createStore(
     )
 
 window.store = store
-console.log( store.getState().reducer)
+console.log( store.getState())
 
 export default store
 

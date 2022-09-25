@@ -7,7 +7,7 @@ const initState = {
 
 // REDUCER
 const reducerStack = (state = initState, action) => {
-    console.log(action)
+    // console.log(action)
     switch(action.type) {
         case types.ADD_STACKS:
             return {

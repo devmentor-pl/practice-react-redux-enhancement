@@ -3,14 +3,13 @@ import types from './github.types'
 // STATE
 const initState = {
     test: ['Ala ma kota'],
-    // repos: ['Ala', 'Ola', 'Iga', 'Aga', 'Ela', 'Ewa'],
     repos: [],
-    phrase: 'e'
+    phrase: ''
 }
 
 // REDUCER
 const reducer = (state = initState, action) => {
-    console.log(action)
+    // console.log(action)
     switch(action.type) {
         case types.ADD:
             return {

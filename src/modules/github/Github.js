@@ -32,7 +32,6 @@ const Github = () => {
 
     const inputPhrase = e => {
         setInputPhraseValue(e.target.value)
-        console.log(repos)
     }
 
     React.useEffect(() => {
