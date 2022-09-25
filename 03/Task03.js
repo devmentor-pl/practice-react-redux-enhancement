@@ -5,7 +5,7 @@ const Task03 = () => {
     
     return (
         <section>
-            <h2>Task 03</h2>
+            <h2>Task 03 Github API</h2>
             <Github />
 
         </section>

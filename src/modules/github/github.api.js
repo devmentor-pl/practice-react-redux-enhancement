@@ -19,16 +19,6 @@ class GitHubAPI {
         return resp;
     }
 
-    // getAllRepos() {
-    //     const repos = this.getRepos('andrzej-stasinski')
-    //     repos
-    //     .then(repos => {
-    //         console.log(repos)
-    //         return repos
-    //     })
-    //     .catch(err => console.log(err))
-    // }
-
     getAllRepos = (user) => dispatch => {
         const repos = this.getRepos(user)
         repos

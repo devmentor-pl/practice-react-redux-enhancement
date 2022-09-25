@@ -1,7 +1,13 @@
 import React from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {actions} from './index'
+import { useDispatch, useSelector } from 'react-redux'
+import { actions } from './index'
 import GitHubAPI from './github.api'
+
+const styles = {
+    form: { padding: '10px', border: '1px dotted gray' },
+    wrapDiv: { color: 'gray', paddingBottom: '10px' },
+    label: { width: '100px', display: 'inline-block' }
+}
 
 const Github = () => {
     const [number, setNumber] = React.useState(0)
@@ -9,15 +15,15 @@ const Github = () => {
     const [inputPhraseValue, setInputPhraseValue] = React.useState('')
 
     const dispatch = useDispatch()
-    const {repos, phrase} = useSelector(state => state.reducer)
+    const { repos, phrase } = useSelector(state => state.reducer)
 
     const showRepos = repos
         .filter(repo => repo.toUpperCase().includes(phrase.toUpperCase()))
         .map(repo => {
-        return (
-            <li>{repo}</li>
-        )
-    })
+            return (
+                <li>{repo}</li>
+            )
+        })
 
     const inputRepo = e => {
         setInputRepoValue(e.target.value)
@@ -25,55 +31,59 @@ const Github = () => {
 
     const inputPhrase = e => {
         setInputPhraseValue(e.target.value)
-        console.log( repos )
+        console.log(repos)
     }
-    
+
     React.useEffect(() => {
         dispatch(actions.addPhrase(inputPhraseValue))
 
     }, [inputPhraseValue])
 
+
+    const onSubmit = e => {
+        e.preventDefault()
+        dispatch(actions.resetRepo())
+
+        const repos = new GitHubAPI()
+        dispatch(repos.getAllRepos(inputRepoValue))
+    }
+
     const testRedux = () => {
         console.log('testRedux')
         setNumber(number => number + 1)
         const name = 'text ' + number
-        console.log( name )
-        dispatch(actions.add( name ))
-    }
-
-    const onSubmit = e => {
-        e.preventDefault()
-        console.log('onSubmit')
-
-        const repos = new GitHubAPI()
-        // console.log( repos.getAllRepos() )
-        dispatch(repos.getAllRepos(inputRepoValue))
+        console.log(name)
+        dispatch(actions.add(name))
     }
 
     return (
         <div>
-            <h2>Github</h2>
-            <form onSubmit={onSubmit}>
-                <div>
-                    <label htmlFor="user">
+            <form onSubmit={onSubmit} style={styles.form}>
+                <div style={styles.wrapDiv}>
+                    <label htmlFor="user" style={styles.label}>
                         user login
-                        <input type="text" onChange={inputRepo}
+                    </label>
+                    <input type="text" onChange={inputRepo}
                         placeholder='user login'
-                        />
-                    </label>
+                    />
                 </div>
-                <div>
-                    <label htmlFor="phrase">
+                <div style={styles.wrapDiv}>
+                    <label style={styles.label} />
+                    <button>Pobierz repozytoria</button>
+                </div>
+                <div style={styles.wrapDiv}>
+                    <label htmlFor="phrase" style={styles.label}>
                         phrase repo
-                        <input type="text" onChange={inputPhrase}
-                        />
                     </label>
+                    <input type="text" onChange={inputPhrase}
+                    />
                 </div>
-                <button>Pobierz repozytoria</button>
             </form>
             <br />
-            <button onClick={testRedux}>test Redux</button>
-            <br />
+                <div style={styles.wrapDiv}>
+                    <label htmlFor="phrase" style={styles.label} />
+                    <button onClick={testRedux}>test Redux</button>
+                </div>
             <ol>
                 {showRepos}
             </ol>
