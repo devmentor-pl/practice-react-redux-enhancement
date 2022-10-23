@@ -1,12 +1,9 @@
 import React from 'react';
+import GithubUI from '../src/modules/github/githubUI';
 
 const Task03 = () => {
-
-
     return (
-        <section>
-            <h2>Task 03</h2>
-        </section>
+        <GithubUI/>
     );
 }
 
