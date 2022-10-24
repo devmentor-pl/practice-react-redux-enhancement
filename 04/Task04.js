@@ -1,10 +1,11 @@
 import React from 'react';
+import StackoverflowUI from '../src/modules/stackoverflow/stackoverflowUI';
 
 
 const Task04 = () => {
     return (
         <section>
-            <h2>Task 04</h2>
+            <StackoverflowUI/>
         </section>
     );
 }
