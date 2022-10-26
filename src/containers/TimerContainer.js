@@ -7,11 +7,11 @@ class TimerContainer extends React.Component {
     }
 
     getHours() {
-        return Math.floor(this.state.time/360)
+        return Math.floor(this.state.time/60/60)
     }
 
     getMinutes() {
-        return this.state.time < 3600 ? Math.floor(this.state.time/60) : (Math.floor(this.state.time/60) - this.getHours()*360)
+        return this.state.time < 3600 ? Math.floor(this.state.time/60) : (Math.floor(this.state.time/60) - this.getHours()*60*60)
     }
 
     getSeconds() {
