@@ -5,7 +5,7 @@ import { showRepos } from "./github.actions";
 
 export const Github = () => {
   const dispatch = useDispatch();
-  const dataRepos = useSelector((state) => state.data);
+  const { data } = useSelector((state) => state.github);
   const dataFromApi = new GitHubAPI();
   const [userName, setUserName] = React.useState("");
   const [phrase, setPhrase] = React.useState("");
@@ -37,7 +37,7 @@ export const Github = () => {
         />
         <button>FIND</button>
       </form>
-      {dataRepos.length > 0 ? (
+      {data.length > 0 ? (
         <form onSubmit={(e) => e.preventDefault()}>
           <input
             value={phrase}
@@ -47,7 +47,7 @@ export const Github = () => {
         </form>
       ) : null}
       <ol>
-        {dataRepos
+        {data
           .filter((repos) => filterRepos(repos))
           .map((repo) => {
             return <li key={repo.id}>{repo.name}</li>;

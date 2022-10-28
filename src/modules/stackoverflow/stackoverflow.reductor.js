@@ -4,7 +4,7 @@ const initState = {
   stacks: [],
 };
 
-const reducer = (state = initState, action) => {
+const reducerStack = (state = initState, action) => {
   switch (action.type) {
     case types.SHOW_STACKS:
       return {
@@ -16,4 +16,4 @@ const reducer = (state = initState, action) => {
   }
 };
 
-export default reducer;
+export default reducerStack;

@@ -4,7 +4,7 @@ const initState = {
   data: [],
 };
 
-const reducer = (state = initState, action) => {
+const reducerGit = (state = initState, action) => {
   switch (action.type) {
     case types.SHOW_REPOS:
       return {
@@ -17,4 +17,4 @@ const reducer = (state = initState, action) => {
   }
 };
 
-export default reducer;
+export default reducerGit;

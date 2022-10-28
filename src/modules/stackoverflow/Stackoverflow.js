@@ -5,7 +5,8 @@ import { showStacks } from "./stackoverflow.actions";
 
 export const Stackoverflow = () => {
   const dispatch = useDispatch();
-  const stacks = useSelector((state) => state.stacks);
+  const { stacks } = useSelector((state) => state.stackoverflow);
+  console.log(stacks);
   const dataFromApi = new StackoverflowAPI();
   const [title, setTitle] = React.useState("");
   const [sort, setSort] = React.useState("creation");
