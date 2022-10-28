@@ -9,9 +9,8 @@ const reducer = (state = initState, action) => {
     case types.SHOW_STACKS:
       return {
         ...state,
-        stacks: [...action.payload],
+        stacks: action.payload,
       };
-
     default:
       return state;
   }

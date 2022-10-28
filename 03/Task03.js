@@ -1,11 +1,11 @@
 import React from 'react';
-import { Github } from "../src/modules/github/Github";
+// import { Github } from "../src/modules/github/Github";
 
 const Task03 = () => {
   return (
     <section>
       <h2>Task 03</h2>
-      <Github />
+      {/* <Github /> */}
     </section>
   );
 };

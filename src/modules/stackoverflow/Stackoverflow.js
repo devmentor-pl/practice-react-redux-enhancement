@@ -8,11 +8,7 @@ export const Stackoverflow = () => {
   const stacks = useSelector((state) => state.stacks);
   const dataFromApi = new StackoverflowAPI();
   const [title, setTitle] = React.useState("");
-  const [sort, setSort] = React.useState("votes");
-
-  const onChange = (e) => {
-    setTitle(e.target.value);
-  };
+  const [sort, setSort] = React.useState("creation");
 
   const getStacksAction = (title, sort) => (dispatch) => {
     dataFromApi
@@ -24,13 +20,44 @@ export const Stackoverflow = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(getStacksAction(title, sort));
-    console.log(stacks);
+  };
+
+  const onClick = () => {
+    sort === "creation" ? setSort("votes") : setSort("creation");
+    dispatch(getStacksAction(title, sort));
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input onChange={onChange} value={title} placeholder={"TITLE"} />
-      <button>FIND</button>
-    </form>
+    <>
+      {" "}
+      <form onSubmit={handleSubmit}>
+        <input
+          onChange={(e) => setTitle(e.target.value)}
+          value={title}
+          placeholder={"TITLE"}
+        />
+        <button>FIND</button>
+      </form>
+      <ol>
+        <button onClick={onClick}>
+          SORT BY {sort === "creation" ? "VOTES" : "CREATION"}
+        </button>
+        {stacks.map((data) => {
+          return (
+            <li key={data.question_id}>
+              <a
+                href={data.link}
+                style={{
+                  textDecoration: "none",
+                  color: "black",
+                }}
+              >
+                {data.title}
+              </a>
+            </li>
+          );
+        })}
+      </ol>
+    </>
   );
 };
