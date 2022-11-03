@@ -4,7 +4,7 @@ import { setQuestionTitleAction } from './stackoverflow.actions'
 import StackoverflowAPI from './stackoverflow.api'
 
 const Stackoverflow = () => {
-  const { questions, questionTitle, error } = useSelector((state) => state)
+  const { questions, questionTitle, error } = useSelector((state) => state.stackoverflow)
   const dispatch = useDispatch()
   const API = new StackoverflowAPI()
 
@@ -31,7 +31,7 @@ const Stackoverflow = () => {
           {questions
             .sort((q1, q2) => q2.reputation - q1.reputation)
             .map((question) => (
-              <li>
+              <li key={question.title}>
                 {question.title} || {question.reputation} ||{' '}
                 {new Date(question.publicationDate * 1000).toLocaleDateString(
                   'en-US'

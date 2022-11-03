@@ -5,7 +5,7 @@ import GitHubAPI from './github.api'
 
 const GitHub = () => {
   const { user, repositoryPhrase, repositories, error } = useSelector(
-    (state) => state
+    (state) => state.github
   )
   const dispatch = useDispatch()
   const GitHubAPP = new GitHubAPI()
