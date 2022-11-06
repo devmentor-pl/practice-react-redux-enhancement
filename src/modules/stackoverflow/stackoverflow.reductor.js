@@ -1,15 +1,15 @@
-import types from './github.types'
+import types from './stackoverflow.types'
 
 const initState = {
-  repos: []
+  stacks: []
 }
 
 const reducer = (state = initState, action) => {
   switch(action.type) {    
-    case types.RENDER_REPOS:
+    case types.RENDER_STACKS:
       return {
         ...state,
-        repos: action.payload.repos
+        stacks: action.payload
       }
     default:
       return state
