@@ -1,9 +1,8 @@
-class GitHubAPI {
-    url = 'https://api.github.com/';
+class StackoverflowAPI {
+    url = 'https://api.stackexchange.com/2.3/questions?order=desc&sort=votes';
 
-    getRepos(userName) {
-        // https://docs.github.com/en/rest/reference/repos#list-repositories-for-a-user
-        return fetch(`${this.url}/users/${userName}/repos`)
+    getStacks(title) {
+        return fetch(`${this.url}&title=${title}&site=stackoverflow`)
             .then(this.handleErrors)
             .then(resp => resp.json())
     }
@@ -17,4 +16,4 @@ class GitHubAPI {
     }
 }
 
-export default GitHubAPI
+export default StackoverflowAPI
