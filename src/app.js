@@ -2,16 +2,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { reducer } from './modules/stackoverflow';
+import { reducer as ghReducer } from './modules/github';
+import { reducer as soReducer } from './modules/stackoverflow';
 import App from './components/App';
 
 const store = createStore(
-  reducer,
+  combineReducers({
+    github: ghReducer,
+    stackoverflow: soReducer,
+  }),
   composeWithDevTools(applyMiddleware(thunk)),
 )
 
