@@ -1,8 +1,9 @@
 import * as types from './github.types';
 import API from './github.api';
 
-export const getRepos = login => (dispatch, getState) => {
+export const getRepos = () => (dispatch, getState) => {
     const api = new API();
+    const { login } = getState();
     api.getRepos(login).then(data => dispatch(setRepos(data)));
 }
 

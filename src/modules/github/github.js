@@ -9,7 +9,7 @@ const GitHub = () => {
     function handleLoginChange(e) {
         const login = e.target.value;
         dispatch(setLogin(login));
-        dispatch(getRepos(login));
+        dispatch(getRepos());
     }
 
     return (
