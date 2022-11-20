@@ -6,3 +6,10 @@ export const renderStacksAction = (data) => {
     payload: data.items
   }
 }
+
+export const setSort = (sort) => {
+  return {
+    type: types.SET_SORT,
+    payload: { sort }
+  }
+}

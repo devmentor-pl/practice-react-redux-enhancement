@@ -2,10 +2,10 @@ import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 
 import StackoverflowAPI from "./stackoverflow.api";
-import { renderStacksAction } from "./stackoverflow.actions";
+import { renderStacksAction, setSort } from "./stackoverflow.actions";
 
 const Stackoverflow = () => {
-  const { stacks } = useSelector(
+  const { stacks, sort } = useSelector(
     (state) => state.stackoverflow
   )
   console.log(stacks)
@@ -13,15 +13,15 @@ const Stackoverflow = () => {
   const StackoverflowApi = new StackoverflowAPI() 
   const [title, setTitle] = React.useState('')
 
-  const getStacks = (title) => (dispatch) => {
-    StackoverflowApi.getStacks(title)
+  const getStacks = (title, sort) => (dispatch) => {
+    StackoverflowApi.getStacks(title, sort)
       .then((resp) => dispatch(renderStacksAction(resp)))
       .catch((error) => console.log(error))
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(getStacks(title))
+    dispatch(getStacks(title, sort))
     setTitle('')
   }
 
@@ -35,6 +35,14 @@ const Stackoverflow = () => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
+        <select
+          name="sort"
+          value={sort}
+          onChange={(e) => dispatch(setSort(e.target.value))}
+        >
+          <option value="activity">activity</option>
+          <option value="votes">votes</option>
+        </select>
         <button>FIND</button>
       </form>
       {stacks.length > 0 ? (

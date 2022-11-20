@@ -1,8 +1,8 @@
 class StackoverflowAPI {
-    url = 'https://api.stackexchange.com/2.3/questions?order=desc&sort=votes';
+    url = 'https://api.stackexchange.com';
 
-    getStacks(title) {
-        return fetch(`${this.url}&title=${title}&site=stackoverflow`)
+    getStacks(title, sort) {
+        return fetch(`${this.url}/2.3/questions?order=desc&sort=${sort}&title=${title}&site=stackoverflow`)
             .then(this.handleErrors)
             .then(resp => resp.json())
     }

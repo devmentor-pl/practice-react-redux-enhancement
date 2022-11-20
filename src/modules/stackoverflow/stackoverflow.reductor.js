@@ -1,7 +1,8 @@
 import types from './stackoverflow.types'
 
 const initState = {
-  stacks: []
+  stacks: [],
+  sort: ''
 }
 
 const reducer = (state = initState, action) => {
@@ -10,6 +11,11 @@ const reducer = (state = initState, action) => {
       return {
         ...state,
         stacks: action.payload
+      }
+    case types.SET_SORT:
+      return {
+        ...state,
+        sort: action.payload.sort
       }
     default:
       return state
