@@ -5,9 +5,9 @@ const clickHandler = () => {
   console.log("kliknięto!");
 };
 
-const Welcome = () => (
+const Welcome = (props) => (
   <StyledAlert>
-    <StyledX onClick={clickHandler}>x</StyledX>
+    <StyledX onClick={props.clickHandler}>x</StyledX>
     <StyledText>Witamy na naszej stronie!</StyledText>
   </StyledAlert>
 );
