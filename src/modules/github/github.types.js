@@ -1,7 +1,7 @@
 const GET_REPOS = "getRepos";
-const FILTER_REPOS = "filterRepos";
+const GET_ERROR = "getError";
 
 export default {
   GET_REPOS,
-  FILTER_REPOS,
+  GET_ERROR,
 };
