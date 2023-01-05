@@ -8,15 +8,12 @@ const StyledAlert = styled.div`
   margin-right: auto;
 `;
 
-const StyledText = styled.h1`
-  text-align: center;
-`;
-
 const StyledX = styled.button`
   margin-top: 0;
   padding-top: 0;
   margin-left: 287px;
   cursor: pointer;
+  background-color: white;
 `;
 
-export { StyledAlert, StyledText, StyledX };
+export { StyledAlert, StyledX };

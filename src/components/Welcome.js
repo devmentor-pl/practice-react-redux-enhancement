@@ -1,16 +1,9 @@
-import React from 'react';
-import { StyledAlert, StyledText, StyledX } from "./Welcome.styled";
+import React from "react";
 
-const clickHandler = () => {
-  console.log("kliknięto!");
-};
-
-const Welcome = (props) => (
-  <StyledAlert>
-    <StyledX onClick={props.clickHandler}>x</StyledX>
-    <StyledText>Witamy na naszej stronie!</StyledText>
-  </StyledAlert>
+const Welcome = () => (
+  <div>
+    <h2>Witamy na naszej stronie!</h2>
+  </div>
 );
 
 export default Welcome;
-
