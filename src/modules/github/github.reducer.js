@@ -8,12 +8,13 @@ const reducer = (state = initState, action) => {
     case types.GET_REPOS:
       return {
         ...state,
-        repos: action.payload,
+        repos: action.payload, error: []
       };
     case types.GET_ERROR:
       return {
         ...state,
-        error: action.payload,
+        repos: [],
+        error: [action.payload],
       };
     default:
       return state;

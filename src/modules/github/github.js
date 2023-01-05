@@ -21,6 +21,7 @@ const Github = () => {
     e.preventDefault();
     dispatch(getReposActionApi(state.username));
     setState({ ...state, username: "" });
+    console.log(error);
   };
   const filterRepos = (repos) => {
     console.log(searchTerm);
@@ -34,13 +35,9 @@ const Github = () => {
         />
         {repos
           .filter((val) => {
-            if (searchTerm == "") {
-              return val.name;
-            } else if (
-              val.name.toLowerCase().includes(searchTerm.toLowerCase())
-            ) {
-              return val.name;
-            }
+            return searchTerm == ""
+              ? val.name
+              : val.name.toLowerCase().includes(searchTerm.toLowerCase());
           })
           .map((item) => (
             <li key={item.name}>{item.name}</li>
