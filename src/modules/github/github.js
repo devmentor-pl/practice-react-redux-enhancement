@@ -24,7 +24,6 @@ const Github = () => {
     console.log(error);
   };
   const filterRepos = (repos) => {
-    console.log(searchTerm);
     return (
       <div>
         <input
