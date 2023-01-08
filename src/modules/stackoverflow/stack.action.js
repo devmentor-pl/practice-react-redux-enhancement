@@ -17,9 +17,9 @@ export const getError = (error) => {
     payload: error,
   };
 };
-export const getDataApi = (title) => (dispatch) => {
+export const getDataApi = (title, sort) => (dispatch) => {
   api
-    .getData(title)
+    .getData(title, sort)
     .then((resp) => dispatch(getData(resp)))
     .catch((err) => dispatch(getError(err)));
 };

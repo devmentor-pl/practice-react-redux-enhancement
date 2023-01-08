@@ -1,6 +1,6 @@
 import types from "./stack.types";
 const initState = {
-  data: [],
+  data: {},
   error: [],
 };
 
@@ -15,7 +15,7 @@ const reducer = (state = initState, action) => {
     case types.GET_ERROR:
       return {
         ...state,
-        data: [],
+        data: {},
         error: [action.payload],
       };
     default:
