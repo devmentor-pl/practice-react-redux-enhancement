@@ -4,13 +4,13 @@ import GitHubAPI from "./github.api";
 
 const api = new GitHubAPI();
 
-export const getReposAction = (repos) => {
+export const setReposAction = (repos) => {
   return {
     type: types.GET_REPOS,
     payload: repos,
   };
 };
-export const getErrorAction = (error) => {
+export const setErrorAction = (error) => {
   return {
     type: types.GET_ERROR,
     payload: error,
@@ -20,6 +20,6 @@ export const getErrorAction = (error) => {
 export const getReposActionApi = (user) => (dispatch) => {
   api
     .getRepos(user)
-    .then((resp) => dispatch(getReposAction(resp)))
-    .catch((err) => dispatch(getErrorAction(err)));
+    .then((resp) => dispatch(setReposAction(resp)))
+    .catch((err) => dispatch(setErrorAction(err)));
 };

@@ -13,8 +13,8 @@ const Github = () => {
     });
     console.log(state);
   };
-  const repos = useSelector((props) => props.repos);
-  const error = useSelector((props) => props.error);
+  const repos = useSelector((state) => state.github.repos);
+  const error = useSelector((state) => state.github.error);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {

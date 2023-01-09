@@ -8,8 +8,8 @@ const Stackoverflow = () => {
   const [sort, setSort] = useState("activity");
 
   const options = ["activity", "votes", "creation", "relevance"];
-  const data = useSelector((props) => props.data);
-  const error = useSelector((props) => props.error);
+  const data = useSelector((state) => state.stack.data);
+  const error = useSelector((state) => state.stack.error);
   const dispatch = useDispatch();
   const handleChange = (e) => {
     setState({
