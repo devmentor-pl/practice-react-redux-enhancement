@@ -1,7 +1,6 @@
 import React from 'react';
 import Welcome from './../src/components/Welcome';
-import withPopup from './../src/hoc/withPopup';
-import { useState } from "react";
+import withPopup from "./../src/hoc/withPopup";
 
 const WelcometWithPopup = withPopup("withPopup")(Welcome);
 

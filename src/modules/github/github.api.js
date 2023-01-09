@@ -1,18 +1,37 @@
+import { connect } from "react-redux";
+import { setRepos, setError } from "./github.actions";
+
 class GitHubAPI {
-    url = 'https://api.github.com/';
+  //url = "https://api.github.com/";
+  constructor() {
+    this.url = "https://api.github.com/";
+  }
+  getRepos(userName) {
+    console.log("getRepos");
+    return function thunk(dispatch, getState) {
+      // https://docs.github.com/en/rest/reference/repos#list-repositories-for-a-user
+      console.log("thunk");
+      return (
+        fetch(`${url}/users/${userName}/repos`)
+          //.then(handleErrors)
+          .then(console.log("fetch"))
+          .then((resp) => resp.json())
+          .then((resp) => dispatch(this.props.onSetRepos(resp)))
+          .catch((err) => dispatch(setError(err)))
+      );
+    };
+  }
 
-    getRepos(userName) {
-        // https://docs.github.com/en/rest/reference/repos#list-repositories-for-a-user
-        return fetch(`${this.url}/users/${userName}/repos`)
-            .then(this.handleErrors)
-            .then(resp => resp.json())
+  handleErrors = (resp) => {
+    if (!resp.ok) {
+      throw Error(resp.statusText);
     }
 
-    handleErrors(resp) {
-        if(!resp.ok) {
-            throw Error(resp.statusText);
-        }
-
-        return resp;
-    }
+    return resp;
+  };
 }
+const mapActionToProps = {
+  onSetRepos: setRepos,
+};
+
+export default connect(null, mapActionToProps)(GitHubAPI);
