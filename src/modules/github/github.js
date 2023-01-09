@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setUserName } from "./github.actions";
-import GitHubAPI from "./github.api";
+import { setUserName, getRespo } from "./github.actions";
 
 const GitHub = () => {
   const [form, setForm] = useState({
@@ -15,10 +14,8 @@ const GitHub = () => {
     e.preventDefault();
     console.log("kot");
     dispatch(setUserName(form.name));
-    console.log(GitHubAPI.WrappedComponent);
-    const gitHub = new GitHubAPI.WrappedComponent();
-
-    gitHub.getRepos(form.name);
+    console.log(form.name);
+    dispatch(getRespo(form.name));
 
     console.log(repos);
   };

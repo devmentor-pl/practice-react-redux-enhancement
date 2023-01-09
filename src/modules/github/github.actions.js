@@ -1,3 +1,7 @@
+import GitHubAPI from "./github.api";
+
+const api = new GitHubAPI();
+
 export const setUserName = (value) => {
   console.log(value);
   return {
@@ -11,6 +15,10 @@ export const setRepoName = (value) => {
     type: "setRepoName",
     payload: { repoName: value },
   };
+};
+
+export const getRespo = (ghLogin) => (dispatch) => {
+  api.getRepos(ghLogin).then((data) => dispatch(setRepos(data)));
 };
 
 export const setRepos = (value) => {

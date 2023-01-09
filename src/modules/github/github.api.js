@@ -1,4 +1,3 @@
-import { connect } from "react-redux";
 import { setRepos, setError } from "./github.actions";
 
 class GitHubAPI {
@@ -16,8 +15,8 @@ class GitHubAPI {
           //.then(handleErrors)
           .then(console.log("fetch"))
           .then((resp) => resp.json())
-          .then((resp) => dispatch(this.props.onSetRepos(resp)))
-          .catch((err) => dispatch(setError(err)))
+        //.then((resp) => dispatch(this.props.onSetRepos(resp)))
+        //.catch((err) => dispatch(setError(err)))
       );
     };
   }
@@ -30,8 +29,5 @@ class GitHubAPI {
     return resp;
   };
 }
-const mapActionToProps = {
-  onSetRepos: setRepos,
-};
 
-export default connect(null, mapActionToProps)(GitHubAPI);
+export default GitHubAPI;
