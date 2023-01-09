@@ -12,12 +12,8 @@ const GitHub = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("kot");
     dispatch(setUserName(form.name));
-    console.log(form.name);
     dispatch(getRespo(form.name));
-
-    console.log(repos);
   };
 
   useEffect(() => {
@@ -43,6 +39,13 @@ const GitHub = () => {
         </label>
         <input type="submit" />
       </form>
+      <ul>
+        {repos
+          .filter((n) => n.name.includes(form.repo))
+          .map((n) => (
+            <li>{n.name}</li>
+          ))}
+      </ul>
     </section>
   );
 };

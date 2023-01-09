@@ -22,7 +22,6 @@ export const getRespo = (ghLogin) => (dispatch) => {
 };
 
 export const setRepos = (value) => {
-  console.log(value);
   return {
     type: "setRepos",
     payload: { repos: value },
