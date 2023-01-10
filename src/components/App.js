@@ -7,7 +7,8 @@ import Task04 from './../../04/Task04';
 import Task05 from './../../05/Task05';
 
 import { Provider } from "react-redux";
-import reducer from "../modules/github/github.reducer";
+//import reducer from "../modules/github/github/github.reducer";
+import reducer from '../modules/github/stackoverflow/stackoverflow.reducer';
 import thunk from "redux-thunk";
 
 import { createStore, applyMiddleware } from "redux";
@@ -18,10 +19,10 @@ const App = () => {
     <>
       <Task01 />
       <Task02 />
+      <Task03 />
       <Provider store={store}>
-        <Task03 />
+        <Task04 />
       </Provider>
-      <Task04 />
       <Task05 />
     </>
   );
