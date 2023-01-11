@@ -43,7 +43,7 @@ const GitHub = () => {
         {repos
           .filter((n) => n.name.includes(form.repo))
           .map((n) => (
-            <li>{n.name}</li>
+            <li>repoName: {n.name}</li>
           ))}
       </ul>
     </section>

@@ -1,8 +1,10 @@
 import React from "react";
 
-const Welcome = () => (
+const Welcome = (props) => (
   <div>
-    <h2>Witamy na naszej stronie!</h2>
+    <h2 style={{ backgroundColor: props.bg, color: props.color }}>
+      Witamy na naszej stronie!
+    </h2>
   </div>
 );
 

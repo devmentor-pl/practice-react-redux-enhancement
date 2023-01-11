@@ -8,7 +8,7 @@ const Task02 = () => {
   return (
     <section>
       <h2>Task 02</h2>
-      <WelcometWithPopup bg="red" />
+      <WelcometWithPopup bg="red" color="yellow" />
     </section>
   );
 };
