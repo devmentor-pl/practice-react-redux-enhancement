@@ -1,4 +1,4 @@
-import { setRepos, setError } from "./github.actions";
+//import { setRepos, setError } from "./github.actions";
 
 class StackOverflowAPI {
   constructor() {
@@ -6,6 +6,9 @@ class StackOverflowAPI {
   }
   getData(topic) {
     // https://api.stackexchange.com/2.3/similar?order=desc&sort=creation&title=javascript%20react&site=stackoverflow
+    console.log(
+      `${this.url}?order=desc&sort=creation&title=${topic}&site=stackoverflow`
+    );
     return fetch(
       `${this.url}?order=desc&sort=creation&title=${topic}&site=stackoverflow`
     ).then((resp) => resp.json());

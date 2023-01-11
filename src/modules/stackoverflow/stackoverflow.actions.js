@@ -22,6 +22,13 @@ export const setData = (value) => {
   };
 };
 
+export const sortData = (value) => {
+  return {
+    type: types.SORT_DATA,
+    payload: { sortingKey: value },
+  };
+};
+
 export const setError = (err) => {
   return {
     type: types.SET_ERROR,

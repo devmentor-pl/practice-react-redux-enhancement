@@ -1,5 +1,5 @@
 import React from 'react';
-import StackOverflow from "../src/modules/github/stackoverflow/StackOverflow";
+import StackOverflow from "../src/modules/stackoverflow/StackOverflow";
 
 const Task04 = () => {
   return (
