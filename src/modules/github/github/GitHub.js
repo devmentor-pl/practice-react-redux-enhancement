@@ -7,7 +7,7 @@ const GitHub = () => {
     name: "",
     repo: "",
   });
-  const repos = useSelector((state) => state.repos);
+  const repos = useSelector((state) => state.github.repos);
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {

@@ -9,7 +9,9 @@ const StackOverflow = () => {
   });
 
   Moment.globalFormat = "DD MM YYYY";
-  const downloadedData = useSelector((state) => state.downloadedData);
+  const downloadedData = useSelector(
+    (state) => state.stackoverflow.downloadedData
+  );
   const dispatch = useDispatch();
 
   const submitHandler = (e) => {
@@ -18,8 +20,11 @@ const StackOverflow = () => {
     dispatch(getData(form.topic));
   };
 
+  useEffect(() => {
+    console.log(downloadedData);
+  });
+
   const onClickSortByDatekHandler = (e) => {
-    console.log("kot");
     setForm("");
     dispatch(sortData("creation_date"));
   };
