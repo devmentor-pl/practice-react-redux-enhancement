@@ -1,15 +1,17 @@
 import React from 'react';
 import Welcome from './../src/components/Welcome';
-import withPopup from './../src/hoc/withPopup';
+import withPopup from "./../src/hoc/withPopup";
 
-const ComponentWithPopup = withPopup(Welcome);
+const WelcometWithPopup = withPopup("withPopup")(Welcome);
 
-const Task02 = () => (
+const Task02 = () => {
+  return (
     <section>
-        <h2>Task 02</h2>
-        <ComponentWithPopup />
+      <h2>Task 02</h2>
+      <WelcometWithPopup bg="red" color="yellow" />
     </section>
-)
+  );
+};
 
 export default Task02;
 

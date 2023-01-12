@@ -1,41 +1,52 @@
 import React from 'react';
 
 class Timer extends React.Component {
-    state = {
-        time: 0,
-    }
+  render() {
+    const { getHours, getMinutes, getSeconds } = this.props;
 
-    getHours() {
-        return 0;
-    }
+    return (
+      <section>
+        Dziękujemy, że jesteś z nami już {getHours()}h {getMinutes()}m
+        {getSeconds()}s.
+      </section>
+    );
+  }
+  /*state = {
+    time: 0,
+  };
 
-    getMinutes() {
-        return 0;
-    }
+  getHours() {
+    return parseInt(this.state.time / 3600);
+  }
 
-    getSeconds() {
-        return this.state.time;
-    }
+  getMinutes() {
+    return parseInt(this.state.time / 60) % 60;
+  }
 
-    render() {
-        return (
-            <section>
-                Dziękujemy, że jesteś z nami już {this.getHours()}h {this.getMinutes()}m {this.getSeconds()}s.
-            </section>
-        )
-    }
+  getSeconds() {
+    return this.state.time % 60;
+  }
 
-    componentDidMount() {
-        this.id = setInterval(() => {
-            this.setState(state => {
-                return {time: state.time + 1}
-            });
-        }, 1000);
-    }
+  render() {
+    return (
+      <section>
+        Dziękujemy, że jesteś z nami już {this.getHours()}h {this.getMinutes()}m
+        {this.getSeconds()}s.
+      </section>
+    );
+  }
 
-    componentWillUnmount() {
-        clearInterval(this.id);
-    }
+  componentDidMount() {
+    this.id = setInterval(() => {
+      this.setState((state) => {
+        return { time: state.time + 1 };
+      });
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.id);
+  }*/
 }
 
 export default Timer;
