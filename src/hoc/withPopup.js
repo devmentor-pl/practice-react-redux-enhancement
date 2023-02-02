@@ -6,7 +6,6 @@ const withPopup = (step, frames) => {
         return class PopUp extends React.Component{
             state = {
                 opacity: 0,
-                translateX: -50,
                 translateY: 0,
             }
             
@@ -54,7 +53,7 @@ const withPopup = (step, frames) => {
                             position: 'absolute',
                             top: "0",
                             left: "50%",
-                            transform: `translate(${this.state.translateX}%, ${this.state.translateY}%)`,
+                            transform: `translate(-50%, ${this.state.translateY}%)`,
                             background: "salmon",
                             transition: 'transform 400ms ease',
                             padding: "20px",
