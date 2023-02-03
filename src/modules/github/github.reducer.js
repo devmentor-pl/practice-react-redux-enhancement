@@ -6,7 +6,7 @@ const initState = {
     error: ''
 }
 
-export const reducer = (state = initState, action) => {
+export const githubReducer = (state = initState, action) => {
     switch(action.type){
         case types.SET_ERROR:
             return {

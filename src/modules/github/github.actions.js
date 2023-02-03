@@ -27,7 +27,7 @@ export const setErrorAction = (error) => {
 }
 export const getReposAction = () => {
     return function thunk(dispatch, getState){
-        return api.getRepos(getState().user)
+        return api.getRepos(getState().github.user)
             .then(resp => {
                 dispatch(setReposAction(resp))
             })

@@ -6,7 +6,7 @@ const GitHub = () => {
     const [user, setUser] = useState('');
     const [phrase, setPhrase] = useState('');
     const dispatch = useDispatch();
-    const repos = useSelector(state => state.repos)
+    const repos = useSelector(state => state.github.repos)
     const handleChange = event => {
         event.target.name === 'user' 
         ? setUser(event.target.value) 
