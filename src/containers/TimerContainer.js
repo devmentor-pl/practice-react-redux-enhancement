@@ -1,43 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Timer from "../components/Timer";
 
-class TimerContainer extends React.Component {
-  state = {
-    time: 0,
-  };
+const TimerContainer = () => {
+  const [time, setTime] = useState(0);
 
-  componentDidMount() {
-    this.id = setInterval(() => {
-      this.setState((state) => {
-        return { time: state.time + 1 };
-      });
+  useEffect(() => {
+    const id = setInterval(() => {
+      setTime((prevTime) => prevTime + 1);
     }, 1000);
-  }
 
-  componentWillUnmount() {
-    clearInterval(this.id);
-  }
+    return () => clearInterval(id);
+  }, []);
 
-  getTime = () => new Date(this.state.time * 1000).toISOString().slice(11, 19);
+  const getTime = () => new Date(time * 1000).toISOString().slice(11, 19);
 
-  getHours = () => this.getTime().slice(0, 2);
+  const getHours = () => getTime().slice(0, 2);
 
-  getMinutes = () => this.getTime().slice(3, 5);
+  const getMinutes = () => getTime().slice(3, 5);
 
-  getSeconds = () => this.getTime().slice(6, 8);
+  const getSeconds = () => getTime().slice(6, 8);
 
-  render() {
-    return (
-      <Timer
-        time={{
-          hours: this.getHours(),
-          minutes: this.getMinutes(),
-          seconds: this.getSeconds(),
-        }}
-      />
-    );
-  }
-}
+  return (
+    <Timer
+      time={{
+        hours: getHours(),
+        minutes: getMinutes(),
+        seconds: getSeconds(),
+      }}
+    />
+  );
+};
 
 export default TimerContainer;

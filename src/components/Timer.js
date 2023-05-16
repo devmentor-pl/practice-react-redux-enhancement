@@ -1,15 +1,12 @@
 import React from 'react';
 
-class Timer extends React.Component {
-  render() {
-    const { hours, minutes, seconds } = this.props.time;
+const Timer = ({ time: { hours, minutes, seconds } }) => {
+  return (
+    <section>
+      Dziękujemy, że jesteś z nami już {hours}h {minutes}m {seconds}s.
+    </section>
+  );
+};
 
-    return (
-      <section>
-        Dziękujemy, że jesteś z nami już {hours}h {minutes}m {seconds}s.
-      </section>
-    );
-  }
-}
 
 export default Timer;
