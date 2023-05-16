@@ -1,15 +1,25 @@
-import React from 'react';
-import Welcome from './../src/components/Welcome';
-import withPopup from './../src/hoc/withPopup';
+import React, { useState } from "react";
 
-const ComponentWithPopup = withPopup(Welcome);
+import Welcome from "./../src/components/Welcome";
+import withPopup from "./../src/hoc/withPopup";
 
-const Task02 = () => (
+const ComponentWithPopup = withPopup({
+  overlayStyles: { backgroundColor: "rgba(0, 0, 100, .4)" },
+  asideStyles: { padding: "2rem 4rem" },
+})(Welcome);
+
+const Task02 = () => {
+  const [isOpen, setIsOpen] = useState(true);
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
+  return (
     <section>
-        <h2>Task 02</h2>
-        <ComponentWithPopup />
+      <h2>Task 02</h2>
+      <ComponentWithPopup isOpen={isOpen} onClose={handleClose} />
     </section>
-)
+  );
+};
 
 export default Task02;
-
