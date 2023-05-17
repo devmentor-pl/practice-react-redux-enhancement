@@ -4,7 +4,7 @@ import ResultsList from "../components/ResultsList";
 import { useSelector } from "react-redux";
 
 function ResultsListContainer() {
-  const results = useSelector((state) => state.similar);
+  const results = useSelector((state) => state.stackoverflow.similar);
 
   const sortedResultsByOwnerRep = results.toSorted(
     (firstItem, secondItem) =>

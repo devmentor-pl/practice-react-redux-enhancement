@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import ReposList from "../components/ReposList";
 
 function ReposListContainer() {
-  const repos = useSelector((state) => state.repos);
+  const repos = useSelector((state) => state.github.repos);
   const [searchBarValue, setSearchBarValue] = useState("");
   const searchBarOptions = {
     name: "repoName",
