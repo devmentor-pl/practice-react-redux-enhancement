@@ -6,6 +6,7 @@ class GitHubAPI {
         return fetch(`${this.url}/users/${userName}/repos`)
             .then(this.handleErrors)
             .then(resp => resp.json())
+    
     }
 
     handleErrors(resp) {
@@ -16,3 +17,5 @@ class GitHubAPI {
         return resp;
     }
 }
+
+export default GitHubAPI
