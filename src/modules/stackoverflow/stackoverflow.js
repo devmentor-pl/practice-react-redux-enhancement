@@ -4,7 +4,7 @@ import { getThreads } from './stackoverflow.actions';
 
 const StackoverFlow = () => {
 	const [query, setQuery] = useState('');
-	const threads = useSelector((state) => state.threads);
+	const threads = useSelector((state) => state.stack.threads);
 	const dispatch = useDispatch();
 
 	const handleChange = (e) => {

@@ -5,7 +5,7 @@ import { getRepos } from './github.actions';
 const GitHub = () => {
 	const [user, setUser] = useState('');
 	const [phrase, setPhrase] = useState('');
-	const { repos, messages } = useSelector((state) => state);
+	const { repos, messages } = useSelector((state) => state.github);
 	const dispatch = useDispatch();
 
 	const handleChange = (e) => {
