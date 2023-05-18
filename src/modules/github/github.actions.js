@@ -13,7 +13,7 @@ export const setReposAction = (repos) => {
 export const setErrorAction = (err) => {
 	return {
 		type: types.SET_ERROR,
-		payload: { message: err, type: 'error' },
+		payload: { message: err.toString(), type: 'error' },
 	};
 };
 
