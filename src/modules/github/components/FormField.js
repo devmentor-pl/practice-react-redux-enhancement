@@ -6,8 +6,9 @@ function FormField({
 }) {
   return (
     <div>
-      {variant === "submitButton" && <button type="submit">Szukaj</button>}
-      {variant !== "submitButton" && (
+      {variant === "submitButton" ? (
+        <button type="submit">Szukaj</button>
+      ) : (
         <>
           {label && <label htmlFor={id}>{label}</label>}
           <input
