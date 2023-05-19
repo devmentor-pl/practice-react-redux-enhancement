@@ -23,7 +23,7 @@ const GitHub = () => {
 	};
 
 	const reposView = repos
-		.filter((repo) => repo.name.includes(phrase))
+		.filter((repo) => repo.name.includes(phrase.toLowerCase()))
 		.map((repo) => <li key={repo.name}>{repo.name}</li>);
 
 	const messagesView = messages.map((item) => <li>{item.message}</li>);
