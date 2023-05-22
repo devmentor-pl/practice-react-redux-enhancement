@@ -2,7 +2,7 @@
 
 &nbsp;
 
-# `#01`  React i Redux: Rozszerzenie
+# `#01`  React i Redux: Rozszerzenie.
 
 Twoim zadaniem będzie refaktoryzacja komponentu `<Timer>` w taki sposób, aby rozdzielić prezentację od logiki. Oznacza to, że zarządzanie `state` powinieneś przekazać kontenerowi, tj. `<TimerContainer>`, natomiast samą formę prezentacyjną pozostawić w `<Timer>`, a dane przekazywać przez `props`.
 
