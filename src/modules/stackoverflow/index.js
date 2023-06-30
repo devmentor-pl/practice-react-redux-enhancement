@@ -1,3 +1,3 @@
-import Stackoverflow from './stackoverflow';
+import StackOverflow from './stackoverflow';
 
-export { Stackoverflow };
+export { StackOverflow };

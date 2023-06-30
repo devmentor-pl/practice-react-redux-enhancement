@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getItemsAction } from './stackoverflow.actions';
 
-const Stackoverflow = () => {
-	const { items, messages } = useSelector((state) => state);
+const StackOverflow = () => {
+	const { items, messages } = useSelector((state) => state.stackoverflow);
 	const dispatch = useDispatch();
 	const [searchTitle, setSearchTitle] = useState('');
 
@@ -28,7 +28,7 @@ const Stackoverflow = () => {
 
 	return (
 		<section>
-			<h3>StackoverflowApp</h3>
+			<h3>StackOverflow</h3>
 			<form onSubmit={handleSubmit}>
 				<label>
 					Search stackoverflow:{' '}
@@ -44,4 +44,4 @@ const Stackoverflow = () => {
 	);
 };
 
-export default Stackoverflow;
+export default StackOverflow;

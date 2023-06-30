@@ -1,5 +1,5 @@
 const SET_REPOS = 'setRepos';
-const SET_ERROR = 'setError';
+const SET_ERROR = 'setErrorGithub';
 
 export default {
 	SET_REPOS,

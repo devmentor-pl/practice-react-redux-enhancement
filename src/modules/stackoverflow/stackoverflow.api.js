@@ -1,4 +1,4 @@
-class StackoverflowApi {
+class StackOverflowApi {
 	url = 'https://api.stackexchange.com/2.3/similar';
 
 	getItems(title) {
@@ -18,4 +18,4 @@ class StackoverflowApi {
 	}
 }
 
-export default StackoverflowApi;
+export default StackOverflowApi;

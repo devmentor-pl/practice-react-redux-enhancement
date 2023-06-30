@@ -1,6 +1,6 @@
 import types from './stackoverflow.types';
-import StackoverflowApi from './stackoverflow.api';
-const api = new StackoverflowApi();
+import StackOverflowApi from './stackoverflow.api';
+const api = new StackOverflowApi();
 
 export const setItemsAction = (items) => {
 	return {

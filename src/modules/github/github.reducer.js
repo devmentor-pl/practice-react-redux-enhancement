@@ -5,7 +5,7 @@ const initState = {
 	messages: [],
 };
 
-const reducers = (state = initState, action) => {
+const reducer = (state = initState, action) => {
 	switch (action.type) {
 		case types.SET_REPOS:
 			const { repos } = action.payload;
@@ -26,4 +26,4 @@ const reducers = (state = initState, action) => {
 	}
 };
 
-export default reducers;
+export default reducer;

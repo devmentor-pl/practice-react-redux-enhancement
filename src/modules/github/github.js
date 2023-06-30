@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getReposAction } from './github.actions';
 
-const Github = () => {
+const GitHub = () => {
+	const { repositories, messages } = useSelector((state) => state.github);
 	const [username, setUsername] = useState('');
 	const [searchPhrase, setSearchPhrase] = useState('');
 	const dispatch = useDispatch();
-	const repositories = useSelector((state) => state.repositories);
-	const errorMessages = useSelector((state) => state.messages);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -30,11 +29,11 @@ const Github = () => {
 		</li>
 	));
 
-	const renderError = errorMessages.map((error) => <li>{error.message}</li>);
+	const renderError = messages.map((error) => <li>{error.message}</li>);
 
 	return (
 		<section>
-			<h3>GithubApp</h3>
+			<h3>GitHub</h3>
 			<form onSubmit={handleSubmit}>
 				<label htmlFor='username'>
 					Show user repositories:{' '}
@@ -64,4 +63,4 @@ const Github = () => {
 	);
 };
 
-export default Github;
+export default GitHub;
