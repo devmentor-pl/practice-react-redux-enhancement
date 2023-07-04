@@ -10,9 +10,11 @@ class GitHubAPI {
 
     handleErrors(resp) {
         if(!resp.ok) {
-            throw Error(resp.statusText);
+            throw Error(resp.status);
         }
 
         return resp;
     }
 }
+
+export default GitHubAPI
