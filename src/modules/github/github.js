@@ -14,10 +14,11 @@ const GitHub = () => {
 		e.preventDefault();
 		dispatch(handleRepos(user));
 		setUser("");
+		setPhrase("");
 		console.log(repositories);
 	};
 	const filteredRepos = repositories.filter(repo => {
-		repo.name.includes(phrase);
+		return repo.name.toLowerCase().includes(phrase.toLowerCase());
 	});
 
 	const showRepos = filteredRepos.map(repo => {
