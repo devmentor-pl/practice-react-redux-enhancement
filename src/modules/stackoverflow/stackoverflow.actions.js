@@ -7,7 +7,7 @@ export const setThreadsAction = threads => {
 	return {
 		type: types.SET_THREADS,
 		payload: {
-			threads: threads,
+			threads: threads.items,
 		},
 	};
 };
@@ -22,9 +22,11 @@ export const setStackErrorAction = err => {
 	};
 };
 
-export const getThreads = title => dispatch => {
+export const getThreads = query => dispatch => {
 	return stackApi
-		.getItems(title)
+		.getItems(query)
 		.then(resp => dispatch(setThreadsAction(resp)))
 		.catch(err => dispatch(setStackErrorAction(err)));
 };
+
+

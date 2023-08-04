@@ -13,7 +13,6 @@ const StackOverFlow = () => {
 		e.preventDefault();
 		dispatch(getThreads(query));
 		setQuery("");
-		console.log(threads);
 	};
 	const sortItemsByReputation = threads.sort((a, b) => {
 		return b.owner.reputation - a.owner.reputation;
@@ -22,6 +21,8 @@ const StackOverFlow = () => {
 	const showThreads = sortItemsByReputation.map(thread => {
 		return <li key={thread.title}>{thread.title}</li>;
 	});
+
+	console.log(threads);
 
 	const showErrors = errMessages.map(err => {
 		return (
@@ -46,7 +47,8 @@ const StackOverFlow = () => {
 				<button type='submit'>search</button>
 			</form>
 			{errMessages.length > 0 && <ul>{showErrors}</ul>}
-			{threads && <ul> {showThreads}</ul>}
+			{threads && threads.length > 0 && <ul>{showThreads}</ul>}
+			{threads}
 		</section>
 	);
 };

@@ -8,17 +8,15 @@ const initialState = {
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
 		case types.SET_THREADS:
-			const { threads } = action.payload;
 			return {
 				...state,
-				threads: threads,
+				threads: action.payload,
 			};
 
 		case types.SET_STACK_ERROR:
-			const { message, type } = action.payload;
 			return {
 				...state,
-				messages: [...state.messages, { message: message, type: type }],
+				messages: [...state.messages, action.payload],
 			};
 		default:
 			return state;
