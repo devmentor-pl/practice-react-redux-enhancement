@@ -4,7 +4,8 @@ import { createRoot } from 'react-dom/client';
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { Provider } from "react-redux";
-import reducer from "./modules/github/github.reducer";
+import reducer from './modules/stackoverflow/stackoverflow.reducer';
+// import reducer from "./modules/github/github.reducer";
 import thunk from "redux-thunk";
 
 import App from "./components/App";
