@@ -5,7 +5,7 @@ const initialState = {
 	messages: [],
 };
 
-const reducer = (state = initialState, action) => {
+const reducerGitHub = (state = initialState, action) => {
 	switch (action.type) {
 		case types.SET_REPOS:
 			const { repos } = action.payload;
@@ -25,4 +25,4 @@ const reducer = (state = initialState, action) => {
 	}
 };
 
-export default reducer;
+export default reducerGitHub;

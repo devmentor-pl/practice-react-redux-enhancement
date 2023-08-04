@@ -6,8 +6,8 @@ const StackOverFlow = () => {
 	const [query, setQuery] = useState("");
 
 	const dispatch = useDispatch();
-	const threads = useSelector(state => state.threads);
-	const errMessages = useSelector(state => state.messages);
+	const threads = useSelector(state => state.stack.threads);
+	const errMessages = useSelector(state => state.stack.messages);
 
 	const handleFormSubmit = e => {
 		e.preventDefault();
@@ -47,8 +47,7 @@ const StackOverFlow = () => {
 				<button type='submit'>search</button>
 			</form>
 			{errMessages.length > 0 && <ul>{showErrors}</ul>}
-			{threads && threads.length > 0 && <ul>{showThreads}</ul>}
-			{threads}
+			{threads && <ul>{showThreads}</ul>}
 		</section>
 	);
 };

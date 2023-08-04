@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { handleRepos, setErrorAction } from "./github.actions";
+import { handleRepos } from "./github.actions";
 
 const GitHub = () => {
 	const [user, setUser] = useState("");
 	const [phrase, setPhrase] = useState("");
 
 	const dispatch = useDispatch();
-	const repositories = useSelector(state => state.repos);
-	const errMessages = useSelector(state => state.messages);
+	const repositories = useSelector(state => state.github.repos);
+	const errMessages = useSelector(state => state.github.messages);
 
 	const handleFormSubmit = e => {
 		e.preventDefault();

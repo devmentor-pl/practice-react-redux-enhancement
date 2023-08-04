@@ -6,9 +6,7 @@ const stackApi = new StackOverFlowApi();
 export const setThreadsAction = threads => {
 	return {
 		type: types.SET_THREADS,
-		payload: {
-			threads: threads.items,
-		},
+		payload: threads.items,
 	};
 };
 

@@ -4,13 +4,15 @@ import { createRoot } from 'react-dom/client';
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { Provider } from "react-redux";
-import reducer from './modules/stackoverflow/stackoverflow.reducer';
-// import reducer from "./modules/github/github.reducer";
 import thunk from "redux-thunk";
+import reducers from "./modules/reducers";
 
 import App from "./components/App";
 
-const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
+const store = createStore(
+	reducers,
+	composeWithDevTools(applyMiddleware(thunk))
+);
 
 const root = createRoot(document.querySelector("#root"));
 root.render(

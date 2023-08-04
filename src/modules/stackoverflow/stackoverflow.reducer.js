@@ -5,7 +5,7 @@ const initialState = {
 	messages: [],
 };
 
-const reducer = (state = initialState, action) => {
+const reducerStack = (state = initialState, action) => {
 	switch (action.type) {
 		case types.SET_THREADS:
 			return {
@@ -23,4 +23,4 @@ const reducer = (state = initialState, action) => {
 	}
 };
 
-export default reducer;
+export default reducerStack;
