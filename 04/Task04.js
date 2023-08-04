@@ -1,13 +1,15 @@
 import React from 'react';
-
+import StackOverFlow from "../src/modules/stackoverflow/stackoverflow";
 
 const Task04 = () => {
-    return (
-        <section>
-            <h2>Task 04</h2>
-        </section>
-    );
-}
+	return (
+		<section>
+			<h2>
+				<StackOverFlow />
+			</h2>
+		</section>
+	);
+};
 
 export default Task04;
 

@@ -13,3 +13,4 @@ Całe rozwiązanie umieść w takiej strukturze plików jak w zadaniu poprzednim
 &nbsp;
 
 > :arrow_left: [*poprzednie zadanie*](./../03) | [*następne zadanie*](./../05) :arrow_right:*emphasized text*
+
