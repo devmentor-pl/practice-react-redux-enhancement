@@ -1,0 +1,7 @@
+const UPLOAD_DATA = 'UPLOAD_DATA'
+const FILTER_DATA = 'FILTER_DATA'
+
+export {
+  UPLOAD_DATA,
+  FILTER_DATA
+}
