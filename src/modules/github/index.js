@@ -1,11 +1,3 @@
-import { applyMiddleware, createStore } from "redux";
-import reducer from "./github.reducer";
-import thunk from "redux-thunk";
-import { composeWithDevTools } from "redux-devtools-extension";
+import Github from "./github";
 
-const store = createStore(
-  reducer,
-  composeWithDevTools(applyMiddleware(thunk))
-)
-
-export default store
+export { Github }
