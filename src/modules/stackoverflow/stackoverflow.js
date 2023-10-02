@@ -5,9 +5,16 @@ import { filterByDateAction, filterByReputationAction } from "./stackoverflow.ac
 
 const StackOverflow = () => {
   const [stackoverflowTitle, setStackoverflowTitle] = React.useState('')
-  const resp = useSelector(state => state.resp)
-  const filterByDate = useSelector(state => state.filterByDate)
-  const filterByUserReputation = useSelector(state => state.filterByUserReputation)
+  // const resp = useSelector(state => state.resp)
+  // const filterByDate = useSelector(state => state.filterByDate)
+  // const filterByUserReputation = useSelector(state => state.filterByUserReputation)
+
+  const {
+    resp,
+    filterByDate,
+    filterByUserReputation
+  } = useSelector(state => state.stackoverflow)
+
   const dispatch = useDispatch()
 
   const handleSearch = React.useCallback(() => {

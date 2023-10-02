@@ -9,9 +9,15 @@ const Github = () => {
 
   const dispatch = useDispatch()
 
-  const filteredRepos = useSelector(state => state.filteredRepos)
-  const repos = useSelector(state => state.repos)
-  const isFiltered = useSelector(state => state.isFiltered)
+  // const filteredRepos = useSelector(state => state.filteredRepos)
+  // const repos = useSelector(state => state.repos)
+  // const isFiltered = useSelector(state => state.isFiltered)
+
+  const {
+    filteredRepos,
+    repos,
+    isFiltered
+  } = useSelector(state => state.github)
 
   const handleGetRepos = React.useCallback(() => {
     dispatch(getAllRepos(userName))

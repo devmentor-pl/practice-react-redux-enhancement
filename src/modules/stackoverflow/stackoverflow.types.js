@@ -1,6 +1,6 @@
-const UPLOAD_DATA = 'UPLOAD_DATA'
-const DATA_FILTER = 'DATA_FILTER'
-const REPUTATION_FILTER = 'REPUTATION_FILTER'
+const UPLOAD_DATA = 'stackoverflow/UPLOAD_DATA'
+const DATA_FILTER = 'stackoverflow/DATA_FILTER'
+const REPUTATION_FILTER = 'stackoverflow/REPUTATION_FILTER'
 
 export {
   UPLOAD_DATA,
