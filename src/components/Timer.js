@@ -1,41 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-class Timer extends React.Component {
-    state = {
-        time: 0,
-    }
-
-    getHours() {
-        return 0;
-    }
-
-    getMinutes() {
-        return 0;
-    }
-
-    getSeconds() {
-        return this.state.time;
-    }
-
-    render() {
-        return (
-            <section>
-                Dziękujemy, że jesteś z nami już {this.getHours()}h {this.getMinutes()}m {this.getSeconds()}s.
-            </section>
-        )
-    }
-
-    componentDidMount() {
-        this.id = setInterval(() => {
-            this.setState(state => {
-                return {time: state.time + 1}
-            });
-        }, 1000);
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.id);
-    }
+function Timer({ hours, minutes, seconds }) {
+    return (
+        <section>
+            Dziękujemy, że jesteś z nami już {hours}h {minutes}m {seconds}s.
+        </section>
+    );
 }
+
+Timer.propTypes = {
+    hours: PropTypes.number,
+    minutes: PropTypes.number,
+    seconds: PropTypes.number,
+};
 
 export default Timer;
