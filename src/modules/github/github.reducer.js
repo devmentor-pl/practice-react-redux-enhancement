@@ -15,7 +15,7 @@ const initialState = {
   error: null,
 };
 
-const reducer = (state = initialState, action) => {
+const githubReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USERNAME:
       return { ...state, username: action.payload };
@@ -32,4 +32,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default githubReducer;
