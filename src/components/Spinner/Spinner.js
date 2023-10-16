@@ -15,12 +15,12 @@ const StyledSpinner = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    /* height: 100%; */
 
     .spinner {
         width: 10px;
         height: 10px;
-        border: 3px solid white;
+        border: 3px solid var(--color-1);
         border-top: 2px solid transparent;
         border-radius: 50%;
         margin-right: 1em;
@@ -38,7 +38,7 @@ const StyledSpinner = styled.div`
 `;
 
 Spinner.defaultProps = {
-    children: 'Loading',
+    children: 'Loading...',
 };
 
 Spinner.propTypes = {

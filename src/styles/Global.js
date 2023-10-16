@@ -10,7 +10,7 @@ const GlobalStyles = createGlobalStyle`
  --font-color: grey;
  --font-color-error: orangered;
  --font-color-placeholder: darkgrey;
- --box-shadow-flat: 31px 31px 62px #151719, -31px -31px 62px #313539;
+ --box-shadow: 5px 5px 42px 15px rgba(206, 207, 224, 0.95);
 }
 
 body {

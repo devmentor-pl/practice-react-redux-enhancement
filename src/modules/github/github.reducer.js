@@ -1,10 +1,12 @@
 import types from './github.types';
 
+import { repos } from '../../db';
+
 const initialState = {
     user: '',
     formError: '',
     fetchError: '',
-    repos: [],
+    repos: repos,
     fetchLoading: false,
 };
 
@@ -37,6 +39,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 fetchLoading: false,
                 repos: action.payload,
+                user: '',
             };
         case types.FETCH_REPOS_FAILURE:
             return {

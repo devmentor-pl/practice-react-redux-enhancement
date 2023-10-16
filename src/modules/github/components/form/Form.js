@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { UilSearch } from '@iconscout/react-unicons';
 
 import { getReposAction, setFormError, setKeyToEmptyString, setUserAction } from '../../github.actions';
 import Spinner from '../../../../components/Spinner';
+import loader from '../../../../images/loader.gif';
 
 import {
     StyledSubmitButton,
@@ -16,8 +17,10 @@ import {
 } from './Form.styled';
 
 function Form() {
-    const { user, formError, fetchLoading } = useSelector(state => state.github);
+    const { user, formError, fetchLoading, repos } = useSelector(state => state.github);
     const dispatch = useDispatch();
+    const inputRef = useRef(null);
+    const reposLoaded = repos.length > 0;
 
     useEffect(() => {
         console.log(user);
@@ -35,7 +38,9 @@ function Form() {
         console.log('przeszło');
 
         dispatch(getReposAction(user));
-        // reset form
+        if (inputRef.current) {
+            inputRef.current.blur();
+        }
     };
 
     const handleChange = e => {
@@ -45,7 +50,7 @@ function Form() {
     };
 
     return (
-        <StyledFormWrapper>
+        <StyledFormWrapper $shrink={reposLoaded.toString()}>
             <StyledHeader>
                 <h2>Look for user's repos</h2>
                 <p>Type user name and find their repositories on github.</p>
@@ -53,16 +58,21 @@ function Form() {
             <StyledForm onSubmit={handleSubmit}>
                 <StyledInputWrapper>
                     {/* <label htmlFor='user'>User:</label> */}
-                    <input name='user' id='user' onChange={handleChange} value={user} placeholder='type user name...' />
+                    <input
+                        ref={inputRef}
+                        name='user'
+                        id='user'
+                        onChange={handleChange}
+                        value={user}
+                        placeholder='search for a user...'
+                    />
                     <StyledIconWrapper value={user}>
                         <UilSearch />
                     </StyledIconWrapper>
                     <StyledInputError>{formError}</StyledInputError>
                 </StyledInputWrapper>
-                <StyledSubmitButton type='submit' disabled={fetchLoading}>
-                    {fetchLoading ? <Spinner /> : 'FIND USER'}
-                </StyledSubmitButton>
             </StyledForm>
+            {fetchLoading && <Spinner />}
         </StyledFormWrapper>
     );
 }
