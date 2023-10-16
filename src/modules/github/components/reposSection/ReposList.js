@@ -3,12 +3,12 @@ import { useSelector } from 'react-redux';
 
 import logo from '../../../../images/github-logo.png';
 import RepoItem from './RepoItem';
-import Spinner from '../../../../components/Spinner';
 import { StyledReposWrapper, StyledImgContainer, StyledHeader, StyledReposList } from './ReposList.styled';
 
 function ReposList() {
-    const { repos, fetchLoading } = useSelector(state => state.github);
     const [ownerInfo, setOwnerInfo] = useState(null);
+    const [isOpenId, setIsOpenId] = useState(null);
+    const { repos, fetchLoading } = useSelector(state => state.github);
     console.log(repos[0]);
 
     useEffect(() => {
@@ -20,8 +20,17 @@ function ReposList() {
         }
     }, [repos]);
 
+    const handleOpen = id => {
+        if (id === isOpenId) {
+            return setIsOpenId(null);
+        }
+        setIsOpenId(id);
+    };
+
     const renderItems = () => {
-        const items = repos.map((item, index) => <RepoItem key={item.id} data={item} index={index} />);
+        const items = repos.map((item, index) => (
+            <RepoItem key={item.id} data={item} index={index} handleClick={handleOpen} isOpen={item.id === isOpenId} />
+        ));
 
         return items;
     };
