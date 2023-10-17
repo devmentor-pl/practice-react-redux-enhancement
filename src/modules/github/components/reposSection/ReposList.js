@@ -16,8 +16,7 @@ function ReposList() {
     const [ownerInfo, setOwnerInfo] = useState(null);
     const [isOpenId, setIsOpenId] = useState(null);
     const [inputValue, setInputValue] = useState('');
-    const [initialRender, setInitialRender] = useState(true);
-    const { repos, user, fetchError, initalFetchDone } = useSelector(state => state.github);
+    const { repos, fetchError, initalFetchDone } = useSelector(state => state.github);
     const filteredRepos = repos.filter(repo => repo.name.includes(inputValue));
 
     useEffect(() => {
