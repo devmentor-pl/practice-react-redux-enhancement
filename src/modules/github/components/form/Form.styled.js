@@ -40,37 +40,6 @@ export const StyledForm = styled.form`
     flex-direction: column;
 `;
 
-export const StyledInputWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1em;
-    position: relative;
-
-    input {
-        padding: 1em;
-        border-radius: 10px;
-        background-color: var(--color-input-background);
-        border: none;
-        outline: none;
-        border: 2px solid transparent;
-        text-align: center;
-
-        &:hover {
-            background-color: var(--color-2);
-        }
-
-        &::placeholder {
-            color: var(--font-color-placeholder);
-            font-size: 1.1em;
-            /* padding-left: 10%; */
-        }
-
-        &:focus {
-            border-color: var(--color-1);
-        }
-    }
-`;
-
 export const StyledInputError = styled.div`
     color: var(--font-color-error);
     margin-top: 5px;

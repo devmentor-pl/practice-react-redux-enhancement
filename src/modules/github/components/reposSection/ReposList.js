@@ -4,20 +4,15 @@ import { useSelector } from 'react-redux';
 import logo from '../../../../images/github-logo.png';
 import forest from '../../../../images/forest.png';
 import RepoItem from './RepoItem';
-import {
-    StyledReposWrapper,
-    StyledImgContainer,
-    StyledHeader,
-    StyledReposList,
-    StyledInputWrapper,
-} from './ReposList.styled';
+import Input from '../../../../components/Input';
+import { StyledReposWrapper, StyledImgContainer, StyledHeader, StyledReposList } from './ReposList.styled';
 
 function ReposList() {
     const [ownerInfo, setOwnerInfo] = useState(null);
     const [isOpenId, setIsOpenId] = useState(null);
     const [inputValue, setInputValue] = useState('');
     const { repos, fetchError, initalFetchDone } = useSelector(state => state.github);
-    const filteredRepos = repos.filter(repo => repo.name.includes(inputValue));
+    const filteredRepos = repos.filter(repo => repo.name.includes(inputValue.trim()));
 
     useEffect(() => {
         if (repos.length > 0) {
@@ -52,16 +47,9 @@ function ReposList() {
             <StyledImgContainer>
                 <img src={forest} alt='forest' />
             </StyledImgContainer>
-            <h2>You're lost</h2>
+            <h2>You're lost. Try again.</h2>
             <h4>Error! {fetchError}</h4>
         </>
-    );
-
-    const noReposMessageJSX = (
-        <StyledReposWrapper>
-            <h2>Found no repos</h2>
-            <p>Appears that user has public repos</p>
-        </StyledReposWrapper>
     );
 
     if (repos.length > 0 && ownerInfo) {
@@ -80,21 +68,23 @@ function ReposList() {
                         </p>
                     </div>
                 </StyledHeader>
-                <StyledInputWrapper>
-                    <input type='text' placeholder='filter repos' onChange={handleChange} />
-                    <StyledReposList>{renderItems(filteredRepos)}</StyledReposList>
-                </StyledInputWrapper>
+                <Input type='text' placeholder='filter repos' onChange={handleChange} hoverColor='light' />
+                <StyledReposList>{renderItems(filteredRepos)}</StyledReposList>
             </StyledReposWrapper>
         );
     }
 
     if (fetchError) {
-        return errorMessageJSX;
+        return <StyledReposWrapper>{errorMessageJSX}</StyledReposWrapper>;
     }
 
     if (initalFetchDone && repos.length === 0) {
-        console.log('first');
-        return noReposMessageJSX;
+        return (
+            <StyledReposWrapper>
+                <h2>Found no repos</h2>
+                <p>Appears that user has public repos</p>
+            </StyledReposWrapper>
+        );
     }
 
     return (

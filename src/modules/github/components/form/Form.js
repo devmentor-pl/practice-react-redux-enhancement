@@ -4,6 +4,7 @@ import { UilSearch } from '@iconscout/react-unicons';
 
 import { getReposAction, setFormError, setKeyToEmptyString, setUserAction } from '../../github.actions';
 import Spinner from '../../../../components/Spinner';
+import Input from '../../../../components/Input';
 
 import {
     StyledSubmitButton,
@@ -34,8 +35,6 @@ function Form() {
             return;
         }
 
-        console.log('przeszło');
-
         dispatch(getReposAction(user));
         if (inputRef.current) {
             inputRef.current.blur();
@@ -55,8 +54,21 @@ function Form() {
                 <p>Type user name and find their repositories on github.</p>
             </StyledHeader>
             <StyledForm onSubmit={handleSubmit}>
-                <StyledInputWrapper>
-                    {/* <label htmlFor='user'>User:</label> */}
+                <Input
+                    ref={inputRef}
+                    name='user'
+                    id='user'
+                    onChange={handleChange}
+                    value={user}
+                    placeholder='search for a user...'
+                    hoverColor='dark'
+                >
+                    <StyledIconWrapper value={user}>
+                        <UilSearch />
+                    </StyledIconWrapper>
+                    <StyledInputError>{formError}</StyledInputError>
+                </Input>
+                {/* <StyledInputWrapper>
                     <input
                         ref={inputRef}
                         name='user'
@@ -69,7 +81,7 @@ function Form() {
                         <UilSearch />
                     </StyledIconWrapper>
                     <StyledInputError>{formError}</StyledInputError>
-                </StyledInputWrapper>
+                </StyledInputWrapper> */}
             </StyledForm>
             {fetchLoading && <Spinner />}
         </StyledFormWrapper>

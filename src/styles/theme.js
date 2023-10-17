@@ -18,6 +18,10 @@ const theme = {
             margin: 1em auto;
         `,
     },
+    hover: {
+        light: '#f8f8f8',
+        dark: 'var(--color-2)',
+    },
 };
 
 export default theme;
