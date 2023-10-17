@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { UilAngleDown, UilAngleUp, UilGithub } from '@iconscout/react-unicons';
 
 import * as db from '../../../../../db';

@@ -29,6 +29,7 @@ body {
 
 h2 {
   font-size: 1.75em;
+  margin-bottom: 0.5em;
 }
 
   .body-no-scroll {

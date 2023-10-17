@@ -4,7 +4,6 @@ import { UilSearch } from '@iconscout/react-unicons';
 
 import { getReposAction, setFormError, setKeyToEmptyString, setUserAction } from '../../github.actions';
 import Spinner from '../../../../components/Spinner';
-import loader from '../../../../images/loader.gif';
 
 import {
     StyledSubmitButton,

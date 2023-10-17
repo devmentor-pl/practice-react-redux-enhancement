@@ -12,7 +12,7 @@ function Wrapper({ children, as, row }) {
 
 const DefaultStyledWrapper = styled.div`
     display: flex;
-    min-height: 500px;
+    min-height: 600px;
     border-radius: 10px;
     box-shadow: var(--box-shadow);
     flex-direction: ${({ $row }) => ($row === 'true' ? 'row' : 'row-reverse')};

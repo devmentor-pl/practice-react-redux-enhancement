@@ -35,11 +35,9 @@ export const getReposAction = user => (dispatch, getState) => {
     return api
         .getRepos(user)
         .then(data => {
-            console.log(data);
             dispatch(setFetchSuccess(data));
         })
         .catch(err => {
-            console.error(err);
-            dispatch(setFetchFailure(err));
+            dispatch(setFetchFailure(err.message));
         });
 };
