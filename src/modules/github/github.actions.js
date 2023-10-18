@@ -6,28 +6,28 @@ const api = new GitHubAPI();
 export const setUserAction = name => {
     return {
         type: types.SET_USER,
-        payload: name,
+        payload: { name },
     };
 };
 
 export const setFormError = error => {
-    return { type: types.SET_FORM_ERROR, payload: error };
+    return { type: types.SET_FORM_ERROR, payload: { error } };
 };
 
 export const setKeyToEmptyString = key => {
-    return { type: types.SET_KEY_TO_EMPTY_STRING, payload: key };
+    return { type: types.SET_KEY_TO_EMPTY_STRING, payload: { key } };
 };
 
 export const setFetchFailure = error => {
-    return { type: types.FETCH_REPOS_FAILURE, payload: error };
+    return { type: types.FETCH_REPOS_FAILURE, payload: { error } };
 };
 
 export const setFetchSuccess = repos => {
-    return { type: types.FETCH_REPOS_SUCCESS, payload: repos };
+    return { type: types.FETCH_REPOS_SUCCESS, payload: { repos } };
 };
 
-export const setFetchReposBegin = boolean => {
-    return { type: types.FETCH_REPOS_BEGIN, payload: boolean };
+export const setFetchReposBegin = () => {
+    return { type: types.FETCH_REPOS_BEGIN };
 };
 
 export const getReposAction = user => (dispatch, getState) => {

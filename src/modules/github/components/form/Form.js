@@ -1,30 +1,17 @@
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { UilSearch } from '@iconscout/react-unicons';
 
 import { getReposAction, setFormError, setKeyToEmptyString, setUserAction } from '../../github.actions';
 import Spinner from '../../../../components/Spinner';
 import Input from '../../../../components/Input';
 
-import {
-    StyledSubmitButton,
-    StyledFormWrapper,
-    StyledHeader,
-    StyledForm,
-    StyledInputWrapper,
-    StyledIconWrapper,
-    StyledInputError,
-} from './Form.styled';
+import { StyledFormWrapper, StyledHeader, StyledForm } from './Form.styled';
 
 function Form() {
     const { user, formError, fetchLoading, repos } = useSelector(state => state.github);
     const dispatch = useDispatch();
     const inputRef = useRef(null);
     const reposLoaded = repos.length > 0;
-
-    useEffect(() => {
-        console.log(user);
-    }, [user]);
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -36,6 +23,7 @@ function Form() {
         }
 
         dispatch(getReposAction(user));
+
         if (inputRef.current) {
             inputRef.current.blur();
         }
@@ -62,26 +50,8 @@ function Form() {
                     value={user}
                     placeholder='search for a user...'
                     hoverColor='dark'
-                >
-                    <StyledIconWrapper value={user}>
-                        <UilSearch />
-                    </StyledIconWrapper>
-                    <StyledInputError>{formError}</StyledInputError>
-                </Input>
-                {/* <StyledInputWrapper>
-                    <input
-                        ref={inputRef}
-                        name='user'
-                        id='user'
-                        onChange={handleChange}
-                        value={user}
-                        placeholder='search for a user...'
-                    />
-                    <StyledIconWrapper value={user}>
-                        <UilSearch />
-                    </StyledIconWrapper>
-                    <StyledInputError>{formError}</StyledInputError>
-                </StyledInputWrapper> */}
+                    error={formError}
+                />
             </StyledForm>
             {fetchLoading && <Spinner />}
         </StyledFormWrapper>

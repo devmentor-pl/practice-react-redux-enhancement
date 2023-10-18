@@ -38,7 +38,6 @@ function ReposList() {
     };
 
     const handleChange = e => {
-        console.log(e.target.value);
         setInputValue(e.target.value);
     };
 

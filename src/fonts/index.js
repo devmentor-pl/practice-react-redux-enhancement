@@ -33,7 +33,7 @@ const createFontFace = ({ family, woff, woff2, style }) => `
     font-family: '${family}';
     src: local('${family}'), local('${family}'),
       url(${woff}) format('woff'),
-      url(${woff2}) format('woff2');
+      url(${woff2}) format('woff2'); 
     font-style: ${style || 'normal'};
   }
 `;
