@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 function Wrapper({ children, as, row = '' }) {
     return (
-        <StyledWrapper as={as} $row={row.toString()}>
+        <StyledWrapper $as={as} $row={row.toString()}>
             {children}
         </StyledWrapper>
     );
@@ -23,7 +23,7 @@ const DefaultStyledWrapper = styled.div`
     }
 `;
 
-const StyledWrapper = styled(DefaultStyledWrapper)(({ theme, as }) => theme.wrapper[as]);
+const StyledWrapper = styled(DefaultStyledWrapper)(({ theme, $as }) => theme.wrapper[$as]);
 
 Wrapper.propTypes = {
     children: PropTypes.node,

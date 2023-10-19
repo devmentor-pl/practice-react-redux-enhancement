@@ -13,7 +13,7 @@ const theme = {
             margin: var(--element-margin);
             max-width: 350px;
         `,
-        section: css`
+        container: css`
             max-width: 1000px;
             margin: 1em auto;
         `,

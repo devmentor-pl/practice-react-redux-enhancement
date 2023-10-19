@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import Form from './components/form/Form';
+import FormSection from './components/form/FormSection';
 import Wrapper from '../../components/Wrapper';
 import ReposList from './components/reposSection/ReposList';
 
@@ -10,8 +10,8 @@ function Github() {
     const isRowLayout = repos.length > 0;
 
     return (
-        <Wrapper as='section' row={isRowLayout}>
-            <Form />
+        <Wrapper as='container' row={isRowLayout}>
+            <FormSection />
             <ReposList />
         </Wrapper>
     );
