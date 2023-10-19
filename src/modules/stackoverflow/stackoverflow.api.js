@@ -1,5 +1,5 @@
 class StackOverflowAPI {
-    url = 'https://api.stackexchange.com/2.3/similar?order=desc&sort=creation&site=stackoverflow';
+    url = 'https://api.stackexchange.com/2.3/similar?order=desc&sort=votes&site=stackoverflow';
 
     getComments(query) {
         return fetch(`${this.url}&title=${query}`)

@@ -7,6 +7,7 @@ const initialState = {
     formError: '',
     fetchError: null,
     comments: db.comments,
+    // comments: [],
     fetchLoading: false,
     initalFetchDone: false,
 };

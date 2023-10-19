@@ -35,7 +35,8 @@ export const getCommentsAction = query => (dispatch, getState) => {
     return api
         .getComments(query)
         .then(data => {
-            dispatch(setFetchSuccess(data));
+            console.log(data);
+            dispatch(setFetchSuccess(data.items));
         })
         .catch(err => {
             dispatch(setFetchFailure(err.message));

@@ -3,20 +3,18 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // importuję plugin [html-webpack-plugin]
 
-module.exports = function(env = {}) {
-
-    const {production: isProd = false} = env;
+module.exports = function (env = {}) {
+    const { production: isProd = false } = env;
     console.log(env);
     // w zmiennej [isProd] przechowuje informację
     // w jakim trybie uruchomić webpacka
 
-    return  {
+    return {
         entry: './src/app.js',
         // definiuje plik wejściowy
         mode: isProd ? 'production' : 'development',
         // definiuje tryb pracy webpacka
-        devtool: isProd ? 
-            false : 'source-map',
+        devtool: isProd ? false : 'source-map',
         // definiuje identyfikację kodu źródłowego
         output: {
             path: path.resolve(__dirname, 'build'),
@@ -30,14 +28,14 @@ module.exports = function(env = {}) {
             rules: [
                 {
                     test: /\.js$/,
-                    // określam jakie pliki 
+                    // określam jakie pliki
                     // będą brane pod uwagę
                     exclude: /node_modules/,
                     // określam wykluczenia
                     use: 'babel-loader',
                     // określam jaki [loader]
                     // ma być wykorzystany
-                },           
+                },
                 {
                     test: /\.(png|svg|jpg|gif)$/,
                     // dodaję rozszerzenia obrazów
@@ -56,16 +54,16 @@ module.exports = function(env = {}) {
                         // ustawiam nazwę katalogu i pliku
                     },
                 },
-            ]
+            ],
         },
         plugins: [
             new HtmlWebpackPlugin({
                 template: './src/index.html',
                 // wskazuje plik źródłowy
-                filename: 'index.html'
+                filename: 'index.html',
                 // określan nazwę dla pliku
-            })
-        ]
-    }
-}
+            }),
+        ],
+    };
+};
 // eksportuję ustawienia dla webpacka

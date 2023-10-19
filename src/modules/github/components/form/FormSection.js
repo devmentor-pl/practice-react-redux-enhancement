@@ -20,7 +20,7 @@ function FormSection() {
     const reposLoaded = (repos.length > 0).toString();
 
     return (
-        <Form shrink={reposLoaded} onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit} shrink={reposLoaded}>
             <Header>
                 <h2>Look for user's repos</h2>
                 <p>Type user name and find their repositories on github.</p>

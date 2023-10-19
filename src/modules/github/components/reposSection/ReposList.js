@@ -17,7 +17,7 @@ function ReposList() {
     useEffect(() => {
         if (repos.length > 0) {
             const { owner } = repos[0];
-            if (!owner) throw new Error('no owner');
+            if (!owner) return;
             setOwnerInfo(owner);
         }
     }, [repos]);

@@ -7,6 +7,7 @@ export const StyledReposWrapper = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    flex: 1;
     // overflow hidden nie działało
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
