@@ -15,7 +15,7 @@ export function useForm(searchQuery, setQuery, fetchAction, formErrorAction, rem
         }
 
         console.log(searchQuery);
-        // dispatch(fetchAction(query));
+        dispatch(fetchAction(searchQuery));
 
         if (inputRef.current) {
             inputRef.current.blur();
