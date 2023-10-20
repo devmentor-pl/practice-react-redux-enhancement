@@ -30,10 +30,10 @@ export const setFetchCommentsBegin = () => {
     return { type: types.FETCH_COMMENTS_BEGIN };
 };
 
-export const getCommentsAction = query => (dispatch, getState) => {
+export const getCommentsAction = (query, order, sortOption) => (dispatch, getState) => {
     dispatch(setFetchCommentsBegin());
     return api
-        .getComments(query)
+        .getComments(query, order, sortOption)
         .then(data => {
             console.log(data);
             dispatch(setFetchSuccess(data.items));

@@ -18,6 +18,7 @@ export const StyledAside = styled.aside`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    flex: 1;
 
     p {
         font-size: 0.75rem;
@@ -40,6 +41,7 @@ export const StyledBody = styled.main`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    flex: 5;
 
     h4 {
         color: var(--dark-color-1);

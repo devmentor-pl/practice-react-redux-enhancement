@@ -1,6 +1,6 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { UilArrowsVAlt, UilFavorite } from '@iconscout/react-unicons';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { UilArrowsVAlt, UilFavorite, UilCreateDashboard } from '@iconscout/react-unicons';
 
 import stackLogo from '../../../../images/stacklogo.png';
 import forest from '../../../../images/forest-svg-white.svg';
@@ -8,21 +8,60 @@ import List from '../../../../components/List/List';
 import TopicItem from '../topicItem';
 import * as h from '../../../../helpers';
 
-import {
-    StyledTopicsContainer,
-    StyledHeader,
-    StyledImgContainer,
-    StyledButtonContainer,
-    StyledItem,
-} from './TopicsSection.styled';
+import { StyledTopicsContainer, StyledHeader, StyledImgContainer, StyledButtonContainer } from './TopicsSection.styled';
+import { getCommentsAction } from '../../stackoverflow.actions';
 
 function TopicsSection() {
-    const { comments, initalFetchDone, fetchError } = useSelector(state => state.stackOverFlow);
-    console.log(comments[0]);
-    // console.log('fetchError');
-    // console.log(fetchError);
-    console.log('comments');
-    console.log(comments);
+    const { query, comments, initalFetchDone, fetchError } = useSelector(state => state.stackOverFlow);
+    const [data, setData] = useState(comments);
+    const [prevSearchQuery, setPrevSearchQuery] = useState('');
+    const [sortBy, setSortBy] = useState('');
+    const [sorting, setSorting] = useState('asc');
+    const dispatch = useDispatch();
+    // console.log(comments)
+
+    useEffect(() => {
+        if (query !== '') {
+            setPrevSearchQuery(query);
+            // console.log('query:');
+            // console.log(searchQuery);
+        }
+
+        setData(comments);
+        // console.log('data');
+        // console.log(data[0]);
+    }, [query, comments]);
+
+    const handleSort = option => {
+        console.log(prevSearchQuery);
+        // console.log(sorting);
+
+        if (option === 'relevance') return dispatch(getCommentsAction(prevSearchQuery));
+
+        dispatch(getCommentsAction(prevSearchQuery, sorting, 'creation'));
+        if (sorting === 'desc') {
+            setSorting('asc');
+        } else {
+            setSorting('desc');
+        }
+    };
+
+    const sortByProperty = property => {
+        if (sortBy === property && property === 'date') {
+            const sortedData = [...data].reverse();
+            setData(sortedData);
+        } else {
+            const sortedData = [...data].sort((a, b) => {
+                if (property === 'reputation') {
+                    return b.owner.reputation - a.owner.reputation;
+                } else if (property === 'date') {
+                    return b.creation_date - a.creation_date;
+                }
+            });
+            setData([...sortedData]);
+        }
+        setSortBy(property);
+    };
 
     const errorMessageJSX = (
         <>
@@ -55,17 +94,27 @@ function TopicsSection() {
                     <p>{comments.length} comments</p>
                     <hr />
                     <StyledButtonContainer>
-                        <button className='btn-sort'>
+                        <button
+                            className='btn-sort'
+                            onClick={() => {
+                                // sortByProperty('date');
+                                handleSort();
+                            }}
+                        >
                             <UilArrowsVAlt />
                             By Newest
                         </button>
-                        <button className='btn-sort'>
+                        <button className='btn-sort' onClick={() => sortByProperty('reputation')}>
                             <UilFavorite />
                             By Reputation
                         </button>
+                        <button className='btn-sort' onClick={() => handleSort('relevance')}>
+                            <UilCreateDashboard />
+                            By Relevance
+                        </button>
                     </StyledButtonContainer>
                 </StyledHeader>
-                <List>{renderItems(comments)}</List>
+                <List>{renderItems(data)}</List>
             </StyledTopicsContainer>
         );
     }

@@ -42,7 +42,7 @@ const stackOverflowReducer = (state = initialState, action) => {
                 fetchLoading: false,
                 comments: action.payload.comments,
                 initalFetchDone: true,
-                user: '',
+                query: '',
             };
         case types.FETCH_COMMENTS_FAILURE:
             return {

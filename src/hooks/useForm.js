@@ -14,7 +14,6 @@ export function useForm(searchQuery, setQuery, fetchAction, formErrorAction, rem
             return;
         }
 
-        console.log(searchQuery);
         dispatch(fetchAction(searchQuery));
 
         if (inputRef.current) {

@@ -55,13 +55,13 @@ export const StyledImgContainer = styled.div`
 
 export const StyledButtonContainer = styled.div`
     display: flex;
-    align-self: flex-end;
+    justify-content: start;
 
     .btn-sort {
         background-color: transparent;
         font-family: 'SFProBold', sans-serif;
-        /* border: 1px solid white; */
         min-width: 180px;
+        padding: 0.5rem 0;
         font-size: 1rem;
         display: flex;
         align-items: center;

@@ -18,8 +18,6 @@ export const StyledInput = styled.input`
 
     &:hover {
         background-color: ${({ $hoverColor, theme }) => theme.hover[$hoverColor]};
-        /* background-color: #f4f7fd; */
-        /* border-color: #e0e2e8; */
     }
 
     &::placeholder {
@@ -28,7 +26,7 @@ export const StyledInput = styled.input`
     }
 
     &:focus {
-        border-color: var(--color-1);
+        border-color: ${({ name }) => (name === 'topic' ? 'var(--dark-color-1)' : 'var(--color-1)')};
     }
 `;
 

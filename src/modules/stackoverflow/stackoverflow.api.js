@@ -1,8 +1,8 @@
 class StackOverflowAPI {
-    url = 'https://api.stackexchange.com/2.3/similar?order=desc&sort=relevance&site=stackoverflow';
+    url = 'https://api.stackexchange.com/2.3';
 
-    getComments(query) {
-        return fetch(`${this.url}&title=${query}`)
+    getComments(query, order = 'desc', sort = 'relevance') {
+        return fetch(`${this.url}/similar?order=${order}&sort=${sort}&title=${query}&site=stackoverflow`)
             .then(this.handleErrors)
             .then(resp => resp.json());
     }

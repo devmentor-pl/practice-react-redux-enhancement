@@ -18,7 +18,7 @@ function TopicItem({ data }) {
 
     const date = h.timestampToDateString(timeStamp);
     const tagsJSX = tags.map((el, i) => <li key={i}>{el}</li>);
-    const reputationWithCommas = h.addCommasToNumberString(reputation);
+    const reputationWithCommas = reputation ? h.addCommasToNumberString(reputation) : '';
 
     return (
         <StyledItem key={id}>
@@ -49,3 +49,8 @@ function TopicItem({ data }) {
 }
 
 export default TopicItem;
+
+// czy wyszukiwaniu 'react school' niektórzy użytkownicy mają chyba profilowe z facebooka
+// i wyskakuje mi 404 forbidden. Zastanawiam się, jak obsłużyć błąd w takie sytuacji?
+// robić try catch?. Niekórzy mają 'undefined' i to nie wyrzuca błędu - w takiej
+// sytuacji mógłbym wstawić jakąś grafikę domyślną

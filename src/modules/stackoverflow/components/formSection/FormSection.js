@@ -33,8 +33,8 @@ function FormSection() {
             </Header>
             <Input
                 ref={inputRef}
-                name='user'
-                id='user'
+                name='topic'
+                id='topic'
                 onChange={handleChange}
                 value={query}
                 placeholder='search for topics...'
