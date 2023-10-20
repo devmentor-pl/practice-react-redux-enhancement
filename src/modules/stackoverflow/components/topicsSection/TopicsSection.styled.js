@@ -20,41 +20,49 @@ export const StyledTopicsContainer = styled.div`
     h2 {
         color: #f2740e;
     }
+`;
+
+export const StyledHeader = styled.header`
+    display: flex;
+    flex-direction: column;
+    & > * {
+        flex: 1;
+    }
+
+    h2 {
+        margin-bottom: 0.5rem;
+    }
+
+    hr {
+        width: 100%;
+    }
 
     p,
     h4 {
         color: #f8f9f9;
     }
 
-    svg {
-        fill: white;
-    }
-`;
-
-export const StyledHeader = styled.header`
-    /* display: flex; */
-    & > * {
-        flex: 1;
+    P {
+        font-size: 0.8rem;
     }
 `;
 
 export const StyledImgContainer = styled.div`
     & img {
         max-width: 150px;
-        fill: white;
     }
 `;
 
 export const StyledButtonContainer = styled.div`
     display: flex;
-    float: right;
+    align-self: flex-end;
 
     .btn-sort {
         background-color: transparent;
         font-family: 'SFProBold', sans-serif;
         /* border: 1px solid white; */
         min-width: 180px;
-        font-size: 1.15rem;
+        font-size: 1rem;
         display: flex;
         align-items: center;
         justify-content: center;

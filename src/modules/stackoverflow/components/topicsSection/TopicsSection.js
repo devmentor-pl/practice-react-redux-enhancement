@@ -4,8 +4,17 @@ import { UilArrowsVAlt, UilFavorite } from '@iconscout/react-unicons';
 
 import stackLogo from '../../../../images/stacklogo.png';
 import forest from '../../../../images/forest-svg-white.svg';
+import List from '../../../../components/List/List';
+import TopicItem from '../topicItem';
+import * as h from '../../../../helpers';
 
-import { StyledTopicsContainer, StyledHeader, StyledImgContainer, StyledButtonContainer } from './TopicsSection.styled';
+import {
+    StyledTopicsContainer,
+    StyledHeader,
+    StyledImgContainer,
+    StyledButtonContainer,
+    StyledItem,
+} from './TopicsSection.styled';
 
 function TopicsSection() {
     const { comments, initalFetchDone, fetchError } = useSelector(state => state.stackOverFlow);
@@ -26,11 +35,17 @@ function TopicsSection() {
     );
 
     const noTopicsMessageJSX = (
-        <>
+        <div>
             <h2>Found no topics</h2>
             <p>Try to rephrase your query</p>
-        </>
+        </div>
     );
+
+    const renderItems = itemsArr => {
+        return itemsArr.map((item, index) => {
+            return <TopicItem key={index} data={item} />;
+        });
+    };
 
     if (comments.length > 0) {
         return (
@@ -50,6 +65,7 @@ function TopicsSection() {
                         </button>
                     </StyledButtonContainer>
                 </StyledHeader>
+                <List>{renderItems(comments)}</List>
             </StyledTopicsContainer>
         );
     }

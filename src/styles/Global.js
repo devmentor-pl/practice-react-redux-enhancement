@@ -10,6 +10,9 @@ const GlobalStyles = createGlobalStyle`
  --font-color: grey;
  --font-color-error: orangered;
  --font-color-placeholder: darkgrey;
+ --dark-color-1: rgb(242 116 14);
+ --dark-color-2: rgb(42 46 49);
+ --dark-color-3: rgb(248 249 249);
  --box-shadow: 5px 5px 42px 15px rgba(206, 207, 224, 0.95);
 }
 
