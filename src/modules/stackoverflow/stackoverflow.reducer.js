@@ -5,11 +5,11 @@ import * as db from '../../db';
 const initialState = {
     query: '',
     formError: '',
-    fetchError: null,
+    fetchError: 'error',
     // comments: db.comments,
     comments: [],
     fetchLoading: false,
-    initalFetchDone: false,
+    initalFetchDone: true,
 };
 
 const stackOverflowReducer = (state = initialState, action) => {

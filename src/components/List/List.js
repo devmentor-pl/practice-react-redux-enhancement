@@ -8,8 +8,9 @@ function List({ children }) {
 export const StyledList = styled.ul`
     margin-top: 0.6rem;
     padding: 0 0.2rem;
+    // z listą również mam problem,
+    // że jest ustawiana na sztywno
     max-height: 450px;
-    /* height: inherit; */
     height: 100%;
     overflow-y: scroll;
 

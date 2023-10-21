@@ -13,10 +13,10 @@ import { repos } from '../../db';
 const initialState = {
     user: '',
     formError: '',
-    fetchError: null,
+    fetchError: 'error',
     repos: [],
     fetchLoading: false,
-    initalFetchDone: false,
+    initalFetchDone: true,
 };
 
 const reducer = (state = initialState, action) => {

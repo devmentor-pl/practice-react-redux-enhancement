@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import logo from '../../../../images/github-logo.png';
-import forest from '../../../../images/forest.png';
 import RepoItem from './RepoItem';
 import Input from '../../../../components/Input';
+import Error from '../../../../components/Error';
 import { StyledReposWrapper, StyledImgContainer, StyledHeader, StyledReposList } from './ReposList.styled';
 
 function ReposList() {
@@ -41,16 +41,6 @@ function ReposList() {
         setInputValue(e.target.value);
     };
 
-    const errorMessageJSX = (
-        <>
-            <StyledImgContainer>
-                <img src={forest} alt='forest' />
-            </StyledImgContainer>
-            <h2>You're lost. Try again.</h2>
-            <h4>Error! {fetchError}</h4>
-        </>
-    );
-
     if (repos.length > 0 && ownerInfo) {
         const ownerName = ownerInfo.login.charAt(0).toUpperCase() + ownerInfo.login.slice(1);
 
@@ -73,15 +63,10 @@ function ReposList() {
         );
     }
 
-    if (fetchError) {
-        return <StyledReposWrapper>{errorMessageJSX}</StyledReposWrapper>;
-    }
-
-    if (initalFetchDone && repos.length === 0) {
+    if (initalFetchDone && (repos.length === 0 || fetchError)) {
         return (
             <StyledReposWrapper>
-                <h2>Found no repos</h2>
-                <p>Appears that user has public repos</p>
+                <Error renderFetch={fetchError} />
             </StyledReposWrapper>
         );
     }
