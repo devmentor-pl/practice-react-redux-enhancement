@@ -6,8 +6,8 @@ const initialState = {
     query: '',
     formError: '',
     fetchError: null,
-    comments: db.comments,
-    // comments: [],
+    // comments: db.comments,
+    comments: [],
     fetchLoading: false,
     initalFetchDone: false,
 };
