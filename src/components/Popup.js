@@ -90,7 +90,6 @@ const StyledColorDiv = styled.div`
     cursor: pointer;
 
     ${({color, pickedcolor}) => {
-        console.log(pickedcolor)
         if (color === pickedcolor) {
            return {border: '2px solid black'}
         }
