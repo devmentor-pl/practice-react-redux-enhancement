@@ -5,8 +5,9 @@ export const StyledTopicsContainer = styled.div`
     padding: 1em;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
+    /* height: 100%; */
     flex: 1;
     // overflow hidden nie działało
     border-top-right-radius: 10px;
@@ -19,6 +20,14 @@ export const StyledTopicsContainer = styled.div`
 
     h2 {
         color: #f2740e;
+    }
+
+    .list-container {
+        flex-grow: 1;
+        /* display: flex; */
+        /* flex-direction: column; */
+        background-color: grey;
+        min-height: calc(100% - 107px);
     }
 `;
 

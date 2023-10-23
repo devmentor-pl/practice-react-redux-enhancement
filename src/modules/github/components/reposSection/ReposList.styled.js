@@ -35,8 +35,8 @@ export const StyledImgContainer = styled.div`
 
 export const StyledHeader = styled.header`
     display: flex;
+    flex-direction: column;
     gap: 1em;
-    align-items: center;
     margin-bottom: 1.5rem;
 
     h2 {
@@ -46,24 +46,11 @@ export const StyledHeader = styled.header`
     p {
         color: var(--font-color);
     }
-`;
 
-export const StyledReposList = styled.ul`
-    margin-top: 1.75em;
-    padding: 0 0.2em;
-    max-height: 350px;
-    overflow-y: scroll;
-
-    &::-webkit-scrollbar {
-        width: 0.3em;
-    }
-
-    &::-webkit-scrollbar-track {
-        background: transparent;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background-color: var(--font-color-placeholder);
-        border-radius: 100vw;
+    .user-bio {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
     }
 `;

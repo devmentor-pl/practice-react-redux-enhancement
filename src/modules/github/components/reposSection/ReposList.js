@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 
 import logo from '../../../../images/github-logo.png';
 import RepoItem from './RepoItem';
 import Input from '../../../../components/Input';
 import Error from '../../../../components/Error';
-import { StyledReposWrapper, StyledImgContainer, StyledHeader, StyledReposList } from './ReposList.styled';
+import List from '../../../../components/List';
+import * as h from '../../../../helpers';
+
+import { StyledReposWrapper, StyledImgContainer, StyledHeader } from './ReposList.styled';
 
 function ReposList() {
     const [ownerInfo, setOwnerInfo] = useState(null);
@@ -13,6 +16,14 @@ function ReposList() {
     const [inputValue, setInputValue] = useState('');
     const { repos, fetchError, initalFetchDone } = useSelector(state => state.github);
     const filteredRepos = repos.filter(repo => repo.name.includes(inputValue.trim()));
+    const headerRef = useRef(null);
+    const [listHeight, setLightHeight] = useState(0);
+
+    useEffect(() => {
+        if (ownerInfo && headerRef.current) {
+            setLightHeight(headerRef.current.clientHeight);
+        }
+    }, [ownerInfo, headerRef]);
 
     useEffect(() => {
         if (repos.length > 0) {
@@ -20,7 +31,7 @@ function ReposList() {
             if (!owner) return;
             setOwnerInfo(owner);
         }
-    }, [repos]);
+    }, [repos, headerRef]);
 
     const handleOpen = id => {
         if (id === isOpenId) {
@@ -42,23 +53,26 @@ function ReposList() {
     };
 
     if (repos.length > 0 && ownerInfo) {
-        const ownerName = ownerInfo.login.charAt(0).toUpperCase() + ownerInfo.login.slice(1);
+        const ownerName = h.capitalizeFirstLetter(ownerInfo.login);
 
         return (
             <StyledReposWrapper $as='list'>
-                <StyledHeader>
-                    <StyledImgContainer $as='circle'>
-                        <img src={ownerInfo.avatar_url} alt='user' />
-                    </StyledImgContainer>
-                    <div>
-                        <h2>{ownerName}</h2>
-                        <p>
-                            User has <span>{repos.length}</span> repos
-                        </p>
+                <StyledHeader ref={headerRef}>
+                    <div className='user-bio'>
+                        <StyledImgContainer $as='circle'>
+                            <img src={ownerInfo.avatar_url} alt='user' />
+                        </StyledImgContainer>
+                        <div>
+                            <h2>{ownerName}</h2>
+                            <p>
+                                User has <span>{repos.length}</span> repos
+                            </p>
+                        </div>
                     </div>
+                    <Input type='text' placeholder='filter repos' onChange={handleChange} hoverColor='light' />
                 </StyledHeader>
-                <Input type='text' placeholder='filter repos' onChange={handleChange} hoverColor='light' />
-                <StyledReposList>{renderItems(filteredRepos)}</StyledReposList>
+
+                <List height={listHeight}>{renderItems(filteredRepos)}</List>
             </StyledReposWrapper>
         );
     }

@@ -2,21 +2,14 @@ import types from './github.types';
 
 import { repos } from '../../db';
 
-// const initialState = {
-//     user: '',
-//     formError: '',
-//     fetchError: null,
-//     repos: repos,
-//     fetchLoading: false,
-// };
-
 const initialState = {
     user: '',
     formError: '',
-    fetchError: 'error',
-    repos: [],
+    fetchError: null,
+    // repos: [],
+    repos,
     fetchLoading: false,
-    initalFetchDone: true,
+    initalFetchDone: false,
 };
 
 const reducer = (state = initialState, action) => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { UilArrowsVAlt, UilFavorite, UilCreateDashboard } from '@iconscout/react-unicons';
 
@@ -8,12 +8,15 @@ import TopicItem from '../topicItem';
 import Error from '../../../../components/Error';
 
 import useSort from '../../../../hooks/useSort';
+import useCalculateListHeight from '../../../../hooks/useCalculateListHeight';
 
 import { StyledTopicsContainer, StyledHeader, StyledImgContainer, StyledButtonContainer } from './TopicsSection.styled';
 
 function TopicsSection() {
     const { query, comments, initalFetchDone, fetchError } = useSelector(state => state.stackOverFlow);
     const { data, handleSort, sortByProperty } = useSort(query, comments);
+    const headerRef = useRef(null);
+    const { listHeight } = useCalculateListHeight(headerRef);
 
     const renderItems = itemsArr => {
         return itemsArr.map((item, index) => {
@@ -24,7 +27,7 @@ function TopicsSection() {
     if (comments.length > 0) {
         return (
             <StyledTopicsContainer $as='list'>
-                <StyledHeader>
+                <StyledHeader ref={headerRef}>
                     <h2>Search Results</h2>
                     <p>{comments.length} comments</p>
                     <hr />
@@ -43,7 +46,7 @@ function TopicsSection() {
                         </button>
                     </StyledButtonContainer>
                 </StyledHeader>
-                <List>{renderItems(data)}</List>
+                <List height={listHeight}>{renderItems(data)}</List>
             </StyledTopicsContainer>
         );
     }
@@ -51,7 +54,7 @@ function TopicsSection() {
     if (initalFetchDone && (comments.length === 0 || fetchError)) {
         return (
             <StyledTopicsContainer>
-                <Error renderFetch={fetchError} variant="dark"/>
+                <Error renderFetch={fetchError} variant='dark' />
             </StyledTopicsContainer>
         );
     }

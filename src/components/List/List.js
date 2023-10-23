@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-function List({ children }) {
-    return <StyledList>{children}</StyledList>;
+function List({ children, height }) {
+    // console.log(height);
+
+    return <StyledList height={height}>{children}</StyledList>;
 }
 
 export const StyledList = styled.ul`
@@ -10,8 +12,8 @@ export const StyledList = styled.ul`
     padding: 0 0.2rem;
     // z listą również mam problem,
     // że jest ustawiana na sztywno
-    max-height: 450px;
-    height: 100%;
+    height: calc(100% - ${props => props.height + 'px'});
+    /* max-height: 350px; */
     overflow-y: scroll;
 
     &::-webkit-scrollbar {
