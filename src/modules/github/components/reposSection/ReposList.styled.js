@@ -19,6 +19,7 @@ export const StyledHeader = styled.header`
     display: flex;
     flex-direction: column;
     gap: 1em;
+    flex: 1;
 
     h2 {
         margin-bottom: 0.15em;

@@ -22,7 +22,11 @@ export const StyledPopup = styled.div`
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
 
-    .close-button {
+    ${({ theme, color }) => color && theme[color]};
+`;
+
+export const StyledButton = styled.button`
+    && {
         position: absolute;
         top: 0;
         right: 0;
@@ -32,7 +36,7 @@ export const StyledPopup = styled.div`
         width: 30px;
         height: 30px;
         border-radius: 50%;
-        font-size: 1.5em;
+        font-size: 1.2em;
         color: white;
         display: flex;
         align-items: center;
@@ -42,6 +46,4 @@ export const StyledPopup = styled.div`
             background-color: #f4364c;
         }
     }
-
-    ${({ theme, color }) => color && theme[color]};
 `;

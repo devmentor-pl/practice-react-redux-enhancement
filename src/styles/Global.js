@@ -42,7 +42,7 @@ h2 {
   button {
     background-color: var(--color-1);
     border: none;
-    min-width: 200px;
+    /* min-width: 200px; */
     border-radius: 5px;
     padding: 0.75em;
     color: white;

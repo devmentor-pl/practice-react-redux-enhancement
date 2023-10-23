@@ -32,7 +32,7 @@ function ReposList() {
             if (!owner) return;
             setOwnerInfo(owner);
         }
-    }, [repos, headerRef]);
+    }, [repos, headerRef, repos]);
 
     const handleOpen = id => {
         if (id === isOpenId) {
