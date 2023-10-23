@@ -18,6 +18,7 @@ const stackOverflowReducer = (state = initialState, action) => {
             return {
                 ...state,
                 query: action.payload.query,
+                formError: '',
             };
         case types.SET_COMMENT_ERROR:
             return {

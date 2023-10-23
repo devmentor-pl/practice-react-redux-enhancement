@@ -21,7 +21,7 @@ const App = () => {
                 <GlobalFonts />
                 <GlobalStyles />
                 <ThemeProvider theme={theme}>
-                    {/* <Task01 /> */}
+                    <Task01 />
                     {/* <Task02 /> */}
                     <Task03 />
                     <Task04 />
