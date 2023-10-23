@@ -1,11 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 import forestWhite from '../../images/forest-svg-white.svg';
 import forest from '../../images/forest-svg.svg';
 
 function Error({ renderFetch, variant }) {
-    console.log(variant);
     const image = variant === 'dark' ? forestWhite : forest;
 
     return (
@@ -17,8 +17,18 @@ function Error({ renderFetch, variant }) {
     );
 }
 
+Error.propTypes = {
+    renderFetch: PropTypes.string,
+    variant: PropTypes.string,
+};
+
 const StyledContainer = styled.div`
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 
     img {
         max-width: 150px;
@@ -27,6 +37,7 @@ const StyledContainer = styled.div`
     ${({ $as }) =>
         $as === 'dark' &&
         css`
+            background-color: var(--dark-color-2);
             h2 {
                 color: var(--dark-color-1);
             }

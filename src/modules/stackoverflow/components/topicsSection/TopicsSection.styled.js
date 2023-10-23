@@ -1,35 +1,4 @@
-import styled, { css } from 'styled-components';
-
-export const StyledTopicsContainer = styled.div`
-    background-color: #2a2e31;
-    padding: 1em;
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center;
-    align-items: center; */
-    /* height: 100%; */
-    flex: 1;
-    // overflow hidden nie działało
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    ${({ $as }) =>
-        $as === 'list' &&
-        css`
-            display: block;
-        `}
-
-    h2 {
-        color: #f2740e;
-    }
-
-    .list-container {
-        flex-grow: 1;
-        /* display: flex; */
-        /* flex-direction: column; */
-        background-color: grey;
-        min-height: calc(100% - 107px);
-    }
-`;
+import styled from 'styled-components';
 
 export const StyledHeader = styled.header`
     display: flex;
@@ -40,6 +9,7 @@ export const StyledHeader = styled.header`
 
     h2 {
         margin-bottom: 0.5rem;
+        color: #f2740e;
     }
 
     hr {

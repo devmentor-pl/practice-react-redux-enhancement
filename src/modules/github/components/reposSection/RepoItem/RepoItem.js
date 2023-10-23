@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { UilAngleDown, UilAngleUp, UilGithub } from '@iconscout/react-unicons';
 
 import * as db from '../../../../../db';
@@ -48,5 +49,12 @@ function RepoItem({ data, index, handleClick, isOpen }) {
         </StyledListItem>
     );
 }
+
+RepoItem.propTypes = {
+    data: PropTypes.object.isRequired,
+    index: PropTypes.number.isRequired,
+    handleClick: PropTypes.func.isRequired,
+    isOpen: PropTypes.bool.isRequired,
+};
 
 export default RepoItem;

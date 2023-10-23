@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { UilLink } from '@iconscout/react-unicons';
 
 import * as h from '../../../../helpers';
@@ -47,6 +48,22 @@ function TopicItem({ data }) {
         </StyledItem>
     );
 }
+
+TopicItem.propTypes = {
+    data: PropTypes.shape({
+        answer_count: PropTypes.number.isRequired,
+        creation_date: PropTypes.number.isRequired,
+        link: PropTypes.string.isRequired,
+        tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+        title: PropTypes.string.isRequired,
+        accepted_answer_id: PropTypes.number,
+        owner: PropTypes.shape({
+            display_name: PropTypes.string.isRequired,
+            profile_image: PropTypes.string,
+            reputation: PropTypes.number,
+        }).isRequired,
+    }).isRequired,
+};
 
 export default TopicItem;
 

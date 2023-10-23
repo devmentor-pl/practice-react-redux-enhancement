@@ -1,5 +1,5 @@
 class GitHubAPI {
-    url = 'https://api.github.com';
+    url = 'https://api.githu.com';
 
     getRepos(userName) {
         // https://docs.github.com/en/rest/reference/repos#list-repositories-for-a-user

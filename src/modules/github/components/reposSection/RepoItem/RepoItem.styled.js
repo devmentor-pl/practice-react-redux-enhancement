@@ -4,7 +4,6 @@ export const StyledListItem = styled.li`
     min-height: 30px;
     padding: 1em;
     position: relative;
-    cursor: pointer;
     transition: background-color 0.4s;
     &:hover {
         background-color: var(--color-input-background);

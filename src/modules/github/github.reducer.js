@@ -6,8 +6,8 @@ const initialState = {
     user: '',
     formError: '',
     fetchError: null,
-    // repos: [],
-    repos,
+    repos: [],
+    // repos,
     fetchLoading: false,
     initalFetchDone: false,
 };
@@ -50,6 +50,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 fetchLoading: false,
                 fetchError: action.payload.error,
+                initalFetchDone: true,
                 repos: [],
             };
         default:
