@@ -15,10 +15,10 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case types.SET_USER:
-            console.log(state);
             return {
                 ...state,
                 user: action.payload.name,
+                formError: '',
             };
         case types.SET_FORM_ERROR:
             return {
