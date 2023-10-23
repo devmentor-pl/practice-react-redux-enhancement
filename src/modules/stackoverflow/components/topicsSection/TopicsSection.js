@@ -27,7 +27,7 @@ function TopicsSection() {
 
     if (comments.length > 0) {
         return (
-            <ListSection $as='list' variant='dark'>
+            <ListSection as='list' variant='dark'>
                 <StyledHeader ref={headerRef}>
                     <h2>Search Results</h2>
                     <p>{comments.length} comments</p>
@@ -54,14 +54,14 @@ function TopicsSection() {
 
     if (initalFetchDone && (comments.length === 0 || fetchError)) {
         return (
-            <ListSection varinat='dark'>
+            <ListSection variant='dark' as='centre'>
                 <Error renderFetch={fetchError} variant='dark' />
             </ListSection>
         );
     }
 
     return (
-        <ListSection varinat='dark'>
+        <ListSection variant='dark' as='centre'>
             <StyledImgContainer>
                 <img src={stackLogo} alt='stackoverflow logo' />
             </StyledImgContainer>

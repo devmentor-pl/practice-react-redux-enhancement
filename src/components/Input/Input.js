@@ -19,7 +19,7 @@ const Input = forwardRef(({ children, name, onChange, value, placeholder, hoverC
             <StyledIconWrapper value={value}>
                 <UilSearch />
             </StyledIconWrapper>
-            {/* <StyledInputError>{error}</StyledInputError> */}
+            <StyledInputError>{error}</StyledInputError>
         </StyledInputWrapper>
     );
 });

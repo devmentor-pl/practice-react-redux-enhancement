@@ -19,7 +19,9 @@ export const StyledHeader = styled.header`
     display: flex;
     flex-direction: column;
     gap: 1em;
-    flex: 1;
+    // tutaj musiałem an szywno ustawić wysokość, gdyż pierwszy render powodował
+    // że lista wychodziła poza kontener
+    height: 150px;
 
     h2 {
         margin-bottom: 0.15em;
