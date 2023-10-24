@@ -6,25 +6,23 @@ import Task03 from './../../03/Task03';
 import Task04 from './../../04/Task04';
 import Task05 from './../../05/Task05';
 import { createStore } from 'redux';
-import { reducers } from '../modules/stackoverflow'
-// import { reducers } from '../modules/github';
-import { Provider } from 'react-redux';
+import reducers from '../reducers'
 
+import { Provider } from 'react-redux';
 
 const App = () => {
 
     const store = createStore(reducers,  window.__REDUX_DEVTOOLS_EXTENSION__ 
         && window.__REDUX_DEVTOOLS_EXTENSION__() )
 
-    return (<>
+    return (
         <Provider store={store}>
             <Task01 />
-            {/* <Task02 />  */}
-            {/* <Task03 /> */}
+            <Task02 />
+            <Task03 />
             <Task04 />
             <Task05 />
         </Provider>
-        </>
     )
 }
 

@@ -7,7 +7,7 @@ const Github = () => {
     const [userName, setUserName] = useState('')
     const [filterTaskName, setFilterTaskName] = useState('')
 
-    const repos = useSelector(state => state.repos)
+    const repos = useSelector(state => state.github.repos)
     const dispatch = useDispatch()
 
     const gitHubApi = new GitHubAPI()
@@ -20,10 +20,10 @@ const Github = () => {
                 .then(data => {
                     if (typeof data !== 'undefined') {
                         dispatch(updateReposArr(data))
-                    } else console.log('invalid User Name')
+                    } else console.log('Invalid User Name')
                 })
         } else {
-            alert('no valid data')
+            alert('No valid data')
         }
 
     }
@@ -46,16 +46,17 @@ const Github = () => {
 
     return (
         <>
+            <h4>Look for Github repositories!</h4>
             <form onSubmit={submitHandler}>
-                <label htmlFor="">User Name
-                    <input type="text" onChange={userNameChangeHandler} value={userName} />
+                <label htmlFor="">
+                    <input type="text" placeholder="User Name" onChange={userNameChangeHandler} value={userName} />
                 </label>
-                <input type="submit" />
+                <input type="submit" value="submit" />
             </form>
             {repos.length !== 0 && (
                 <div>
-                    <label htmlFor="">Filter tasks
-                        <input type="text" onChange={filterHandler} value={filterTaskName} />
+                    <label htmlFor="">
+                        <input type="text" placeholder='Filter tasks' onChange={filterHandler} value={filterTaskName} />
                     </label>
                     {renderRepos()}
                 </div>

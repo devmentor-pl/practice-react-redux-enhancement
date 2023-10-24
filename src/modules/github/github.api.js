@@ -6,8 +6,6 @@ class GitHubAPI {
         return fetch(`${this.url}/users/${userName}/repos`)
             .then(this.handleErrors)
             .then(resp => resp.json())
-        // .then(this.handleErrors)
-        // .catch(err => console.log(err))          
     }
 
     handleErrors(resp) {
@@ -16,11 +14,6 @@ class GitHubAPI {
         }
 
         return resp;
-        // if(!resp.ok) {
-        //     throw Error(resp.statusText);
-        // } else {
-        //     return resp.json()
-        // }
     }
 }
 

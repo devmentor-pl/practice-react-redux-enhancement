@@ -6,7 +6,7 @@ import { loadData } from "./";
 const Stackoverflow = () => {
     const [searchText, setSearchText] = useState('')
     const [selectedValue, setSelectedValue] = useState('none')
-    const dataArr = useSelector(state => state.dataArr)
+    const dataArr = useSelector(state => state.stackoverflow.dataArr)
     const dispatch = useDispatch()
 
     const stackoverflowApi = new StackoverflowAPI()
@@ -64,15 +64,14 @@ const Stackoverflow = () => {
                 {/* <div>Creation date: {renderDate(item.creation_date)}</div> */}
             </li>)
         )
-
-
     }
 
     return (
         <>
+            <h4>Search in Stackoverflow</h4>
             <form onSubmit={submitHandler}>
-                <label>Search
-                    <input type="text" value={searchText} onChange={changeHandler} />
+                <label>
+                    <input type="text" placeholder='Search' value={searchText} onChange={changeHandler} />
                 </label>
                 <input type="submit" value="submit" />
 
@@ -89,7 +88,6 @@ const Stackoverflow = () => {
                     {renderList()}
                 </div>
             )}
-
         </>
     )
 }
