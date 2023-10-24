@@ -18,7 +18,9 @@ const Github = () => {
         if (userName.trim().length > 0) {
             gitHubApi.getRepos(userName)
                 .then(data => {
-                    dispatch(updateReposArr(data))
+                    if (typeof data !== 'undefined') {
+                        dispatch(updateReposArr(data))
+                    } else console.log('invalid User Name')
                 })
         } else {
             alert('no valid data')
