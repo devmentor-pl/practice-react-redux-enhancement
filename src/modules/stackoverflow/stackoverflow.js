@@ -16,8 +16,10 @@ const Stackoverflow = () => {
         e.preventDefault()
 
         if (searchText.trim() !== '') {
+
             stackoverflowApi.load(searchText)
                 .then(({ items }) => {
+                    console.log(items)
                     if (items.length !== 0) {
                         dispatch(loadData(items))
                     } else alert('The phrase was not found')
