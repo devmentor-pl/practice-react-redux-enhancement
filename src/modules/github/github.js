@@ -27,7 +27,7 @@ const Github = () => {
 
     const renderRepos = () => {
         const filteredReposArr = repos.filter(item => item.name.toLowerCase().includes(phrase.toLowerCase()))
-        console.log(filteredReposArr)
+
         return filteredReposArr.map(({ id, name, html_url }) => {
             return <li key={id}><a href={html_url}>{name}</a></li>
         })
