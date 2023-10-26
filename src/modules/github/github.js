@@ -1,27 +1,16 @@
-import React, { useState } from "react";
-import { GitHubAPI } from "./";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateReposArr } from "./";
+import { getRepos, setLogin, setPhrase } from "./";
 
 const Github = () => {
-    const [userName, setUserName] = useState('')
-    const [filterTaskName, setFilterTaskName] = useState('')
-
-    const repos = useSelector(state => state.github.repos)
+    const { login, phrase, repos } = useSelector(state => state.github)
     const dispatch = useDispatch()
-
-    const gitHubApi = new GitHubAPI()
 
     const submitHandler = (e) => {
         e.preventDefault()
 
-        if (userName.trim().length > 0) {
-            gitHubApi.getRepos(userName)
-                .then(data => {
-                    if (typeof data !== 'undefined') {
-                        dispatch(updateReposArr(data))
-                    } else console.log('Invalid User Name')
-                })
+        if (login.trim().length > 0) {
+            dispatch(getRepos(login))
         } else {
             alert('No valid data')
         }
@@ -29,18 +18,18 @@ const Github = () => {
     }
 
     const userNameChangeHandler = (e) => {
-        setUserName(e.target.value)
+        dispatch(setLogin(e.target.value))
     }
 
     const filterHandler = (e) => {
-        setFilterTaskName((e.target.value))
+        dispatch(setPhrase(e.target.value))
     }
 
     const renderRepos = () => {
-        const filteredReposArr = repos.filter(item => item.name.toLowerCase().includes(filterTaskName.toLowerCase()))
-       
-        return filteredReposArr.map(({ id, name }) => {
-            return <li key={id}>{name}</li>
+        const filteredReposArr = repos.filter(item => item.name.toLowerCase().includes(phrase.toLowerCase()))
+        console.log(filteredReposArr)
+        return filteredReposArr.map(({ id, name, html_url }) => {
+            return <li key={id}><a href={html_url}>{name}</a></li>
         })
     }
 
@@ -49,14 +38,14 @@ const Github = () => {
             <h4>Look for Github repositories!</h4>
             <form onSubmit={submitHandler}>
                 <label htmlFor="">
-                    <input type="text" placeholder="User Name" onChange={userNameChangeHandler} value={userName} />
+                    <input type="text" placeholder="User Name" onChange={userNameChangeHandler} value={login} />
                 </label>
                 <input type="submit" value="submit" />
             </form>
             {repos.length !== 0 && (
                 <div>
                     <label htmlFor="">
-                        <input type="text" placeholder='Filter tasks' onChange={filterHandler} value={filterTaskName} />
+                        <input type="text" placeholder='Filter tasks' onChange={filterHandler} value={phrase} />
                     </label>
                     {renderRepos()}
                 </div>
