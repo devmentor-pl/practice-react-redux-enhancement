@@ -10,8 +10,6 @@ class StackoverflowAPI {
             .then(resp => {
                 return resp.json()
             })
-    // .catch(err => console.log(err))
-
     }
 
     handleErrors(resp) {

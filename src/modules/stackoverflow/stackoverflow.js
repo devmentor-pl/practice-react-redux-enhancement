@@ -4,24 +4,12 @@ import { getData, setSort } from "./";
 
 const Stackoverflow = () => {
     const [searchText, setSearchText] = useState('')
-    // const [sort, setSelectedValue] = useState('none')
     const { dataArr, sort } = useSelector(state => state.stackoverflow)
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        
-            dispatch(getData(searchText, sort))
-        
+    useEffect(() => {     
+        dispatch(getData(searchText, sort))     
     }, [searchText, sort])
-
-    // const submitHandler = (e) => {
-    //     e.preventDefault()
-
-    //     // if (searchText.trim() !== '') {
-    //     dispatch(getData(searchText, sort))
-    //     // }
-    //     // else alert('No valid data!')
-    // }
 
     const changeHandler = (e) => {
         setSearchText(e.target.value)
@@ -29,24 +17,13 @@ const Stackoverflow = () => {
 
     const selectHandler = (e) => {
         dispatch(setSort(e.target.value))
-        // dispatch(getData(searchText, sort))
-
     }
 
-    // const sortData = (value) => {
-    //     if (value === 'none') {
-    //         return dataArr
-    //     } else {
-    //         return dataArr.sort((a, b) => b[value] - a[value])
-    //     }
-    // }
-
     const renderList = () => {
-        // const sortedArr = sortData(sort)
 
         return dataArr.map(item => (
             <li key={item.question_id}>
-                <div>Title: <a href="">{item.title}</a></div>
+                <div>Title: <a href={item.link}>{item.title}</a></div>
                 <div>Score: {item.score}</div>
             </li>
         )
