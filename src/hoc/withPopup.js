@@ -1,7 +1,27 @@
 import React from 'react';
 
-const withPopup = () => {
-    return () => <section>withPopup()</section>;
+const withPopup = (Welcome) => (PopupContainer) => {
+    return class Popup extends React.Component {
+        render() {
+            const { clickBtn, isWindowClosed } = this.props
+
+            return (
+                <section>
+                    {
+                        isWindowClosed
+                            ?
+                            <Welcome />
+                            :
+                            <PopupContainer
+                                clickBtn={clickBtn}
+                            >
+                                <Welcome />
+                            </PopupContainer>
+                    }
+                </section>
+            )
+        }
+    }
 }
 
 
