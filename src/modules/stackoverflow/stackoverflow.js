@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 
 const Stackoverflow = () => {
-  const { phrase, sort, posts } = useSelector(state => state)
+  const { phrase, sort, posts } = useSelector(state => state.stackoverflow)
   const dispatch = useDispatch()
 
   useEffect(() => {

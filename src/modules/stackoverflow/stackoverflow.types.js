@@ -1,3 +1,3 @@
-export const SET_PHRASE = 'setPhrase'
-export const SET_SORT = 'setSort'
-export const SET_POSTS = 'setPosts'
+export const SET_PHRASE = 'setPhraseSO'
+export const SET_SORT = 'setSortSO'
+export const SET_POSTS = 'setPostsSO'

@@ -1,4 +1,4 @@
-export const SET_LOGIN = 'setLogin'
-export const SET_PHRASE = 'setPhrase'
-export const SET_REPOS = 'setRepos'
-export const GET_REPOS = 'getRepos'
+export const SET_LOGIN = 'setLoginGH'
+export const SET_PHRASE = 'setPhraseGH'
+export const SET_REPOS = 'setReposGH'
+export const GET_REPOS = 'getReposGH'
