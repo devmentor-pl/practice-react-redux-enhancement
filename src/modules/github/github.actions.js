@@ -4,7 +4,6 @@ import GitHubApi from './github.api'
 
 export const getReposAction = userName => (dispatch) => {
   const api = new GitHubApi()
-  console.log(api, userName)
   api.getRepos(userName).then(data => dispatch(setReposAction(data)))
 }
 
