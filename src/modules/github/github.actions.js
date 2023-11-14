@@ -1,6 +1,7 @@
 import * as types from './github.types';
 import GitHubApi from './github.api'
 
+
 export const getReposAction = userName => (dispatch, getState) => {
   const api = new GitHubApi()
   console.log(api, userName)
