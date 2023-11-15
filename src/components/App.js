@@ -12,7 +12,7 @@ import Task03 from './../../03/Task03';
 import Task04 from './../../04/Task04';
 import Task05 from './../../05/Task05';
 
-const store = createStore(stackReducer, composeWithDevTools(applyMiddleware(thunk)));
+const store = createStore(githubReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 const App = () => {
 	return (

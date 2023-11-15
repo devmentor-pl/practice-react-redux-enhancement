@@ -4,22 +4,26 @@ import { setReposAction, setErrorAction } from './github.actions';
 import GitHubAPI from './github.api';
 
 const GithubComponent = () => {
+	const dispatch = useDispatch();
+	const newUser = new GitHubAPI();
+
 	const [searchValue, setSearchValue] = useState('');
 	const [filterReposValue, setFilterReposValue] = useState('');
 	const [loading, setLoading] = useState(false);
+
 	const repos = useSelector(state => state.repos);
-	const message = useSelector(state => state.messages);
-	const newUser = new GitHubAPI();
-	const dispatch = useDispatch();
+	const error = useSelector(state => state.errors);
 
 	const fetchData = async userName => {
 		try {
 			setLoading(true);
+			dispatch(setErrorAction(null));
 			const repos = await newUser.getRepos(userName);
 			const reposName = repos.map(repo => repo.name);
 			dispatch(setReposAction(reposName));
 		} catch (err) {
-			dispatch(setErrorAction(err));
+			dispatch(setErrorAction(err.message));
+			dispatch(setReposAction(''));
 		} finally {
 			setLoading(false);
 		}
@@ -55,6 +59,7 @@ const GithubComponent = () => {
 					))}
 				</ul>
 			)}
+			{error === '404' ? <p>repo not found...</p> : null}
 		</>
 	);
 };

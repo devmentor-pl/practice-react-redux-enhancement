@@ -1,7 +1,7 @@
 import githubTypes from './github.types';
 const initState = {
 	repos: [],
-	messages: [],
+	errors: [],
 };
 
 const githubReducer = (state = initState, action) => {
@@ -9,7 +9,7 @@ const githubReducer = (state = initState, action) => {
 		case githubTypes.ADD_REPO_STATE:
 			return { ...state, repos: action.payload.repos };
 		case githubTypes.ADD_ERROR_API:
-			return { ...state, messages: action.payload.message }; 
+			return { ...state, errors: action.payload.error }; 
 		default:
 			return state;
 	}
