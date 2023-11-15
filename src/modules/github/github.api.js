@@ -4,8 +4,9 @@ class GitHubAPI {
     getRepos(userName) {
         // https://docs.github.com/en/rest/reference/repos#list-repositories-for-a-user
         return fetch(`${this.url}/users/${userName}/repos`)
-            .then(this.handleErrors)
-            .then(resp => resp.json())
+					.then(this.handleErrors)
+					.then(resp => resp.json())
+					.catch(err => console.log(err));
     }
 
     handleErrors(resp) {

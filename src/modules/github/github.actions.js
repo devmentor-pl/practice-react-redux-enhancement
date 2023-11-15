@@ -13,7 +13,7 @@ export const setErrorAction = err => {
 	return {
 		type: githubTypes.ADD_ERROR_API,
 		payload: {
-			message: err,
+			message: err, 
 		},
 	};
 };

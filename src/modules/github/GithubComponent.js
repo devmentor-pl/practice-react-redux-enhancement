@@ -7,7 +7,8 @@ const GithubComponent = () => {
 	const [searchValue, setSearchValue] = useState('');
 	const [filterReposValue, setFilterReposValue] = useState('');
 	const [loading, setLoading] = useState(false);
-	const { message, repos } = useSelector(state => state);
+	const repos = useSelector(state => state.repos);
+	const message = useSelector(state => state.messages);
 	const newUser = new GitHubAPI();
 	const dispatch = useDispatch();
 
@@ -18,13 +19,12 @@ const GithubComponent = () => {
 			const reposName = repos.map(repo => repo.name);
 			dispatch(setReposAction(reposName));
 		} catch (err) {
-			console.log(err);
-			dispatch(setErrorAction(err));
+			// dispatch(setErrorAction(err));
 		} finally {
 			setLoading(false);
 		}
 	};
-
+	console.log('message', message);
 	const handleSubmit = e => {
 		e.preventDefault();
 		fetchData(searchValue);
