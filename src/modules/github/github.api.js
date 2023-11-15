@@ -10,7 +10,7 @@ class GitHubAPI {
 
     handleErrors(resp) {
         if(!resp.ok) {
-            throw Error(resp.statusText);
+            throw new Error(resp.statusText);
         }
 
         return resp;

@@ -19,7 +19,7 @@ const GithubComponent = () => {
 			const reposName = repos.map(repo => repo.name);
 			dispatch(setReposAction(reposName));
 		} catch (err) {
-			// dispatch(setErrorAction(err));
+			dispatch(setErrorAction(err));
 		} finally {
 			setLoading(false);
 		}
