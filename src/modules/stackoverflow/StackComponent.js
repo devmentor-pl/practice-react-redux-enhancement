@@ -15,12 +15,15 @@ const StackComponent = () => {
 	const fetchData = async (question, sortingFlag) => {
 		try {
 			setLoading(true);
+			dispatch(insertErrorAction(null))
 			const phrase = question.replace(/\s/g, '%20');
+			
 			const results = await fakeStackOverflow.getAnswers(phrase, sortingFlag);
 			const items = results.items.map(item => item);
 			dispatch(insertResultsAction(items));
 		} catch (error) {
 			dispatch(insertErrorAction(error.message));
+			dispatch(insertResultsAction(null))
 		} finally {
 			setLoading(false);
 		}
