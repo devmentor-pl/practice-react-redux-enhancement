@@ -24,7 +24,7 @@ const GithubComponent = () => {
 			setLoading(false);
 		}
 	};
-	console.log('message', message);
+
 	const handleSubmit = e => {
 		e.preventDefault();
 		fetchData(searchValue);
@@ -36,6 +36,7 @@ const GithubComponent = () => {
 	return (
 		<>
 			<form onSubmit={handleSubmit} action=''>
+				<h3>write github nick for search a repo</h3>
 				<input type='text' value={searchValue} onChange={e => setSearchValue(e.target.value)} />
 				<input type='submit' value={'search'} />
 			</form>
