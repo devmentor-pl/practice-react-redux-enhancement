@@ -5,12 +5,14 @@ import { insertErrorAction, insertResultsAction } from './stack.action';
 
 const StackComponent = () => {
 	const dispatch = useDispatch();
+	const fakeStackOverflow = new StackOverflowAPI();
+
 	const [inputValue, setInputValue] = useState('');
-	const results = useSelector(state => state.results);
-	const error = useSelector(state => state.errors);
 	const [loading, setLoading] = useState(false);
 	const [sortBy, setSortBy] = useState('activity');
-	const fakeStackOverflow = new StackOverflowAPI();
+	
+	const error = useSelector(state => state.stackState.errors);
+	const results = useSelector(state => state.stackState.results);
 
 	const fetchData = async (question, sortingFlag) => {
 		try {
@@ -20,6 +22,7 @@ const StackComponent = () => {
 			
 			const results = await fakeStackOverflow.getAnswers(phrase, sortingFlag);
 			const items = results.items.map(item => item);
+			
 			dispatch(insertResultsAction(items));
 		} catch (error) {
 			dispatch(insertErrorAction(error.message));

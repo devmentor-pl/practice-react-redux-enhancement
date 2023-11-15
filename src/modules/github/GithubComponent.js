@@ -11,15 +11,17 @@ const GithubComponent = () => {
 	const [filterReposValue, setFilterReposValue] = useState('');
 	const [loading, setLoading] = useState(false);
 
-	const repos = useSelector(state => state.repos);
-	const error = useSelector(state => state.errors);
+	const repos = useSelector(state => state.githubState.repos);
+	const error = useSelector(state => state.githubState.errors);
 
 	const fetchData = async userName => {
 		try {
 			setLoading(true);
 			dispatch(setErrorAction(null));
+
 			const repos = await newUser.getRepos(userName);
 			const reposName = repos.map(repo => repo.name);
+			
 			dispatch(setReposAction(reposName));
 		} catch (err) {
 			dispatch(setErrorAction(err.message));
@@ -40,7 +42,7 @@ const GithubComponent = () => {
 	return (
 		<>
 			<form onSubmit={handleSubmit} action=''>
-				<h3>write github nick for search a repo</h3>
+				<p>write github nick for search a repo</p>
 				<input type='text' value={searchValue} onChange={e => setSearchValue(e.target.value)} />
 				<input type='submit' value={'search'} />
 			</form>
