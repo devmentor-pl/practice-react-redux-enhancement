@@ -2,7 +2,7 @@ import React from 'react';
 import Welcome from './../src/components/Welcome';
 import withPopup from './../src/hoc/withPopup';
 
-const ComponentWithPopup = withPopup(Welcome);
+const ComponentWithPopup = withPopup({ color: 'orange' })(Welcome);
 
 const Task02 = () => (
     <section>
