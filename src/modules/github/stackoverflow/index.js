@@ -1,12 +1,12 @@
 import React from 'react'
-import GitHub from './github'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
-import reducer from './github.reductor'
+import reducer from './stackoverflow.reductor'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import Stackoverflow from './stackoverflow'
 
-const GitHubAll = () => {
+const StackoverflowWithStore = () => {
   const store = createStore(
     reducer,
     composeWithDevTools(applyMiddleware(thunk))
@@ -14,9 +14,9 @@ const GitHubAll = () => {
 
   return (
     <Provider store={store}>
-      <GitHub></GitHub>
+      <Stackoverflow />
     </Provider>
   )
 }
 
-export default GitHubAll
+export default StackoverflowWithStore
