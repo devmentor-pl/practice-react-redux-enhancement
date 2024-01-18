@@ -1,3 +1,4 @@
+// src/modules/github/github.styled.js
 import styled from 'styled-components';
 
 export const StyledGitHubComponent = styled.div`

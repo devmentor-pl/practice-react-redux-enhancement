@@ -1,9 +1,9 @@
-class StackOverflow {
-  url = 'https://api.stackexchange.com';
+export default class StackOverflow {
+  url = 'https://api.stackexchange.com/2.3';
 
-  getAnswers(question, sortingFlag) {
+  getQuestions(query, order = 'desc', sort = 'creation') {
     return fetch(
-      `${this.url}/2.3/similar?order=desc&sort=${sortingFlag}&title=${question}&site=stackoverflow`
+      `${this.url}/similar?order=${order}&sort=${sort}&title=${query}&site=stackoverflow`
     )
       .then(this.handleErrors)
       .then((resp) => resp.json());
@@ -16,5 +16,3 @@ class StackOverflow {
     return resp;
   }
 }
-
-export default StackOverflow;

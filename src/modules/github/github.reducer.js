@@ -1,3 +1,4 @@
+// src/modules/github/github.reducer.js
 import {
   FETCH_REPOS_START,
   FETCH_REPOS_SUCCESS,
