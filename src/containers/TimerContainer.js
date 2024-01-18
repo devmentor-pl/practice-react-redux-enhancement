@@ -13,11 +13,9 @@ function TimerContaienr() {
     return () => clearInterval(timerID);
   }, []);
 
-  const formatTime = (timeValue) => timeValue.toString().padStart(2, '0');
-
   const hours = () => Math.floor(time / 3600);
-  const minutes = () => formatTime(Math.floor((time % 3600) / 60));
-  const seconds = () => formatTime(time % 60);
+  const minutes = () => Math.floor((time % 3600) / 60);
+  const seconds = () => time % 60;
 
   return <Timer hours={hours()} minutes={minutes()} seconds={seconds()} />;
 }
