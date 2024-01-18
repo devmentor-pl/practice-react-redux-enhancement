@@ -6,6 +6,7 @@ import {
   fetchReposFailure,
 } from './github.actions';
 import GitHubAPI from './github.api';
+import { StyledGitHubComponent } from './github.styled';
 
 const GitHub = () => {
   const [userName, setUserName] = useState('');
@@ -23,6 +24,7 @@ const GitHub = () => {
     );
     setFilteredRepos(filtered);
   }, [repoName, repos]);
+
   const handleUserSearch = async (e) => {
     e.preventDefault();
     setFilteredRepos([]);
@@ -40,39 +42,50 @@ const GitHub = () => {
     } catch (error) {
       dispatch(fetchReposFailure(error.message));
     }
+    setUserName('');
+    setRepoName('');
   };
 
   return (
-    <>
-      <form onSubmit={handleUserSearch}>
-        <label>
+    <StyledGitHubComponent>
+      <form className="github__form" onSubmit={handleUserSearch}>
+        <label className="github__label">
           User Name:
           <input
+            className="github__input github__input--username"
             type="text"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
             placeholder="Enter User Name"
           />
         </label>
-        <button type="submit">Find User</button>
+        <button className="github__button" type="submit">
+          Find User
+        </button>
       </form>
-      <label>
+
+      <label className="github__label">
         Repository Name:
         <input
+          className="github__input github__input--repo"
           type="text"
           value={repoName}
           onChange={(e) => setRepoName(e.target.value)}
           placeholder="Enter Repository Name"
         />
       </label>
-      {isFetching ? <p>Loading...</p> : null}
-      {errorMessage ? <p>{errorMessage}</p> : null}
-      <ul>
+
+      {isFetching ? <p className="github__loading">Loading...</p> : null}
+      {errorMessage ? <p className="github__error">{errorMessage}</p> : null}
+
+      <ul className="github__list">
         {filteredRepos.map((repo) => (
-          <li key={repo.id}>{repo.full_name}</li>
+          <li className="github__item" key={repo.id}>
+            {repo.full_name}
+          </li>
         ))}
       </ul>
-    </>
+    </StyledGitHubComponent>
   );
 };
 
