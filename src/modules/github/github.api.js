@@ -6,13 +6,17 @@ class GitHubAPI {
         return fetch(`${this.url}/users/${userName}/repos`)
             .then(this.handleErrors)
             .then(resp => resp.json())
+            .catch(err=> console.log(err))
     }
+   
 
     handleErrors(resp) {
-        if(!resp.ok) {
+        if (!resp.ok) {
             throw Error(resp.statusText);
         }
 
         return resp;
     }
 }
+
+export default GitHubAPI
