@@ -2,7 +2,6 @@
 import styled from 'styled-components';
 
 export const StyledGitHubComponent = styled.div`
-  font-family: Arial, sans-serif;
   padding: 20px;
   background-color: #f4f4f4;
   border-radius: 8px;

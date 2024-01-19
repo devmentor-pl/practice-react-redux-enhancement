@@ -6,6 +6,7 @@ import {
   fetchStackFailure,
 } from './stack.actions';
 import StackAPI from './stack.api';
+import { StyledStackComponent } from './stack.styled';
 
 const Stack = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -38,19 +39,22 @@ const Stack = () => {
   });
 
   return (
-    <form onSubmit={handleSearch}>
+    <StyledStackComponent onSubmit={handleSearch}>
       <input
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Enter search term"
+        className="stack__input"
       />
-      <button type="submit">Search</button>
+      <button type="submit" className="stack__button">
+        Search
+      </button>
 
-      {isFetching && <p>Loading...</p>}
-      {errorMessage && <p>Error: {errorMessage}</p>}
+      {isFetching && <p className="stack__loading">Loading...</p>}
+      {errorMessage && <p className="stack__error">Error: {errorMessage}</p>}
 
-      <ul>
+      <ul className="stack__list">
         {Array.isArray(sortedQuestions) &&
           sortedQuestions.map((question) => {
             const creationDate = new Date(question.creation_date * 1000);
@@ -58,32 +62,35 @@ const Stack = () => {
             const formattedTime = creationDate.toLocaleTimeString();
 
             return (
-              <li key={question.question_id} style={{ margin: '10px 0' }}>
-                <h1>
-                  <span>Title:</span>{' '}
+              <li key={question.question_id} className="stack__item">
+                <h1 className="stack__title">
+                  <span>Title: </span>
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
                     href={question.link}
+                    className="stack__link"
                   >
                     {question.title}
                   </a>
                 </h1>
-                <div>
-                  <span>Author:</span> {question.owner.display_name}
-                  <span>Reputation:</span> {question.owner.reputation}
-                </div>
-                <div>
-                  <span>Views:</span> {question.view_count}
-                </div>
-                <div>
-                  <span>Creation Date:</span> {formattedDate} {formattedTime}
+                <address className="stack__author">
+                  Author: <a rel="author">{question.owner.display_name}</a>
+                </address>
+                <p className="stack__reputation">
+                  Reputation: {question.owner.reputation}
+                </p>
+                <p className="stack__views">Views: {question.view_count}</p>
+                <div className="stack__date">
+                  <p>
+                    Creation Date: {formattedDate} at {formattedTime}
+                  </p>
                 </div>
               </li>
             );
           })}
       </ul>
-    </form>
+    </StyledStackComponent>
   );
 };
 
