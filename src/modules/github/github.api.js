@@ -1,4 +1,3 @@
-// src/modules/github/github.api.js
 export default class GitHubAPI {
   url = 'https://api.github.com';
 

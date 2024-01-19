@@ -2,11 +2,13 @@ import styled from 'styled-components';
 
 export const StyledStackComponent = styled.form`
   padding: 20px;
-  background-color: #f9f9f9;
+  background-color: #f4f4f4;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  max-width: 650px;
-  margin: 20px auto;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .stack__input {
     padding: 12px;
@@ -20,13 +22,14 @@ export const StyledStackComponent = styled.form`
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
-    background-color: #28a745;
+    background-color: #007bff;
+    width: 90%;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
 
     &:hover {
-      background-color: #218838;
+      background-color: #0056b3;
     }
   }
 
@@ -48,20 +51,20 @@ export const StyledStackComponent = styled.form`
     max-height: 300px;
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: #28a745 #f9f9f9;
+    scrollbar-color: #007bff #f4f4f4;
 
     &::-webkit-scrollbar {
       width: 10px;
     }
 
     &::-webkit-scrollbar-track {
-      background: #f9f9f9;
+      background: #f4f4f4;
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: #28a745;
+      background-color: #007bff;
       border-radius: 10px;
-      border: 2px solid #f9f9f9;
+      border: 2px solid #f4f4f4;
     }
   }
 

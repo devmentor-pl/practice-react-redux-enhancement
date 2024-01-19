@@ -1,4 +1,3 @@
-// src/modules/github/github.styled.js
 import styled from 'styled-components';
 
 export const StyledGitHubComponent = styled.div`
@@ -7,7 +6,6 @@ export const StyledGitHubComponent = styled.div`
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   max-width: 600px;
-  margin: 0 auto;
 
   .github__form {
     display: flex;

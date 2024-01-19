@@ -18,8 +18,8 @@ const App = () => {
         <GlobalStyles />
         <ThemeProvider theme={theme}>
           <Task01 />
-          {/* <Task02 /> */}
-          {/* <Task03 /> */}
+          <Task02 />
+          <Task03 />
           <Task04 />
           <Task05 />
         </ThemeProvider>

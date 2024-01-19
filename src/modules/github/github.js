@@ -1,4 +1,3 @@
-// src/modules/github/github.js
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -15,9 +14,9 @@ const GitHub = () => {
   const [filteredRepos, setFilteredRepos] = useState([]);
 
   const dispatch = useDispatch();
-  const repos = useSelector((state) => state.repos || []);
-  const isFetching = useSelector((state) => state.isFetching || false);
-  const errorMessage = useSelector((state) => state.errorMessage || '');
+  const repos = useSelector((state) => state.github.repos || []);
+  const isFetching = useSelector((state) => state.github.isFetching || false);
+  const errorMessage = useSelector((state) => state.github.errorMessage || '');
 
   useEffect(() => {
     const filtered = repos.filter((repo) =>

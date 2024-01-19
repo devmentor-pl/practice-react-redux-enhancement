@@ -11,10 +11,9 @@ import { StyledStackComponent } from './stack.styled';
 const Stack = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const dispatch = useDispatch();
-  const questions = useSelector((state) => state.questions);
-  const isFetching = useSelector((state) => state.isFetching);
-  const errorMessage = useSelector((state) => state.errorMessage);
-  console.log(questions);
+  const questions = useSelector((state) => state.stackoverflow.questions);
+  const isFetching = useSelector((state) => state.stackoverflow.isFetching);
+  const errorMessage = useSelector((state) => state.stackoverflow.errorMessage);
 
   const handleSearch = async (e) => {
     e.preventDefault();

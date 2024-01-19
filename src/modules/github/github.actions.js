@@ -1,4 +1,3 @@
-// src/modules/github/github.actions.js
 import {
   FETCH_REPOS_START,
   FETCH_REPOS_SUCCESS,
