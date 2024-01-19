@@ -1,18 +1,24 @@
-class GitHubAPI {
-    url = 'https://api.github.com';
+export default class GitHubAPI {
+  url = 'https://api.github.com';
 
-    getRepos(userName) {
-        // https://docs.github.com/en/rest/reference/repos#list-repositories-for-a-user
-        return fetch(`${this.url}/users/${userName}/repos`)
-            .then(this.handleErrors)
-            .then(resp => resp.json())
+  getRepos(userName) {
+    return fetch(`${this.url}/users/${userName}/repos`, {})
+      .then(this.handleErrors)
+      .then((resp) => resp.json());
+  }
+
+  handleErrors(resp) {
+    if (!resp.ok) {
+      if (resp.status === 404) {
+        throw Error('User not found');
+      }
+      if (resp.status === 403) {
+        throw Error(
+          'Access forbidden: You may have hit the rate limit or need authorization'
+        );
+      }
+      throw Error(resp.statusText);
     }
-
-    handleErrors(resp) {
-        if(!resp.ok) {
-            throw Error(resp.statusText);
-        }
-
-        return resp;
-    }
+    return resp;
+  }
 }
