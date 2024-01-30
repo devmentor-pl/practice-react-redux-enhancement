@@ -5,16 +5,19 @@ class Timer extends React.Component {
         time: 0,
     }
 
+    // Naprawiam godziny
     getHours() {
-        return 0;
+        return Math.floor(this.state.time / 3600);
     }
 
+    // Naprawiam minuty
     getMinutes() {
-        return 0;
+        return Math.floor((this.state.time % 3600) / 60);
     }
 
+    // Poprawiam sekundy
     getSeconds() {
-        return this.state.time;
+        return this.state.time % 60;
     }
 
     render() {
