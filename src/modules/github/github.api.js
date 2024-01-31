@@ -1,4 +1,4 @@
-class GitHubAPI {
+export class GitHubAPI {
     url = 'https://api.github.com';
 
     getRepos(userName) {
