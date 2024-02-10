@@ -2,25 +2,24 @@ import React from 'react';
 
 class Timer extends React.Component {
     state = {
-        time: 0,
+     time: 0,
+    }
+    
+    addZero(time) {
+        return time < 10 ? '0' + time : time
     }
 
-    getHours() {
-        return 0;
-    }
-
-    getMinutes() {
-        return 0;
-    }
-
-    getSeconds() {
-        return this.state.time;
+    renderTime(seconds) {
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const remainingSeconds = seconds % 60;
+        return `${this.addZero(hours)}:${this.addZero(minutes)}:${this.addZero(remainingSeconds)}`
     }
 
     render() {
         return (
             <section>
-                Dziękujemy, że jesteś z nami już {this.getHours()}h {this.getMinutes()}m {this.getSeconds()}s.
+                Dziękujemy, że jesteś z nami już {this.renderTime(this.state.time)}.
             </section>
         )
     }
