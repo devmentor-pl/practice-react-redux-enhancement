@@ -1,13 +1,29 @@
-class GitHubAPI {
-    url = 'https://api.github.com';
+import { token } from "../../token";
 
+class GitHubAPI { 
+    url = 'https://api.github.com';
+    userToken = token;
     getRepos(userName) {
-        // https://docs.github.com/en/rest/reference/repos#list-repositories-for-a-user
-        return fetch(`${this.url}/users/${userName}/repos`)
+        const headers = {
+            'Authorization': `token ${this.userToken}`
+        }
+        return fetch(`${this.url}/users/${userName}/repos`, {headers})
             .then(this.handleErrors)
             .then(resp => resp.json())
     }
-
+    getReposWithSign(userName, sign) {
+        return this.getRepos(userName)
+            .then(repos => {
+                const filteredRepos = repos.filter(repo => repo.name.includes(sign));
+                console.log(filteredRepos);
+                return filteredRepos;
+            })
+            .catch(error => {
+                console.error('Błąd podczas pobierania repozytoriów:', error);
+                throw error;
+            });
+    }
+    
     handleErrors(resp) {
         if(!resp.ok) {
             throw Error(resp.statusText);
@@ -16,3 +32,5 @@ class GitHubAPI {
         return resp;
     }
 }
+
+export default GitHubAPI;
