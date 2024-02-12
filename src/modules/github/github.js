@@ -15,13 +15,17 @@ const Form = ({ repos, loadRepos, loadReposBySign }) => {
   const handleSignChange = (e) => {
     const {value} = e.target;
     setSign(value)
-    if(value !== '') {
-        loadReposBySign(user, value)
+    if(user) {
+      if(value !== '') {
+        loadReposBySign(user, sign)
     }
+    }
+  
   }
   useEffect(() => {
     console.log(repos);
   }, [repos]);
+
   return (
     <form onSubmit={handleSubmit}>
       <label style={styles} htmlFor="name">

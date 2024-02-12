@@ -19,10 +19,10 @@ export const loadReposAction = (userName) => {
     })
   };
 };
-export const loadReposWithSignAction = (sign) => {
+export const loadReposWithSignAction = (userName, sign) => {
   return (dispatch) => {
     dispatch({ type: types.LOAD_REPOS_WITH_SIGN });
-    return api.getReposWithSign(sign).then((repos) =>  {
+    return api.getReposWithSign(userName, sign).then((repos) =>  {
       dispatch({
         type: types.LOAD_REPOS_WITH_SIGN_SUCCES,
         payload: repos,
