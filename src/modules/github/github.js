@@ -4,7 +4,7 @@ import { loadReposAction, loadReposWithSignAction } from "./github.actions";
 
 const styles = { display: "block" };
 
-const Form = ({ repos, loadRepos, loadReposBySign }) => {
+const GitHub = ({ loadRepos, loadReposBySign }) => {
   const [user, setUser] = useState("");
   const [sign, setSign] = useState("");
 
@@ -13,18 +13,14 @@ const Form = ({ repos, loadRepos, loadReposBySign }) => {
     loadRepos(user);
   };
   const handleSignChange = (e) => {
-    const {value} = e.target;
-    setSign(value)
-    if(user) {
-      if(value !== '') {
-        loadReposBySign(user, sign)
+    const { value } = e.target;
+    setSign(value);
+    if (user) {
+      if (value !== "") {
+        loadReposBySign(user, sign);
+      }
     }
-    }
-  
-  }
-  // useEffect(() => {
-  //   console.log(repos)
-  // }, [])
+  };
   return (
     <form onSubmit={handleSubmit}>
       <label style={styles} htmlFor="name">
@@ -59,4 +55,4 @@ const mapDispatchToProps = {
   loadReposBySign: loadReposWithSignAction,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Form);
+export default connect(mapStateToProps, mapDispatchToProps)(GitHub);
