@@ -22,10 +22,9 @@ const Form = ({ repos, loadRepos, loadReposBySign }) => {
     }
   
   }
-  useEffect(() => {
-    console.log(repos);
-  }, [repos]);
-
+  // useEffect(() => {
+  //   console.log(repos)
+  // }, [])
   return (
     <form onSubmit={handleSubmit}>
       <label style={styles} htmlFor="name">

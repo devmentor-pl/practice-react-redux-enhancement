@@ -15,7 +15,6 @@ class GitHubAPI {
         return this.getRepos(userName)
             .then(repos => {
                 const filteredRepos = repos.filter(repo => repo.name.includes(sign));
-                console.log(filteredRepos);
                 return filteredRepos;
             })
             .catch(error => {
