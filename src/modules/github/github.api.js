@@ -1,18 +1,21 @@
-class GitHubAPI {
-    url = 'https://api.github.com';
+import githubActions from './github.actions'
+const url = 'https://api.github.com'
 
-    getRepos(userName) {
-        // https://docs.github.com/en/rest/reference/repos#list-repositories-for-a-user
-        return fetch(`${this.url}/users/${userName}/repos`)
-            .then(this.handleErrors)
-            .then(resp => resp.json())
-    }
+export const getRepos = name => {
+	return function thunk(dispatch) {
+		return fetch(`${url}/users/${name}/repos`)
+			.then(resp => {
+				if (resp.ok) {
+					return resp.json()
+				}
+				throw new Error('Error')
+			})
 
-    handleErrors(resp) {
-        if(!resp.ok) {
-            throw Error(resp.statusText);
-        }
-
-        return resp;
-    }
+			.then(resp => {
+				dispatch(githubActions.getUserRepos(resp))
+			})
+			.catch(error => {
+				console.error('Error fetching repositories:', error)
+			})
+	}
 }
