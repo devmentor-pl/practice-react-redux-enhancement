@@ -1,0 +1,4 @@
+const SEARCH_IN_STACK = 'SEARCH_IN_STACK'
+const SORT_DATA = 'SORT_DATA'
+
+export default { SEARCH_IN_STACK, SORT_DATA }
